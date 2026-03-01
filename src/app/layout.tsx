@@ -13,8 +13,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://wanda-os-dev.github.io/wanda-portfolio'),
   title: {
-    default: 'WandaSystems — AI Automation Studio',
-    template: '%s | WandaSystems',
+    default: 'Wanda | AI Automation Studio',
+    template: '%s | Wanda',
   },
   description:
     'WandaSystems builds autonomous AI workflows and high-performance digital products. Premium tech studio for AI automation, web, and systems.',
@@ -23,25 +23,25 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://wanda-os-dev.github.io/wanda-portfolio',
-    siteName: 'WandaSystems',
-    title: 'WandaSystems — AI Automation Studio',
+    siteName: 'Wanda',
+    title: 'Wanda | AI Automation Studio',
     description:
-      'WandaSystems builds autonomous AI workflows and high-performance digital products.',
+      'Wanda builds autonomous AI workflows and high-performance digital products.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/wanda-portfolio/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'WandaSystems',
+        alt: 'Wanda | AI Automation Studio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WandaSystems — AI Automation Studio',
+    title: 'Wanda | AI Automation Studio',
     description:
-      'WandaSystems builds autonomous AI workflows and high-performance digital products.',
-    images: ['/og-image.png'],
+      'Wanda builds autonomous AI workflows and high-performance digital products.',
+    images: ['/wanda-portfolio/og-image.png'],
   },
   robots: {
     index: true,

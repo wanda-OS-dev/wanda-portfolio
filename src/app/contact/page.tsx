@@ -14,23 +14,17 @@ export default function ContactPage() {
     e.preventDefault();
     setState('sending');
     const data = new FormData(e.currentTarget);
-    const body = {
-      name: data.get('name'),
-      email: data.get('email'),
-      message: data.get('message'),
-    };
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://formspree.io/f/xpwzogdb', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
+        headers: { Accept: 'application/json' },
+        body: data,
       });
       if (res.ok) {
         setState('success');
         formRef.current?.reset();
       } else {
-        const err = await res.json();
-        setErrorMsg(err.error || 'Something went wrong.');
+        setErrorMsg('Submission failed. Please email us directly.');
         setState('error');
       }
     } catch {
