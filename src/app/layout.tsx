@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://wandasystems.io'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://wanda-os-dev.github.io/wanda-portfolio'),
   title: {
     default: 'WandaSystems — AI Automation Studio',
     template: '%s | WandaSystems',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://wandasystems.io',
+    url: 'https://wanda-os-dev.github.io/wanda-portfolio',
     siteName: 'WandaSystems',
     title: 'WandaSystems — AI Automation Studio',
     description:

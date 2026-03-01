@@ -68,10 +68,10 @@ export default function ContactPage() {
                   Email
                 </p>
                 <a
-                  href="mailto:hello@wandasystems.io"
+                  href="mailto:wanda.devops@gmail.com"
                   className="text-brand-white hover:text-brand-gold transition-colors duration-300"
                 >
-                  hello@wandasystems.io
+                  wanda.devops@gmail.com
                 </a>
               </div>
               <div>

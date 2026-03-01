@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
   const SMTP_HOST = process.env.SMTP_HOST;
   const SMTP_USER = process.env.SMTP_USER;
   const SMTP_PASS = process.env.SMTP_PASS;
-  const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'hello@wandasystems.io';
+  const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'wanda.devops@gmail.com';
 
   if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
     try {
