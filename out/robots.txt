@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://wanda-os-dev.github.io/wanda-portfolio/sitemap.xml

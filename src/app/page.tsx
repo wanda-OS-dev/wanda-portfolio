@@ -113,22 +113,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Scroll indicator — clickable */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-        onClick={() => document.getElementById('work-preview')?.scrollIntoView({ behavior: 'smooth' })}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
-        aria-label="Scroll to work"
-      >
-        <span className="text-brand-gray-500 text-xs tracking-widest uppercase group-hover:text-brand-gold transition-colors">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-px h-8 bg-gradient-to-b from-brand-gray-500 to-transparent group-hover:from-brand-gold"
-        />
-      </motion.button>
+      {/* Scroll indicator removed — no scrollable content on hero */}
     </section>
   );
 }
