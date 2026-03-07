@@ -33,10 +33,31 @@ export function Nav() {
         initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 opacity-100 px-6 md:px-10 py-5 flex items-center justify-between transition-colors duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 opacity-100 px-6 md:px-10 py-5 flex items-center justify-between transition-colors duration-500 overflow-hidden ${
           scrolled ? 'bg-brand-black/80 backdrop-blur-md border-b border-white/[0.04]' : ''
         }`}
       >
+        {/* Header planets background */}
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+          <div
+            className="absolute -top-16 -left-12 h-36 w-36 rounded-full blur-2xl opacity-35 animate-pulse"
+            style={{
+              background: 'radial-gradient(circle, rgba(201,168,76,0.65) 0%, rgba(201,168,76,0.08) 60%, transparent 80%)',
+            }}
+          />
+          <div
+            className="absolute top-1 right-8 h-24 w-24 rounded-full blur-xl opacity-30 animate-pulse"
+            style={{
+              animationDelay: '450ms',
+              background: 'radial-gradient(circle, rgba(107,79,26,0.7) 0%, rgba(107,79,26,0.1) 60%, transparent 80%)',
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(180deg, rgba(13,8,22,0.24) 0%, rgba(10,10,10,0.08) 100%)' }}
+          />
+        </div>
+
         {/* Logo */}
         <Link
           href="/"
