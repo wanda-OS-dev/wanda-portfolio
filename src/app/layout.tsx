@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       'Wanda builds autonomous AI workflows and high-performance digital products.',
     images: [
       {
-        url: '/wanda-portfolio/og-image.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Wanda | AI Automation Studio',
@@ -41,7 +41,10 @@ export const metadata: Metadata = {
     title: 'Wanda | AI Automation Studio',
     description:
       'Wanda builds autonomous AI workflows and high-performance digital products.',
-    images: ['/wanda-portfolio/og-image.png'],
+    images: ['/og-image.png'],
+  },
+  icons: {
+    icon: '/favicon.ico',
   },
   robots: {
     index: true,

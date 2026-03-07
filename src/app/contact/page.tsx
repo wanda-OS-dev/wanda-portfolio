@@ -73,7 +73,7 @@ export default function ContactPage() {
                   Availability
                 </p>
                 <p className="text-brand-gray-300 text-sm">
-                  Limited spots — Q2 2025 onboarding open.
+                  Accepting inquiries. Response within 24 hours.
                 </p>
               </div>
             </div>
