@@ -32,23 +32,6 @@ export default function HomePage() {
     <>
       {/* ── HERO ── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Always-visible planet layer (independent of WebGL) */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div
-            className="absolute -top-32 -left-28 w-[460px] h-[460px] rounded-full blur-[34px] opacity-70 animate-pulse"
-            style={{
-              background: 'radial-gradient(circle, rgba(201,168,76,0.88) 0%, rgba(201,168,76,0.25) 52%, transparent 75%)',
-            }}
-          />
-          <div
-            className="absolute top-[14%] right-[6%] w-[300px] h-[300px] rounded-full blur-[26px] opacity-55 animate-pulse"
-            style={{
-              animationDelay: '350ms',
-              background: 'radial-gradient(circle, rgba(107,79,26,0.9) 0%, rgba(107,79,26,0.22) 55%, transparent 78%)',
-            }}
-          />
-        </div>
-
         {/* 3D Canvas Background */}
         <HeroScene />
 

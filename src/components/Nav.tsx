@@ -40,16 +40,16 @@ export function Nav() {
         {/* Header planets background */}
         <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
           <div
-            className="absolute -top-14 -left-10 h-40 w-40 rounded-full blur-xl opacity-65 animate-pulse"
+            className="absolute -top-16 -left-12 h-36 w-36 rounded-full blur-2xl opacity-35 animate-pulse"
             style={{
-              background: 'radial-gradient(circle, rgba(201,168,76,0.9) 0%, rgba(201,168,76,0.2) 58%, transparent 80%)',
+              background: 'radial-gradient(circle, rgba(201,168,76,0.65) 0%, rgba(201,168,76,0.08) 60%, transparent 80%)',
             }}
           />
           <div
-            className="absolute top-0 right-7 h-28 w-28 rounded-full blur-lg opacity-55 animate-pulse"
+            className="absolute top-1 right-8 h-24 w-24 rounded-full blur-xl opacity-30 animate-pulse"
             style={{
               animationDelay: '450ms',
-              background: 'radial-gradient(circle, rgba(107,79,26,0.85) 0%, rgba(107,79,26,0.18) 58%, transparent 80%)',
+              background: 'radial-gradient(circle, rgba(107,79,26,0.7) 0%, rgba(107,79,26,0.1) 60%, transparent 80%)',
             }}
           />
           <div
