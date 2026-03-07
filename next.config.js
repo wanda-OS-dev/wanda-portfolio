@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
+const isVercel = process.env.VERCEL === '1';
+
 const nextConfig = {
   output: 'export',
-  basePath: '/wanda-portfolio',
-  assetPrefix: '/wanda-portfolio/',
+  basePath: isVercel ? '' : '/wanda-portfolio',
+  assetPrefix: isVercel ? undefined : '/wanda-portfolio/',
   trailingSlash: true,
   reactStrictMode: true,
   images: {
