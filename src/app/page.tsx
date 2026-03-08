@@ -385,7 +385,7 @@ export default function HomePage() {
               Have something worth building?
             </h2>
             <p className="text-brand-gray-300 text-lg font-light mb-10 max-w-md mx-auto leading-relaxed">
-              First conversation is always free. No pitch — I listen, then tell you honestly if and how I can help.
+              First conversation is always free. No pitch — I listen first, then map a concrete next step. Case studies are available on request.
             </p>
             <Link
               href="/contact"
