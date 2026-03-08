@@ -9,18 +9,7 @@ function supportsWebGL(): boolean {
   try {
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
-    if (!gl) return false;
-
-    // Hard preflight: some environments expose a context but fail renderer creation.
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      antialias: false,
-      alpha: true,
-      powerPreference: 'default',
-      failIfMajorPerformanceCaveat: false,
-    });
-    renderer.dispose();
-    return true;
+    return !!gl;
   } catch {
     return false;
   }
@@ -123,7 +112,9 @@ export function HeroScene() {
   const [useWebGL, setUseWebGL] = useState(false);
 
   useEffect(() => {
-    setUseWebGL(supportsWebGL());
+    const supported = supportsWebGL();
+    console.info('Hero mode:', supported ? 'webgl' : 'fallback');
+    setUseWebGL(supported);
   }, []);
 
   if (!useWebGL) {
