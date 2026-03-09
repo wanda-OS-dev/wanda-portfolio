@@ -35,15 +35,7 @@ export default function HomePage() {
         {/* 3D Canvas Background */}
         <HeroScene />
 
-        {/* Gradient vignette */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 82% 82% at 50% 50%, transparent 68%, rgba(10,10,10,0.18) 100%)',
-          }}
-        />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-brand-black/40 to-transparent pointer-events-none" />
+        
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pt-28 pb-24">
