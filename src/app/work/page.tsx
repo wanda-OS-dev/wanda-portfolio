@@ -263,6 +263,39 @@ export default function WorkPage() {
             </svg>
           </Link>
         </motion.div>
+
+        {/* Services CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-10 text-center"
+        >
+          <div
+            className="inline-block px-8 py-6 rounded-sm"
+            style={{
+              background: 'rgba(6,182,212,0.04)',
+              border: '1px solid rgba(6,182,212,0.12)',
+            }}
+          >
+            <p className="text-brand-gray-300 text-sm mb-4">
+              Ready to work together?
+            </p>
+            <a
+              href="https://wanda-os-dev.github.io/wandasystems-site/services/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300"
+              style={{ color: '#06b6d4' }}
+            >
+              Request project scope
+              <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
