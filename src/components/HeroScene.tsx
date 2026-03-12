@@ -26,6 +26,7 @@ function FallbackPlanets() {
 }
 
 function FloatingOrb({ position, scale = 1 }: { position: [number, number, number]; scale?: number }) {
+const BACKGROUND_COLOR = new THREE.Color('#0a0a0a');
   const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
@@ -47,7 +48,7 @@ function FloatingOrb({ position, scale = 1 }: { position: [number, number, numbe
           ior={1.4}
           chromaticAberration={0.04}
           color="#c9a84c"
-          background={new THREE.Color('#0a0a0a')}
+          background={BACKGROUND_COLOR}
         />
       </mesh>
     </Float>
@@ -55,6 +56,7 @@ function FloatingOrb({ position, scale = 1 }: { position: [number, number, numbe
 }
 
 function GoldRing({ position }: { position: [number, number, number] }) {
+const BACKGROUND_COLOR = new THREE.Color('#0a0a0a');
   const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
