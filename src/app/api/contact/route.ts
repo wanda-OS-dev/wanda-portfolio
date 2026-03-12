@@ -37,6 +37,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
   }
 
+  // Sanitize inputs to prevent HTML injection/XSS in email clients
+  const escapeHtml = (str: string) => {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
   // In production: send via nodemailer, Resend, or Postmark
   // For now: log and return success (configure SMTP_* env vars to enable sending)
   const SMTP_HOST = process.env.SMTP_HOST;
@@ -56,9 +66,9 @@ export async function POST(req: NextRequest) {
       await transporter.sendMail({
         from: `"WandaSystems Contact" <${SMTP_USER}>`,
         to: CONTACT_EMAIL,
-        subject: `New message from ${name}`,
+        subject: `New message from ${escapeHtml(name)}`,
         text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-        html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p>${message.replace(/\n/g, '<br/>')}</p>`,
+        html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>`,
       });
     } catch (err) {
       console.error('[contact] email send failed:', err);
