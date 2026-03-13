@@ -92,7 +92,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
               >
                 View Work
-                <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
+                <svg width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true">
                   <path
                     d="M1 7h12M8 2l5 5-5 5"
                     stroke="currentColor"
@@ -168,7 +168,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 text-brand-gold text-sm hover:gap-4 transition-all duration-300"
               >
                 More about me
-                <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
+                <svg width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true">
                   <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
@@ -246,7 +246,7 @@ export default function HomePage() {
               className="hidden md:inline-flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300"
             >
               All projects
-              <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
+              <svg width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
@@ -320,6 +320,7 @@ export default function HomePage() {
                       viewBox="0 0 20 20"
                       className="text-brand-gray-500 group-hover:text-brand-cyan translate-x-0 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0"
                       style={{ color: 'inherit' }}
+                      aria-hidden="true"
                     >
                       <path
                         d="M4 10h12M11 5l5 5-5 5"
@@ -347,7 +348,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300"
             >
               All projects
-              <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
+              <svg width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
@@ -384,7 +385,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-8 py-4 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
             >
               Start a conversation
-              <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
+              <svg width="14" height="14" fill="none" viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
