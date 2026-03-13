@@ -17,8 +17,20 @@ function rateLimit(ip: string): boolean {
   return true;
 }
 
+// Helper to prevent HTML injection in emails
+function escapeHtml(unsafe: string) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get('x-forwarded-for') ?? 'unknown';
+  // Extract real IP, falling back to forwarded or unknown
+  const forwarded = req.headers.get('x-forwarded-for');
+  const ip = req.ip || (forwarded ? forwarded.split(',')[0].trim() : 'unknown');
 
   if (!rateLimit(ip)) {
     return NextResponse.json({ error: 'Too many requests.' }, { status: 429 });
@@ -29,6 +41,15 @@ export async function POST(req: NextRequest) {
 
   if (!name || !email || !message) {
     return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
+  }
+
+  // Type and length validation to prevent crashes and DoS
+  if (
+    typeof name !== 'string' || name.length > 100 ||
+    typeof email !== 'string' || email.length > 100 ||
+    typeof message !== 'string' || message.length > 5000
+  ) {
+    return NextResponse.json({ error: 'Invalid input payload.' }, { status: 400 });
   }
 
   // Email validation
@@ -53,12 +74,17 @@ export async function POST(req: NextRequest) {
         secure: false,
         auth: { user: SMTP_USER, pass: SMTP_PASS },
       });
+      // Sanitize inputs before rendering to HTML
+      const safeName = escapeHtml(name);
+      const safeEmail = escapeHtml(email);
+      const safeMessage = escapeHtml(message).replace(/\n/g, '<br/>');
+
       await transporter.sendMail({
         from: `"WandaSystems Contact" <${SMTP_USER}>`,
         to: CONTACT_EMAIL,
-        subject: `New message from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-        html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p>${message.replace(/\n/g, '<br/>')}</p>`,
+        subject: `New message from ${safeName}`,
+        text: `Name: ${name}\nEmail: ${email}\n\n${message}`, // Text part is safe from HTML injection
+        html: `<p><strong>Name:</strong> ${safeName}</p><p><strong>Email:</strong> ${safeEmail}</p><p>${safeMessage}</p>`,
       });
     } catch (err) {
       console.error('[contact] email send failed:', err);
