@@ -57,7 +57,7 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-5">
               <p className="text-brand-gray-300 font-light leading-relaxed">
-                WandaSystems is a precision AI automation studio. We don't build feature lists — we
+                WandaSystems is a precision AI automation studio. We don&apos;t build feature lists — we
                 build leverage. Systems that get better over time, that run while you sleep, that
                 multiply the output of every person they touch.
               </p>
