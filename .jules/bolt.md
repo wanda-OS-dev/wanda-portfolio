@@ -1,0 +1,3 @@
+## 2025-05-15 - [Anti-pattern: Async window checking with next/dynamic ssr:false]
+**Learning:** Using `useEffect` to check if `window` exists or supports certain features (like WebGL) when the component is already dynamically imported with `{ ssr: false }` is an anti-pattern. This causes an unnecessary extra render cycle (first render -> useEffect runs -> state updates -> second render).
+**Action:** When a component is guaranteed to run only on the client (e.g., via `next/dynamic` with `ssr: false`), perform browser/window capability checks synchronously during the initial render rather than using `useEffect` and `useState`. This prevents visual flashing and saves a full React commit cycle.

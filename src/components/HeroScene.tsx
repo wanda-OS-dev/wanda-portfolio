@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -108,13 +108,11 @@ function ParticleField() {
 }
 
 export function HeroScene() {
-  const [useWebGL, setUseWebGL] = useState(false);
-
-  useEffect(() => {
-    const supported = supportsWebGL();
-    console.info('Hero mode:', supported ? 'webgl' : 'fallback');
-    setUseWebGL(supported);
-  }, []);
+  // ⚡ Bolt: Synchronous WebGL check
+  // What: Removed useEffect/useState and perform a synchronous capability check on first render.
+  // Why: Since HeroScene is dynamically imported with `ssr: false`, `window` is guaranteed to exist.
+  // Impact: Eliminates an unnecessary initial render with fallback planets, preventing a visual flash and saving a full React commit cycle.
+  const useWebGL = typeof window !== 'undefined' ? supportsWebGL() : false;
 
   if (!useWebGL) {
     return <FallbackPlanets />;
