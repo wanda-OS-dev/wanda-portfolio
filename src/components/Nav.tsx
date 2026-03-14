@@ -27,6 +27,18 @@ export function Nav() {
     setMenuOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
   return (
     <>
       <motion.header
@@ -74,6 +86,8 @@ export function Nav() {
           className="md:hidden flex flex-col gap-1.5 w-6 py-1 group"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span
             className={`block h-px bg-brand-white transition-all duration-300 origin-center ${
@@ -97,6 +111,7 @@ export function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}

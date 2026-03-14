@@ -1,0 +1,95 @@
+ INFO  Accepting connections at http://localhost:3000
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 200 in 23 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/css/1c194a80e24b243d.css
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 5 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 7 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/chunks/webpack-f009f5a314ee2b8e.js
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/chunks/94c12b52-85bb2724808eb334.js
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/chunks/842-61cf1fbf6152ad94.js
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/chunks/main-app-85c782f72ad5fb97.js
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/chunks/85-6f12290312e0cfab.js
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/chunks/353-e2c1edb5ddd122db.js
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 7 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 5 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 5 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/page-fddd4e11664af528.js
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/layout-f5e5a2d756e68dea.js
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 4 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 2 ms
+ HTTP  3/14/2026 1:45:04 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/not-found-9ecb4b9fb37e3d1a.js
+ HTTP  3/14/2026 1:45:04 AM ::1 Returned 404 in 1 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 200 in 1 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/css/1c194a80e24b243d.css
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 2 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 1 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/chunks/webpack-f009f5a314ee2b8e.js
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/chunks/94c12b52-85bb2724808eb334.js
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/chunks/85-6f12290312e0cfab.js
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/chunks/842-61cf1fbf6152ad94.js
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/chunks/main-app-85c782f72ad5fb97.js
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/chunks/353-e2c1edb5ddd122db.js
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 5 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 5 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/page-fddd4e11664af528.js
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/layout-f5e5a2d756e68dea.js
+ HTTP  3/14/2026 1:45:37 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/not-found-9ecb4b9fb37e3d1a.js
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 2 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 2 ms
+ HTTP  3/14/2026 1:45:37 AM ::1 Returned 404 in 2 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 2 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/css/1c194a80e24b243d.css
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 5 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 4 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/chunks/webpack-f009f5a314ee2b8e.js
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/chunks/94c12b52-85bb2724808eb334.js
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/chunks/842-61cf1fbf6152ad94.js
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/chunks/main-app-85c782f72ad5fb97.js
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/chunks/85-6f12290312e0cfab.js
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/chunks/353-e2c1edb5ddd122db.js
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 7 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 5 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 5 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 6 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/not-found-9ecb4b9fb37e3d1a.js
+ HTTP  3/14/2026 1:46:08 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/layout-f5e5a2d756e68dea.js
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 2 ms
+ HTTP  3/14/2026 1:46:08 AM ::1 Returned 404 in 2 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 200 in 1 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/css/1c194a80e24b243d.css
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 3 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 4 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/chunks/webpack-f009f5a314ee2b8e.js
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/chunks/94c12b52-85bb2724808eb334.js
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/chunks/842-61cf1fbf6152ad94.js
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/chunks/main-app-85c782f72ad5fb97.js
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/chunks/85-6f12290312e0cfab.js
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/chunks/353-e2c1edb5ddd122db.js
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 4 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 4 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 4 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 4 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 4 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 4 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/page-fddd4e11664af528.js
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/layout-f5e5a2d756e68dea.js
+ HTTP  3/14/2026 1:46:40 AM ::1 GET /wanda-portfolio/_next/static/chunks/app/not-found-9ecb4b9fb37e3d1a.js
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 3 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 3 ms
+ HTTP  3/14/2026 1:46:40 AM ::1 Returned 404 in 3 ms
