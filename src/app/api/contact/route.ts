@@ -31,11 +31,28 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
   }
 
+  // Security: Input length limits (DoS prevention)
+  if (name.length > 100 || email.length > 254 || message.length > 5000) {
+    return NextResponse.json({ error: 'Input exceeds maximum length.' }, { status: 400 });
+  }
+
   // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
   }
+
+  // Security: HTML sanitization to prevent XSS in email clients
+  const escapeHtml = (unsafe: string) => unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message);
 
   // In production: send via nodemailer, Resend, or Postmark
   // For now: log and return success (configure SMTP_* env vars to enable sending)
@@ -56,9 +73,9 @@ export async function POST(req: NextRequest) {
       await transporter.sendMail({
         from: `"WandaSystems Contact" <${SMTP_USER}>`,
         to: CONTACT_EMAIL,
-        subject: `New message from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-        html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p>${message.replace(/\n/g, '<br/>')}</p>`,
+        subject: `New message from ${safeName}`,
+        text: `Name: ${safeName}\nEmail: ${safeEmail}\n\n${safeMessage}`,
+        html: `<p><strong>Name:</strong> ${safeName}</p><p><strong>Email:</strong> ${safeEmail}</p><p>${safeMessage.replace(/\n/g, '<br/>')}</p>`,
       });
     } catch (err) {
       console.error('[contact] email send failed:', err);
@@ -66,7 +83,7 @@ export async function POST(req: NextRequest) {
     }
   } else {
     // No SMTP configured — log for development
-    console.log('[contact] New message:', { name, email, message: message.slice(0, 100) });
+    console.log('[contact] New message:', { name: safeName, email: safeEmail, message: safeMessage.slice(0, 100) });
   }
 
   return NextResponse.json({ ok: true });

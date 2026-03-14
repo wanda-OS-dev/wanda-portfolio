@@ -1,0 +1,4 @@
+## 2026-03-14 - HTML Injection & Input Length Bounds in API Routes
+**Vulnerability:** Contact form API route accepted unbounded string inputs (name, email, message) and injected them directly into an HTML template string sent via Nodemailer. This allowed potential server DoS via excessive memory allocation for large inputs, and allowed malicious actors to inject raw HTML (XSS) into the recipient's email client.
+**Learning:** Next.js route handlers processing user input destined for email templates must handle both string sanitization (escaping entities) and explicitly capping length. Template strings (`${}`) do NOT auto-escape variables unlike JSX.
+**Prevention:** Always set strict `.length` bounds on inbound string data early in the request lifecycle. Create or use an explicit `escapeHtml` utility (or a library like `dompurify` if full HTML is supported, though simple text should be escaped) when passing text into an HTML context outside of React components.
