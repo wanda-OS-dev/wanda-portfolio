@@ -27,6 +27,17 @@ export function Nav() {
     setMenuOpen(false);
   }, [pathname]);
 
+  // Close menu on escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [menuOpen]);
+
   return (
     <>
       <motion.header
@@ -73,6 +84,8 @@ export function Nav() {
         <button
           className="md:hidden flex flex-col gap-1.5 w-6 py-1 group"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
         >
           <span
@@ -97,6 +110,10 @@ export function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
