@@ -1,0 +1,3 @@
+## 2026-03-15 - [Pre-calculate derived array operations in React]
+**Learning:** In Next.js applications combining Framer Motion with static data arrays, inline array operations (like `project.tags.slice(0, 4)`) inside `map` loops within the render function can cause unnecessary allocations. This triggers new object references on every render cycle which forces child components to re-render.
+**Action:** Use `useMemo` to pre-calculate and cache derived array properties (e.g., sliced tag lists, style objects) once per project at the component level, mapping over the optimized array instead.

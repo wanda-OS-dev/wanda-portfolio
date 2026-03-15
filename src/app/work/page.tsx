@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { projects } from '@/lib/projects';
@@ -30,6 +31,17 @@ function getCategoryStyle(category: string) {
 }
 
 export default function WorkPage() {
+  // Pre-calculate derived data to avoid recalculation on each render cycle
+  // This is especially important for arrays created with slice() which would otherwise
+  // create new object references and trigger unnecessary re-renders in children
+  const optimizedProjects = useMemo(() => {
+    return projects.map((project) => ({
+      ...project,
+      style: getCategoryStyle(project.category),
+      truncatedTags: project.tags.slice(0, 4),
+    }));
+  }, []);
+
   return (
     <div
       className="min-h-screen pt-32 pb-24 relative overflow-hidden"
@@ -94,8 +106,7 @@ export default function WorkPage() {
           animate="show"
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
-          {projects.map((project) => {
-            const catStyle = getCategoryStyle(project.category);
+          {optimizedProjects.map((project) => {
             return (
               <motion.div key={project.id} variants={item}>
                 <Link
@@ -150,9 +161,9 @@ export default function WorkPage() {
                       <span
                         className="text-[10px] font-medium tracking-widest uppercase px-2.5 py-1 rounded-sm backdrop-blur-sm"
                         style={{
-                          background: catStyle.bg,
-                          color: catStyle.text,
-                          border: `1px solid ${catStyle.border}`,
+                          background: project.style.bg,
+                          color: project.style.text,
+                          border: `1px solid ${project.style.border}`,
                         }}
                       >
                         {project.category}
@@ -200,7 +211,7 @@ export default function WorkPage() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.tags.slice(0, 4).map((tag) => (
+                      {project.truncatedTags.map((tag) => (
                         <span
                           key={tag}
                           className="text-xs text-brand-gray-500 px-2 py-0.5 rounded-sm"
