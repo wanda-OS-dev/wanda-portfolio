@@ -1,0 +1,3 @@
+## 2025-02-14 - Static Data Redundant Array Calculation in React Render Cycles
+**Learning:** Using `Array.prototype.slice` (e.g., `project.tags.slice(0, 4)`) directly inside a `map` loop within the render cycle of a React component causes the array to be re-computed on every single render. Since the underlying data (`projects`) is static, this is an unnecessary performance penalty, especially when combined with Framer Motion animations triggering frequent re-renders.
+**Action:** Use `useMemo` to pre-calculate derivative arrays (like `previewTags`) from static data exactly once per component lifecycle, passing the optimized data structure to the render function.

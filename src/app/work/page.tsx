@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { projects } from '@/lib/projects';
@@ -28,6 +29,14 @@ const categoryColors: Record<string, { bg: string; text: string; border: string 
 function getCategoryStyle(category: string) {
   return categoryColors[category] ?? { bg: 'rgba(6,182,212,0.1)', text: '#06b6d4', border: 'rgba(6,182,212,0.2)' };
 }
+
+
+// ⚡ Bolt: Pre-calculate derivative arrays at the module level to prevent redundant slice operations during React render cycles.
+// Since `projects` is static, moving this outside the component avoids `useMemo` overhead on mount.
+const optimizedProjects = projects.map((project) => ({
+  ...project,
+  previewTags: project.tags.slice(0, 4)
+}));
 
 export default function WorkPage() {
   return (
@@ -94,7 +103,7 @@ export default function WorkPage() {
           animate="show"
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
-          {projects.map((project) => {
+          {optimizedProjects.map((project) => {
             const catStyle = getCategoryStyle(project.category);
             return (
               <motion.div key={project.id} variants={item}>
@@ -200,7 +209,7 @@ export default function WorkPage() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.tags.slice(0, 4).map((tag) => (
+                      {project.previewTags.map((tag) => (
                         <span
                           key={tag}
                           className="text-xs text-brand-gray-500 px-2 py-0.5 rounded-sm"
