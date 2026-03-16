@@ -1,0 +1,3 @@
+## 2024-03-16 - Accessible Form State Feedback
+**Learning:** Adding `aria-live="polite"` to form success states and `aria-live="assertive"` / `role="alert"` to error messages ensures screen readers immediately announce form submission outcomes. Additionally, adding visual indicators like `*` inside `aria-hidden="true"` spans next to labels helps visually align with HTML5 `required` attributes without causing redundant screen reader announcements.
+**Action:** Consistently apply `aria-live` regions for any dynamic form feedback (loading, success, error) and ensure required fields always have visual cues accompanied by `aria-hidden` attributes to balance sighted user and screen reader experiences.

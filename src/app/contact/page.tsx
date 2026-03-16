@@ -86,9 +86,9 @@ export default function ContactPage() {
             transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             {state === 'success' ? (
-              <div className="flex flex-col items-center justify-center h-full py-16 text-center">
+              <div role="status" aria-live="polite" className="flex flex-col items-center justify-center h-full py-16 text-center">
                 <div className="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center mb-6">
-                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true">
                     <path
                       d="M4 10l4 4 8-8"
                       stroke="#c9a84c"
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Name
+                    Name <span className="text-brand-gold" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="name"
@@ -114,14 +114,14 @@ export default function ContactPage() {
                     type="text"
                     required
                     placeholder="Your name"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold focus-visible:ring-2 focus-visible:ring-brand-gold/50 transition-all duration-300"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
                   <label htmlFor="email" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Email
+                    Email <span className="text-brand-gold" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="email"
@@ -129,14 +129,14 @@ export default function ContactPage() {
                     type="email"
                     required
                     placeholder="your@email.com"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold focus-visible:ring-2 focus-visible:ring-brand-gold/50 transition-all duration-300"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
                   <label htmlFor="message" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Message
+                    Message <span className="text-brand-gold" aria-hidden="true">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -144,22 +144,31 @@ export default function ContactPage() {
                     required
                     rows={5}
                     placeholder="Tell us about your project..."
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none"
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold focus-visible:ring-2 focus-visible:ring-brand-gold/50 transition-all duration-300 resize-none"
                   />
                 </div>
 
                 {/* Error */}
                 {state === 'error' && (
-                  <p className="text-red-400 text-sm">{errorMsg}</p>
+                  <p role="alert" aria-live="assertive" className="text-red-400 text-sm">{errorMsg}</p>
                 )}
 
                 {/* Submit */}
                 <button
                   type="submit"
                   disabled={state === 'sending'}
-                  className="w-full bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  aria-disabled={state === 'sending'}
+                  className="w-full bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center gap-2"
                 >
-                  {state === 'sending' ? 'Sending...' : 'Send Message'}
+                  {state === 'sending' ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-brand-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : 'Send Message'}
                 </button>
               </form>
             )}

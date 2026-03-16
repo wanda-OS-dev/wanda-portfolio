@@ -1,0 +1,39 @@
+ INFO  Accepting connections at http://localhost:37355
+ HTTP  3/16/2026 1:50:18 AM ::1 GET /contact
+ HTTP  3/16/2026 1:50:18 AM ::1 Returned 200 in 267 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/css/24408681ba0ee464.css
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 4 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 4 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/webpack-5c86c1874a4127a9.js
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 2 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/94c12b52-85bb2724808eb334.js
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/842-cb2bdafe67496dac.js
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/main-app-85c782f72ad5fb97.js
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/85-6f12290312e0cfab.js
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/app/contact/page-14b4500e66be08f0.js
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/353-e0b583b5920c18d4.js
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 8 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 7 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 7 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 11 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 13 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 16 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/app/layout-dc10625bc320d390.js
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/app/not-found-9ecb4b9fb37e3d1a.js
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 19 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 16 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /index.txt?_rsc=zewlb
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /work/index.txt?_rsc=zewlb
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /about/index.txt?_rsc=zewlb
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /contact/index.txt?_rsc=zewlb
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 4 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 7 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 7 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 7 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/app/work/page-272fd53ea76231dc.js
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/app/page-fddd4e11664af528.js
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 3 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 GET /_next/static/chunks/app/about/page-91cc0c90ef151823.js
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 3 ms
+ HTTP  3/16/2026 1:50:19 AM ::1 Returned 200 in 3 ms
