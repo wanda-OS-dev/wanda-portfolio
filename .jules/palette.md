@@ -1,0 +1,3 @@
+## 2024-05-18 - Form Accessibility Enhancements
+**Learning:** Pairing `aria-live` and `role="alert"` for dynamic form feedback alongside visual cues for required fields significantly improves the accessibility and user experience of forms, particularly for screen reader users. The HTML5 `required` attribute is powerful but is best combined with explicit visual cues for all users.
+**Action:** When creating forms, ensure success states use `aria-live="polite"`, error states use `aria-live="assertive"` with `role="alert"`, and required fields explicitly display a visual indicator combined with `aria-hidden="true"` to prevent redundant screen reader announcements.
