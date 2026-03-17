@@ -1,0 +1,3 @@
+## 2026-03-17 - [Avoid redundant derivative array calculations on static data]
+**Learning:** In React components dealing with static data (like hardcoded or imported arrays), performing operations like `Array.prototype.slice` or mapping during render cycles generates redundant calculations and new array references, which can lead to unnecessary re-renders in child components.
+**Action:** Always prefer `useMemo` to pre-calculate derivative arrays (e.g., truncated tags) once per data item. This avoids redundant operations on every render.
