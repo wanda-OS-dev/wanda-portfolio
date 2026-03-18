@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { projects } from '@/lib/projects';
@@ -30,6 +31,16 @@ function getCategoryStyle(category: string) {
 }
 
 export default function WorkPage() {
+  // Pre-calculate derived arrays once per mount to avoid redundant
+  // Array.prototype.slice operations during Framer Motion render cycles
+  // which can cause minor GC stutters.
+  const projectsWithTruncatedTags = useMemo(() => {
+    return projects.map((project) => ({
+      ...project,
+      displayTags: project.tags.slice(0, 4),
+    }));
+  }, []);
+
   return (
     <div
       className="min-h-screen pt-32 pb-24 relative overflow-hidden"
@@ -94,7 +105,7 @@ export default function WorkPage() {
           animate="show"
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
-          {projects.map((project) => {
+          {projectsWithTruncatedTags.map((project) => {
             const catStyle = getCategoryStyle(project.category);
             return (
               <motion.div key={project.id} variants={item}>
@@ -200,7 +211,7 @@ export default function WorkPage() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.tags.slice(0, 4).map((tag) => (
+                      {project.displayTags.map((tag) => (
                         <span
                           key={tag}
                           className="text-xs text-brand-gray-500 px-2 py-0.5 rounded-sm"
