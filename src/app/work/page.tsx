@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useMemo } from 'react';
 import { projects } from '@/lib/projects';
 
 const container = {
@@ -30,6 +31,16 @@ function getCategoryStyle(category: string) {
 }
 
 export default function WorkPage() {
+  // Pre-calculate display tags once per mount to avoid inline slice operations during re-renders,
+  // which can cause micro-stutters and trigger garbage collection with Framer Motion.
+  // This memoizes the top 4 tags for each project.
+  const projectsWithDisplayTags = useMemo(() => {
+    return projects.map((project) => ({
+      ...project,
+      displayTags: project.tags.slice(0, 4),
+    }));
+  }, []);
+
   return (
     <div
       className="min-h-screen pt-32 pb-24 relative overflow-hidden"
@@ -94,7 +105,7 @@ export default function WorkPage() {
           animate="show"
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
-          {projects.map((project) => {
+          {projectsWithDisplayTags.map((project) => {
             const catStyle = getCategoryStyle(project.category);
             return (
               <motion.div key={project.id} variants={item}>
@@ -200,7 +211,7 @@ export default function WorkPage() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.tags.slice(0, 4).map((tag) => (
+                      {project.displayTags.map((tag) => (
                         <span
                           key={tag}
                           className="text-xs text-brand-gray-500 px-2 py-0.5 rounded-sm"
