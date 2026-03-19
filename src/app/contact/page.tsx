@@ -47,7 +47,7 @@ export default function ContactPage() {
               Contact
             </span>
             <h1 className="text-heading font-light text-brand-white tracking-[-0.02em] mb-8">
-              Let's build
+              Let&apos;s build
               <br />
               something.
             </h1>
@@ -86,7 +86,7 @@ export default function ContactPage() {
             transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             {state === 'success' ? (
-              <div className="flex flex-col items-center justify-center h-full py-16 text-center">
+              <div className="flex flex-col items-center justify-center h-full py-16 text-center" aria-live="polite">
                 <div className="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center mb-6">
                   <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
                     <path
@@ -99,20 +99,22 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-light text-brand-white mb-2">Message sent.</h3>
-                <p className="text-brand-gray-500 text-sm">We'll be in touch within 24 hours.</p>
+                <p className="text-brand-gray-500 text-sm">We&apos;ll be in touch within 24 hours.</p>
               </div>
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Name
+                    Name <span aria-hidden="true" className="text-brand-gold">*</span>
                   </label>
                   <input
                     id="name"
                     name="name"
                     type="text"
                     required
+                    aria-required="true"
+                    aria-invalid={state === 'error'}
                     placeholder="Your name"
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
                   />
@@ -121,13 +123,15 @@ export default function ContactPage() {
                 {/* Email */}
                 <div>
                   <label htmlFor="email" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Email
+                    Email <span aria-hidden="true" className="text-brand-gold">*</span>
                   </label>
                   <input
                     id="email"
                     name="email"
                     type="email"
                     required
+                    aria-required="true"
+                    aria-invalid={state === 'error'}
                     placeholder="your@email.com"
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
                   />
@@ -136,12 +140,14 @@ export default function ContactPage() {
                 {/* Message */}
                 <div>
                   <label htmlFor="message" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Message
+                    Message <span aria-hidden="true" className="text-brand-gold">*</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
+                    aria-required="true"
+                    aria-invalid={state === 'error'}
                     rows={5}
                     placeholder="Tell us about your project..."
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none"
@@ -150,7 +156,7 @@ export default function ContactPage() {
 
                 {/* Error */}
                 {state === 'error' && (
-                  <p className="text-red-400 text-sm">{errorMsg}</p>
+                  <p role="alert" aria-live="assertive" className="text-red-400 text-sm">{errorMsg}</p>
                 )}
 
                 {/* Submit */}
