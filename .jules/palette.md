@@ -1,0 +1,3 @@
+## 2025-03-20 - [Accessibility Enhancements to Contact Form]
+**Learning:** Adding visual required indicators combined with `aria-hidden="true"` effectively bridges the gap between HTML5 validation and visual design, while dynamic states benefit immediately from `aria-live` regions to support screen readers seamlessly.
+**Action:** Consistently apply `aria-live="polite"` for non-disruptive success messages and `role="alert" aria-live="assertive"` for critical error messages in future form implementations. Always ensure visually mandatory fields explicitly signal their requirement without doubling screen reader announcements by using `aria-hidden`.
