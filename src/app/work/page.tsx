@@ -29,6 +29,17 @@ function getCategoryStyle(category: string) {
   return categoryColors[category] ?? { bg: 'rgba(6,182,212,0.1)', text: '#06b6d4', border: 'rgba(6,182,212,0.2)' };
 }
 
+// ⚡ Bolt Performance Optimization
+// Pre-calculate derivative arrays (like truncated tags) and styles statically at the module level.
+// Since `projects` is a constant imported from `lib/projects`, mapping it here avoids
+// redundant inline operations (e.g., `Array.prototype.slice`) on every component render,
+// reducing GC pressure and micro-stutters.
+const processedProjects = projects.map((project) => ({
+  ...project,
+  catStyle: getCategoryStyle(project.category),
+  previewTags: project.tags.slice(0, 4),
+}));
+
 export default function WorkPage() {
   return (
     <div
@@ -94,8 +105,7 @@ export default function WorkPage() {
           animate="show"
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
-          {projects.map((project) => {
-            const catStyle = getCategoryStyle(project.category);
+          {processedProjects.map((project) => {
             return (
               <motion.div key={project.id} variants={item}>
                 <Link
@@ -150,9 +160,9 @@ export default function WorkPage() {
                       <span
                         className="text-[10px] font-medium tracking-widest uppercase px-2.5 py-1 rounded-sm backdrop-blur-sm"
                         style={{
-                          background: catStyle.bg,
-                          color: catStyle.text,
-                          border: `1px solid ${catStyle.border}`,
+                          background: project.catStyle.bg,
+                          color: project.catStyle.text,
+                          border: `1px solid ${project.catStyle.border}`,
                         }}
                       >
                         {project.category}
@@ -200,7 +210,7 @@ export default function WorkPage() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.tags.slice(0, 4).map((tag) => (
+                      {project.previewTags.map((tag) => (
                         <span
                           key={tag}
                           className="text-xs text-brand-gray-500 px-2 py-0.5 rounded-sm"
