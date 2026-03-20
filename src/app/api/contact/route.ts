@@ -24,11 +24,25 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Too many requests.' }, { status: 429 });
   }
 
-  const body = await req.json();
+  let body;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON payload.' }, { status: 400 });
+  }
+
   const { name, email, message } = body;
 
   if (!name || !email || !message) {
     return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
+  }
+
+  if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') {
+    return NextResponse.json({ error: 'Invalid field types.' }, { status: 400 });
+  }
+
+  if (name.length > 100 || email.length > 254 || message.length > 5000) {
+    return NextResponse.json({ error: 'Field length exceeded.' }, { status: 400 });
   }
 
   // Email validation
@@ -36,6 +50,19 @@ export async function POST(req: NextRequest) {
   if (!emailRegex.test(email)) {
     return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
   }
+
+  const escapeHtml = (unsafe: string) => {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message);
 
   // In production: send via nodemailer, Resend, or Postmark
   // For now: log and return success (configure SMTP_* env vars to enable sending)
@@ -58,7 +85,7 @@ export async function POST(req: NextRequest) {
         to: CONTACT_EMAIL,
         subject: `New message from ${name}`,
         text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-        html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p>${message.replace(/\n/g, '<br/>')}</p>`,
+        html: `<p><strong>Name:</strong> ${safeName}</p><p><strong>Email:</strong> ${safeEmail}</p><p>${safeMessage.replace(/\n/g, '<br/>')}</p>`,
       });
     } catch (err) {
       console.error('[contact] email send failed:', err);
