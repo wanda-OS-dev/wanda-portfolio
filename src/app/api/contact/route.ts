@@ -4,8 +4,9 @@ import { NextRequest, NextResponse } from 'next/server';
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
 
 // Helper to escape HTML and prevent XSS/HTML Injection in emails
-function escapeHtml(unsafe: string): string {
-  return unsafe
+function escapeHtml(unsafe: unknown): string {
+  const str = typeof unsafe === 'string' ? unsafe : String(unsafe ?? '');
+  return str
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -35,7 +36,11 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { name, email, message } = body;
+  const { name, email, message } = body ?? {};
+
+  if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') {
+    return NextResponse.json({ error: 'All fields must be strings.' }, { status: 400 });
+  }
 
   if (!name || !email || !message) {
     return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
