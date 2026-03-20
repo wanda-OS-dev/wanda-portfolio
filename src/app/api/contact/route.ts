@@ -3,6 +3,17 @@ import { NextRequest, NextResponse } from 'next/server';
 // Simple rate limiting (in-memory, resets on cold start — use Upstash Redis for production)
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
 
+// Helper to escape HTML and prevent XSS/HTML Injection in emails
+function escapeHtml(unsafe: unknown): string {
+  const str = typeof unsafe === 'string' ? unsafe : String(unsafe ?? '');
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function rateLimit(ip: string): boolean {
   const now = Date.now();
   const windowMs = 60_000; // 1 minute
@@ -25,7 +36,11 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { name, email, message } = body;
+  const { name, email, message } = body ?? {};
+
+  if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') {
+    return NextResponse.json({ error: 'All fields must be strings.' }, { status: 400 });
+  }
 
   if (!name || !email || !message) {
     return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
@@ -58,7 +73,7 @@ export async function POST(req: NextRequest) {
         to: CONTACT_EMAIL,
         subject: `New message from ${name}`,
         text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-        html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p>${message.replace(/\n/g, '<br/>')}</p>`,
+        html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>`,
       });
     } catch (err) {
       console.error('[contact] email send failed:', err);
