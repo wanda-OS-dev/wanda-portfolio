@@ -5,6 +5,8 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 
+const BACKGROUND_COLOR = new THREE.Color('#0a0a0a');
+
 function supportsWebGL(): boolean {
   try {
     const canvas = document.createElement('canvas');
@@ -47,7 +49,7 @@ function FloatingOrb({ position, scale = 1 }: { position: [number, number, numbe
           ior={1.4}
           chromaticAberration={0.04}
           color="#c9a84c"
-          background={new THREE.Color('#0a0a0a')}
+          background={BACKGROUND_COLOR}
         />
       </mesh>
     </Float>
