@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { projects } from '@/lib/projects';
+import { ArrowRightIcon } from '@/components/ArrowRightIcon';
 
 // Dynamic import to avoid SSR issues with WebGL
 const HeroScene = dynamic(
@@ -92,15 +93,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
               >
                 View Work
-                <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-                  <path
-                    d="M1 7h12M8 2l5 5-5 5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <ArrowRightIcon />
               </Link>
               <Link
                 href="/contact"
@@ -168,9 +161,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 text-brand-gold text-sm hover:gap-4 transition-all duration-300"
               >
                 More about me
-                <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <ArrowRightIcon />
               </Link>
             </motion.div>
 
@@ -246,9 +237,7 @@ export default function HomePage() {
               className="hidden md:inline-flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300"
             >
               All projects
-              <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ArrowRightIcon />
             </Link>
           </motion.div>
 
@@ -347,9 +336,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300"
             >
               All projects
-              <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ArrowRightIcon />
             </Link>
           </motion.div>
         </div>
@@ -384,9 +371,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-8 py-4 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
             >
               Start a conversation
-              <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ArrowRightIcon />
             </Link>
           </motion.div>
         </div>

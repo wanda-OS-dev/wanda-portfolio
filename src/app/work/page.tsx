@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { projects } from '@/lib/projects';
+import { ArrowRightIcon } from '@/components/ArrowRightIcon';
 
 const container = {
   hidden: {},
@@ -219,21 +220,7 @@ export default function WorkPage() {
                       <span className="text-brand-gray-500 group-hover:text-brand-white transition-colors duration-300">
                         Case Study
                       </span>
-                      <svg
-                        width="14"
-                        height="14"
-                        fill="none"
-                        viewBox="0 0 14 14"
-                        className="text-brand-gray-500 group-hover:text-white translate-x-0 group-hover:translate-x-1 transition-all duration-300"
-                      >
-                        <path
-                          d="M1 7h12M8 2l5 5-5 5"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <ArrowRightIcon className="text-brand-gray-500 group-hover:text-white translate-x-0 group-hover:translate-x-1 transition-all duration-300" />
                     </div>
                   </div>
                 </Link>
@@ -258,9 +245,7 @@ export default function WorkPage() {
             className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
           >
             Let&apos;s talk
-            <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <ArrowRightIcon />
           </Link>
         </motion.div>
       </div>
