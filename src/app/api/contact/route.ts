@@ -29,13 +29,22 @@ function rateLimit(ip: string): boolean {
 }
 
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get('x-forwarded-for') ?? 'unknown';
+  // Extract real IP correctly to prevent rate limit spoofing via X-Forwarded-For
+  const forwardedFor = req.headers.get('x-forwarded-for');
+  const ip = req.ip ?? (forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown');
 
   if (!rateLimit(ip)) {
     return NextResponse.json({ error: 'Too many requests.' }, { status: 429 });
   }
 
-  const body = await req.json();
+  let body;
+  try {
+    body = await req.json();
+  } catch (error) {
+    // Fail securely without exposing internal error details
+    return NextResponse.json({ error: 'Invalid JSON payload.' }, { status: 400 });
+  }
+
   const { name, email, message } = body ?? {};
 
   if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') {
@@ -44,6 +53,11 @@ export async function POST(req: NextRequest) {
 
   if (!name || !email || !message) {
     return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
+  }
+
+  // Input length limits to prevent DoS/memory exhaustion
+  if (name.length > 100 || email.length > 254 || message.length > 5000) {
+    return NextResponse.json({ error: 'Input exceeds length limits.' }, { status: 400 });
   }
 
   // Email validation
