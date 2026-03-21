@@ -1,0 +1,3 @@
+## 2026-03-21 - [A11y Enhancements]
+**Learning:** Adding screen reader live regions (`aria-live="polite"`, `role="status"` for success; `aria-live="assertive"`, `role="alert"` for errors) so that form submission results are correctly announced to assistive technologies. It also adds a visual asterisk (`*`) to the form labels, fulfilling the specific "missing 'required' indicators on form fields" objective from the prompt.
+**Action:** Consistently use `aria-live="polite"` for success states, `aria-live="assertive"` with `role="alert"` for errors, and ensure required fields have visual cues accompanied by `aria-hidden="true"` to complement HTML5 `required` attributes.
