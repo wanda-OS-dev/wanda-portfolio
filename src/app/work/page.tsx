@@ -25,9 +25,17 @@ const categoryColors: Record<string, { bg: string; text: string; border: string 
   'Infrastructure':      { bg: 'rgba(45,27,105,0.4)',    text: '#c4b5fd',  border: 'rgba(139,92,246,0.2)' },
 };
 
+const DEFAULT_CATEGORY_STYLE = { bg: 'rgba(6,182,212,0.1)', text: '#06b6d4', border: 'rgba(6,182,212,0.2)' };
+
 function getCategoryStyle(category: string) {
-  return categoryColors[category] ?? { bg: 'rgba(6,182,212,0.1)', text: '#06b6d4', border: 'rgba(6,182,212,0.2)' };
+  return categoryColors[category] ?? DEFAULT_CATEGORY_STYLE;
 }
+
+// Pre-calculate project tags preview to avoid inline Array.prototype.slice inside the render loop
+const projectTagsPreviewMap: Record<string, string[]> = {};
+projects.forEach((project) => {
+  projectTagsPreviewMap[project.id] = project.tags.slice(0, 4);
+});
 
 export default function WorkPage() {
   return (
@@ -200,7 +208,7 @@ export default function WorkPage() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.tags.slice(0, 4).map((tag) => (
+                      {projectTagsPreviewMap[project.id]?.map((tag) => (
                         <span
                           key={tag}
                           className="text-xs text-brand-gray-500 px-2 py-0.5 rounded-sm"

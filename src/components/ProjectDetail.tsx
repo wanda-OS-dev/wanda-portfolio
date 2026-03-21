@@ -4,9 +4,14 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Project, projects } from '@/lib/projects';
 
+// Pre-calculate next project references to avoid O(N) findIndex on every render loop
+const nextProjectMap: Record<string, Project> = {};
+projects.forEach((p, i) => {
+  nextProjectMap[p.id] = projects[(i + 1) % projects.length];
+});
+
 export function ProjectDetail({ project }: { project: Project }) {
-  const currentIndex = projects.findIndex((p) => p.id === project.id);
-  const nextProject = projects[(currentIndex + 1) % projects.length];
+  const nextProject = nextProjectMap[project.id];
 
   return (
     <div
