@@ -1,3 +1,16 @@
+// Category → status tag color
+export const categoryColors: Record<string, { bg: string; text: string; border: string }> = {
+  'AI Automation':       { bg: 'rgba(6,182,212,0.1)',    text: '#06b6d4',  border: 'rgba(6,182,212,0.25)' },
+  'Business Automation': { bg: 'rgba(0,245,255,0.08)',   text: '#00f5ff',  border: 'rgba(0,245,255,0.2)' },
+  'Web Application':     { bg: 'rgba(139,92,246,0.1)',   text: '#a78bfa',  border: 'rgba(139,92,246,0.2)' },
+  'AI Product':          { bg: 'rgba(6,182,212,0.1)',    text: '#06b6d4',  border: 'rgba(6,182,212,0.25)' },
+  'Infrastructure':      { bg: 'rgba(45,27,105,0.4)',    text: '#c4b5fd',  border: 'rgba(139,92,246,0.2)' },
+};
+
+export function getCategoryStyle(category: string) {
+  return categoryColors[category] ?? { bg: 'rgba(6,182,212,0.1)', text: '#06b6d4', border: 'rgba(6,182,212,0.2)' };
+}
+
 export interface Project {
   id: string;
   title: string;

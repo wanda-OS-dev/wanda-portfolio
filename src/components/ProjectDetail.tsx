@@ -2,11 +2,12 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Project, projects } from '@/lib/projects';
+import { Project, projects, getCategoryStyle } from '@/lib/projects';
 
 export function ProjectDetail({ project }: { project: Project }) {
   const currentIndex = projects.findIndex((p) => p.id === project.id);
   const nextProject = projects[(currentIndex + 1) % projects.length];
+  const catStyle = getCategoryStyle(project.category);
 
   return (
     <div
@@ -84,9 +85,9 @@ export function ProjectDetail({ project }: { project: Project }) {
               <span
                 className="text-[11px] font-medium tracking-[0.2em] uppercase px-3 py-1 rounded-sm"
                 style={{
-                  background: 'rgba(6,182,212,0.1)',
-                  color: '#06b6d4',
-                  border: '1px solid rgba(6,182,212,0.2)',
+                  background: catStyle.bg,
+                  color: catStyle.text,
+                  border: `1px solid ${catStyle.border}`,
                 }}
               >
                 {project.category}
