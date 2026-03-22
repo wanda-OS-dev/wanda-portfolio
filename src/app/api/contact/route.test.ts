@@ -1,0 +1,54 @@
+import test from 'node:test';
+import assert from 'node:assert';
+import { NextRequest } from 'next/server';
+import { POST } from './route.ts';
+
+// Helper to create a mocked NextRequest since the real one doesn't allow overriding json() easily
+function createMockRequest(jsonBodyResolver: () => Promise<any>): NextRequest {
+  return {
+    headers: {
+      get: (name: string) => name === 'x-forwarded-for' ? '127.0.0.1' : null
+    },
+    json: jsonBodyResolver
+  } as unknown as NextRequest;
+}
+
+test('contact API - handles malformed JSON payload', async () => {
+  const req = createMockRequest(async () => { throw new Error('Malformed JSON'); });
+
+  const res = await POST(req);
+  assert.strictEqual(res.status, 400);
+
+  const body = await res.json();
+  assert.strictEqual(body.error, 'Invalid JSON payload.');
+});
+
+test('contact API - handles missing required fields', async () => {
+  const req = createMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com' }));
+
+  const res = await POST(req);
+  assert.strictEqual(res.status, 400);
+
+  const body = await res.json();
+  assert.strictEqual(body.error, 'All fields must be strings.');
+});
+
+test('contact API - handles invalid email address', async () => {
+  const req = createMockRequest(async () => ({ name: 'John Doe', email: 'not-an-email', message: 'Hello' }));
+
+  const res = await POST(req);
+  assert.strictEqual(res.status, 400);
+
+  const body = await res.json();
+  assert.strictEqual(body.error, 'Invalid email address.');
+});
+
+test('contact API - handles valid payload', async () => {
+  const req = createMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com', message: 'Hello, World!' }));
+
+  const res = await POST(req);
+  assert.strictEqual(res.status, 200);
+
+  const body = await res.json();
+  assert.strictEqual(body.ok, true);
+});

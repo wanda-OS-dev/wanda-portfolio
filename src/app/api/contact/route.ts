@@ -35,7 +35,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Too many requests.' }, { status: 429 });
   }
 
-  const body = await req.json();
+  let body;
+  try {
+    body = await req.json();
+  } catch (err) {
+    return NextResponse.json({ error: 'Invalid JSON payload.' }, { status: 400 });
+  }
   const { name, email, message } = body ?? {};
 
   if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') {
