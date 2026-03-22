@@ -4,16 +4,9 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
+import { supportsWebGL } from '../lib/webgl';
 
-function supportsWebGL(): boolean {
-  try {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
-    return !!gl;
-  } catch {
-    return false;
-  }
-}
+
 
 function FallbackPlanets() {
   return (
