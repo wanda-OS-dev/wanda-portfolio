@@ -1,18 +1,10 @@
+import { escapeHtml } from "../../../lib/validation";
 import { NextRequest, NextResponse } from 'next/server';
 
 // Simple rate limiting (in-memory, resets on cold start — use Upstash Redis for production)
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
 
 // Helper to escape HTML and prevent XSS/HTML Injection in emails
-function escapeHtml(unsafe: unknown): string {
-  const str = typeof unsafe === 'string' ? unsafe : String(unsafe ?? '');
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
 
 function rateLimit(ip: string): boolean {
   const now = Date.now();
