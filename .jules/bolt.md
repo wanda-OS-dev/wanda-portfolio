@@ -1,0 +1,4 @@
+
+## 2026-03-22 - [Optimizing Render Loop Arrays in Next.js Server & Client Components]
+**Learning:** In Next.js pages and components that iterate over static data sets (like `projects.ts`), executing array operations like `Array.prototype.find`, `Array.prototype.findIndex`, or `Array.prototype.slice` directly within the render loop or inside metadata generators creates O(N) operations and unnecessary object allocations on every render pass. This can increase Garbage Collection (GC) pressure and lead to micro-stutters during frequent re-renders or hydration.
+**Action:** Instead of inline array operations or using `useMemo` inside the component (which still executes on mount), pre-calculate derivative lists or lookup hash maps (`new Map()`) entirely outside the component or page scope. This converts O(N) searches to O(1) lookups and completely avoids unnecessary heap allocations per render, making both SSR and client hydration more efficient.

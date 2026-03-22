@@ -4,8 +4,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Project, projects } from '@/lib/projects';
 
+// O(1) lookup map to avoid O(N) Array.findIndex inside the render loop
+const projectIndexMap = new Map(projects.map((p, i) => [p.id, i]));
+
 export function ProjectDetail({ project }: { project: Project }) {
-  const currentIndex = projects.findIndex((p) => p.id === project.id);
+  // Use O(1) map lookup instead of O(N) array search on every render
+  const currentIndex = projectIndexMap.get(project.id) ?? 0;
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
