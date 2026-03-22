@@ -8,7 +8,6 @@ export interface Project {
   tags: string[];
   accentColor: string;
   outcome?: string;
-  link?: string;
 }
 
 export const projects: Project[] = [
