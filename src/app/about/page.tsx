@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { ArrowRightIcon } from '@/components/icons/ArrowRightIcon';
 
 const skills = [
   { category: 'AI & Automation', items: ['Multi-Agent Systems', 'LLM Orchestration', 'OpenAI / Anthropic', 'Autonomous Workflows', 'RAG Pipelines'] },
@@ -140,15 +141,7 @@ export default function AboutPage() {
               className="flex-shrink-0 inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
             >
               Start a conversation
-              <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-                <path
-                  d="M1 7h12M8 2l5 5-5 5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <ArrowRightIcon />
             </Link>
           </div>
         </motion.div>
