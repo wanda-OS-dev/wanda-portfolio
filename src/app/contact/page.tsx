@@ -86,7 +86,7 @@ export default function ContactPage() {
             transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             {state === 'success' ? (
-              <div className="flex flex-col items-center justify-center h-full py-16 text-center">
+              <div className="flex flex-col items-center justify-center h-full py-16 text-center" aria-live="polite">
                 <div className="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center mb-6">
                   <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
                     <path
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Name
+                    Name <span className="text-brand-gold" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="name"
@@ -121,7 +121,7 @@ export default function ContactPage() {
                 {/* Email */}
                 <div>
                   <label htmlFor="email" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Email
+                    Email <span className="text-brand-gold" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="email"
@@ -136,7 +136,7 @@ export default function ContactPage() {
                 {/* Message */}
                 <div>
                   <label htmlFor="message" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Message
+                    Message <span className="text-brand-gold" aria-hidden="true">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -150,7 +150,7 @@ export default function ContactPage() {
 
                 {/* Error */}
                 {state === 'error' && (
-                  <p className="text-red-400 text-sm">{errorMsg}</p>
+                  <p className="text-red-400 text-sm" role="alert" aria-live="assertive">{errorMsg}</p>
                 )}
 
                 {/* Submit */}
