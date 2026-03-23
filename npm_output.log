@@ -1,0 +1,17 @@
+
+> wanda-portfolio@1.0.0 dev /app
+> next dev
+
+ ⚠ Specified "headers" will not automatically work with "output: export". See more info here: https://nextjs.org/docs/messages/export-no-custom-routes
+ ⚠ Specified "headers" will not automatically work with "output: export". See more info here: https://nextjs.org/docs/messages/export-no-custom-routes
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ⚠ Specified "headers" will not automatically work with "output: export". See more info here: https://nextjs.org/docs/messages/export-no-custom-routes
+ ⚠ Specified "headers" will not automatically work with "output: export". See more info here: https://nextjs.org/docs/messages/export-no-custom-routes
+ ✓ Ready in 1742ms
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 7.1s (1230 modules)
+ GET /contact/ 200 in 7946ms
+ ✓ Compiled in 1027ms (619 modules)
