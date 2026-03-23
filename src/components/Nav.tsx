@@ -51,6 +51,7 @@ export function Nav() {
             <Link
               key={href}
               href={href}
+              aria-current={pathname === href || pathname.startsWith(href + '/') ? 'page' : undefined}
               className={`text-sm transition-colors duration-300 relative group ${
                 pathname === href || pathname.startsWith(href + '/')
                   ? 'text-brand-gold'
@@ -74,6 +75,8 @@ export function Nav() {
           className="md:hidden flex flex-col gap-1.5 w-6 py-1 group"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span
             className={`block h-px bg-brand-white transition-all duration-300 origin-center ${
@@ -97,6 +100,7 @@ export function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
@@ -112,6 +116,7 @@ export function Nav() {
               >
                 <Link
                   href={href}
+                  aria-current={pathname === href ? 'page' : undefined}
                   className={`text-4xl font-light transition-colors duration-300 ${
                     pathname === href ? 'text-brand-gold' : 'text-brand-white hover:text-brand-gold'
                   }`}
