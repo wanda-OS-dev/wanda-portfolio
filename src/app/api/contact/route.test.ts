@@ -33,6 +33,16 @@ test('contact API - handles missing required fields', async () => {
   assert.strictEqual(body.error, 'All fields must be strings.');
 });
 
+test('contact API - handles inputs exceeding maximum length', async () => {
+  const req = createMockRequest(async () => ({ name: 'A'.repeat(101), email: 'john@example.com', message: 'Hello' }));
+
+  const res = await POST(req);
+  assert.strictEqual(res.status, 400);
+
+  const body = await res.json();
+  assert.strictEqual(body.error, 'Input exceeds maximum length.');
+});
+
 test('contact API - handles invalid email address', async () => {
   const req = createMockRequest(async () => ({ name: 'John Doe', email: 'not-an-email', message: 'Hello' }));
 
