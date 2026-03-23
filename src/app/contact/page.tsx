@@ -113,6 +113,7 @@ export default function ContactPage() {
                     name="name"
                     type="text"
                     required
+                    maxLength={100}
                     placeholder="Your name"
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
                   />
@@ -128,6 +129,7 @@ export default function ContactPage() {
                     name="email"
                     type="email"
                     required
+                    maxLength={255}
                     placeholder="your@email.com"
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
                   />
@@ -143,6 +145,7 @@ export default function ContactPage() {
                     name="message"
                     required
                     rows={5}
+                    maxLength={5000}
                     placeholder="Tell us about your project..."
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none"
                   />

@@ -45,6 +45,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
   }
 
+  // Input length limits to prevent DoS/memory issues
+  if (name.length > 100 || email.length > 255 || message.length > 5000) {
+    return NextResponse.json({ error: 'Input exceeds maximum length.' }, { status: 400 });
+  }
+
   // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
