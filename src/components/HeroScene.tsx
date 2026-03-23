@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -81,18 +81,18 @@ function GoldRing({ position }: { position: [number, number, number] }) {
   );
 }
 
-function ParticleField() {
-  const count = 320;
-  const positions = useMemo(() => {
-    const arr = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * 18;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 14;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 10 - 4;
-    }
-    return arr;
-  }, []);
+// Pre-calculate particle positions outside the render loop
+// This converts a useMemo call inside the render path into a one-time module-level computation,
+// removing micro-stutters, CPU work, and GC allocations on component mount/remount.
+const PARTICLE_COUNT = 320;
+const PARTICLE_POSITIONS = new Float32Array(PARTICLE_COUNT * 3);
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  PARTICLE_POSITIONS[i * 3] = (Math.random() - 0.5) * 18;
+  PARTICLE_POSITIONS[i * 3 + 1] = (Math.random() - 0.5) * 14;
+  PARTICLE_POSITIONS[i * 3 + 2] = (Math.random() - 0.5) * 10 - 4;
+}
 
+function ParticleField() {
   const pointsRef = useRef<THREE.Points>(null);
   useFrame((state) => {
     if (!pointsRef.current) return;
@@ -102,7 +102,7 @@ function ParticleField() {
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-position" args={[PARTICLE_POSITIONS, 3]} />
       </bufferGeometry>
       <pointsMaterial size={0.015} color="#c9a84c" transparent opacity={0.35} sizeAttenuation />
     </points>
