@@ -1,0 +1,44 @@
+--- src/components/Nav.tsx
++++ src/components/Nav.tsx
+@@ -48,15 +48,16 @@
+         {/* Desktop nav */}
+         <nav className="hidden md:flex items-center gap-8">
+           {links.map(({ href, label }) => (
+             <Link
+               key={href}
+               href={href}
++              aria-current={pathname === href || pathname.startsWith(href + '/') ? 'page' : undefined}
+               className={`text-sm transition-colors duration-300 relative group ${
+                 pathname === href || pathname.startsWith(href + '/')
+                   ? 'text-brand-gold'
+                   : 'text-brand-gray-300 hover:text-brand-white'
+               }`}
+             >
+               {label}
+               <span
+@@ -74,6 +75,8 @@
+         <button
+           className="md:hidden flex flex-col gap-1.5 w-6 py-1 group"
+           onClick={() => setMenuOpen(!menuOpen)}
+           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
++          aria-expanded={menuOpen}
++          aria-controls="mobile-menu"
+         >
+           <span
+             className={`block h-px bg-brand-white transition-all duration-300 origin-center ${
+@@ -99,6 +102,7 @@
+       <AnimatePresence>
+         {menuOpen && (
+           <motion.div
++            id="mobile-menu"
+             initial={{ opacity: 0, y: -8 }}
+             animate={{ opacity: 1, y: 0 }}
+             exit={{ opacity: 0, y: -8 }}
+@@ -113,6 +117,7 @@
+               >
+                 <Link
+                   href={href}
++                  aria-current={pathname === href ? 'page' : undefined}
+                   className={`text-4xl font-light transition-colors duration-300 ${
+                     pathname === href ? 'text-brand-gold' : 'text-brand-white hover:text-brand-gold'
+                   }`}
