@@ -47,26 +47,30 @@ export function Nav() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`text-sm transition-colors duration-300 relative group ${
-                pathname === href || pathname.startsWith(href + '/')
-                  ? 'text-brand-gold'
-                  : 'text-brand-gray-300 hover:text-brand-white'
-              }`}
-            >
-              {label}
-              <span
-                className={`absolute -bottom-0.5 left-0 h-px bg-brand-gold transition-all duration-300 ${
-                  pathname === href || pathname.startsWith(href + '/')
-                    ? 'w-full'
-                    : 'w-0 group-hover:w-full'
+          {links.map(({ href, label }) => {
+            const isActive = pathname === href || pathname.startsWith(href + '/');
+            return (
+              <Link
+                key={href}
+                href={href}
+                aria-current={isActive ? "page" : undefined}
+                className={`text-sm transition-colors duration-300 relative group ${
+                  isActive
+                    ? 'text-brand-gold'
+                    : 'text-brand-gray-300 hover:text-brand-white'
                 }`}
-              />
-            </Link>
-          ))}
+              >
+                {label}
+                <span
+                  className={`absolute -bottom-0.5 left-0 h-px bg-brand-gold transition-all duration-300 ${
+                    isActive
+                      ? 'w-full'
+                      : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Mobile hamburger */}
@@ -74,6 +78,8 @@ export function Nav() {
           className="md:hidden flex flex-col gap-1.5 w-6 py-1 group"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span
             className={`block h-px bg-brand-white transition-all duration-300 origin-center ${
@@ -97,29 +103,34 @@ export function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-40 bg-brand-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 md:hidden"
           >
-            {links.map(({ href, label }, i) => (
-              <motion.div
-                key={href}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 * i, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <Link
-                  href={href}
-                  className={`text-4xl font-light transition-colors duration-300 ${
-                    pathname === href ? 'text-brand-gold' : 'text-brand-white hover:text-brand-gold'
-                  }`}
+            {links.map(({ href, label }, i) => {
+              const isActive = pathname === href || pathname.startsWith(href + '/');
+              return (
+                <motion.div
+                  key={href}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * i, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {label}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    href={href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`text-4xl font-light transition-colors duration-300 ${
+                      isActive ? 'text-brand-gold' : 'text-brand-white hover:text-brand-gold'
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
