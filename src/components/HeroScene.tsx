@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -81,18 +81,21 @@ function GoldRing({ position }: { position: [number, number, number] }) {
   );
 }
 
-function ParticleField() {
-  const count = 320;
-  const positions = useMemo(() => {
-    const arr = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * 18;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 14;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 10 - 4;
-    }
-    return arr;
-  }, []);
+// Pre-calculate completely static random particle positions at module load time.
+// This prevents unnecessary Float32Array memory allocations and Garbage Collection
+// pressure that would otherwise occur each time the ParticleField component mounts.
+const PARTICLE_COUNT = 320;
+const PARTICLE_POSITIONS = (() => {
+  const arr = new Float32Array(PARTICLE_COUNT * 3);
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    arr[i * 3] = (Math.random() - 0.5) * 18;
+    arr[i * 3 + 1] = (Math.random() - 0.5) * 14;
+    arr[i * 3 + 2] = (Math.random() - 0.5) * 10 - 4;
+  }
+  return arr;
+})();
 
+function ParticleField() {
   const pointsRef = useRef<THREE.Points>(null);
   useFrame((state) => {
     if (!pointsRef.current) return;
@@ -102,7 +105,7 @@ function ParticleField() {
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-position" args={[PARTICLE_POSITIONS, 3]} />
       </bufferGeometry>
       <pointsMaterial size={0.015} color="#c9a84c" transparent opacity={0.35} sizeAttenuation />
     </points>
