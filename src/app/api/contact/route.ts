@@ -10,6 +10,20 @@ function rateLimit(ip: string): boolean {
   const now = Date.now();
   const windowMs = 60_000; // 1 minute
   const limit = 5;
+
+  // Cleanup to prevent memory leak / DoS via unbounded Map
+  if (requestCounts.size > 1000) {
+    for (const [key, val] of requestCounts.entries()) {
+      if (val.resetAt < now) {
+        requestCounts.delete(key);
+      }
+    }
+    // Hard cap to prevent OOM if flooded with active requests
+    if (requestCounts.size > 5000) {
+      requestCounts.clear();
+    }
+  }
+
   const entry = requestCounts.get(ip);
   if (!entry || entry.resetAt < now) {
     requestCounts.set(ip, { count: 1, resetAt: now + windowMs });
