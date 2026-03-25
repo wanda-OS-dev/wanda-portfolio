@@ -88,7 +88,7 @@ export default function ContactPage() {
             {state === 'success' ? (
               <div className="flex flex-col items-center justify-center h-full py-16 text-center" aria-live="polite">
                 <div className="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center mb-6">
-                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true">
                     <path
                       d="M4 10l4 4 8-8"
                       stroke="#c9a84c"

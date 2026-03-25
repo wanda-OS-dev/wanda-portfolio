@@ -1,0 +1,134 @@
+npm warn exec The following package was not found and will be installed: serve@14.2.6
+ INFO  Accepting connections at http://localhost:3000
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /index.html
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 301 in 228 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /index
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 301 in 0 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 7 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/css/f3067a95f36426c1.css
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 6 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 6 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/chunks/webpack-f366ea8f8ab41dc2.js
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/chunks/94c12b52-85bb2724808eb334.js
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/chunks/842-cb2bdafe67496dac.js
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/chunks/85-6f12290312e0cfab.js
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/chunks/main-app-85c782f72ad5fb97.js
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 8 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/chunks/353-e0b583b5920c18d4.js
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 9 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 8 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 11 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 14 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 15 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/chunks/app/page-272b29a625711717.js
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/chunks/app/layout-6eefd52db9e1cf75.js
+ HTTP  3/25/2026 1:40:53 AM ::1 GET /_next/static/chunks/app/not-found-9ecb4b9fb37e3d1a.js
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 3 ms
+ HTTP  3/25/2026 1:40:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/0f99ff65.c90e481efa4a35c5.js
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/118.ded206017edf86b2.js
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/994.67ab218c67eb69ae.js
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 3 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 4 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 8 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /work/index.txt?_rsc=1wtp7
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /about/index.txt?_rsc=1wtp7
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /contact/index.txt?_rsc=1wtp7
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 10 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 9 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 3 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/app/work/page-2fecda3dfcde523c.js
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/app/about/page-ae2cad7b9637c6b2.js
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/app/contact/page-26f4968cf76ef50f.js
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 7 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 5 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 5 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /contact.html
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 301 in 0 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /contact
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/css/f3067a95f36426c1.css
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 1 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 2 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/webpack-f366ea8f8ab41dc2.js
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/94c12b52-85bb2724808eb334.js
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/842-cb2bdafe67496dac.js
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/main-app-85c782f72ad5fb97.js
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 2 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 1 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 1 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 2 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/85-6f12290312e0cfab.js
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/app/contact/page-26f4968cf76ef50f.js
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 1 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 1 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/353-e0b583b5920c18d4.js
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/app/layout-6eefd52db9e1cf75.js
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 3 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/app/not-found-9ecb4b9fb37e3d1a.js
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 1 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 1 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /index.txt?_rsc=zewlb
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /work/index.txt?_rsc=zewlb
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /about/index.txt?_rsc=zewlb
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /contact/index.txt?_rsc=zewlb
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 1 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 200 in 5 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/app/work/page-2fecda3dfcde523c.js
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 0 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/app/about/page-ae2cad7b9637c6b2.js
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 0 ms
+ HTTP  3/25/2026 1:40:54 AM ::1 GET /_next/static/chunks/app/page-272b29a625711717.js
+ HTTP  3/25/2026 1:40:54 AM ::1 Returned 304 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /index.html
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 301 in 0 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /index
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 301 in 0 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 1 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/media/e4af272ccee01ff0-s.p.woff2
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 1 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/css/f3067a95f36426c1.css
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 1 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/webpack-f366ea8f8ab41dc2.js
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/94c12b52-85bb2724808eb334.js
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/842-cb2bdafe67496dac.js
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/main-app-85c782f72ad5fb97.js
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/85-6f12290312e0cfab.js
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/353-e0b583b5920c18d4.js
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 1 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/app/page-272b29a625711717.js
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/app/layout-6eefd52db9e1cf75.js
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 4 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 3 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/app/not-found-9ecb4b9fb37e3d1a.js
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/0f99ff65.c90e481efa4a35c5.js
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/118.ded206017edf86b2.js
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/994.67ab218c67eb69ae.js
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 3 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /work/index.txt?_rsc=1wtp7
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 3 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /about/index.txt?_rsc=1wtp7
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /contact/index.txt?_rsc=1wtp7
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 3 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/app/work/page-2fecda3dfcde523c.js
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 1 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/app/about/page-ae2cad7b9637c6b2.js
+ HTTP  3/25/2026 1:41:53 AM ::1 GET /_next/static/chunks/app/contact/page-26f4968cf76ef50f.js
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 1 ms
+ HTTP  3/25/2026 1:41:53 AM ::1 Returned 200 in 2 ms

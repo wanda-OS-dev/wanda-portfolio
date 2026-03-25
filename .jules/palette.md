@@ -5,3 +5,6 @@
 ## 2025-03-24 - Accessible Navigation State Management
 **Learning:** For Next.js client components using framer-motion and next/link, `aria-current="page"` must be explicitly managed via `usePathname` for both desktop and mobile menus, and the hamburger toggle needs `aria-expanded` and `aria-controls` firmly linking it to the menu container `id`.
 **Action:** When creating or modifying interactive navigation components, always explicitly pass ARIA state attributes alongside dynamic class names to ensure screen readers receive the same state cues as sighted users.
+## 2025-03-24 - Added aria-hidden="true" to decorative icons
+**Learning:** Purely decorative SVG icons (like arrows or checkmarks used for visual styling next to text) create noise for screen readers. While Next.js `next/link` provides the semantic context for navigation, the SVG graphics within them do not add semantic value.
+**Action:** Always add `aria-hidden="true"` to `<svg>` elements that are used purely for decorative purposes or visual reinforcement of text that already conveys the meaning.

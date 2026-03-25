@@ -307,6 +307,7 @@ export default function HomePage() {
                       height="20"
                       fill="none"
                       viewBox="0 0 20 20"
+                      aria-hidden="true"
                       className="text-brand-gray-500 group-hover:text-brand-cyan translate-x-0 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0"
                       style={{ color: 'inherit' }}
                     >
