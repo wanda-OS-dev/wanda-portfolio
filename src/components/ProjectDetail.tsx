@@ -68,6 +68,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               height="14"
               fill="none"
               viewBox="0 0 14 14"
+              aria-hidden="true"
               className="group-hover:-translate-x-0.5 transition-transform duration-300"
             >
               <path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -229,6 +230,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               height="28"
               fill="none"
               viewBox="0 0 28 28"
+              aria-hidden="true"
               className="text-brand-gray-500 group-hover:text-brand-white translate-x-0 group-hover:translate-x-2 transition-all duration-300 relative flex-shrink-0"
             >
               <path
