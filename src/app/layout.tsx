@@ -57,8 +57,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-brand-black text-brand-white antialiased">
+        <a
+          href="#main-content"
+          className="absolute -top-16 left-0 bg-brand-gold text-brand-black font-medium px-4 py-2 z-[60] transition-all focus:top-0"
+        >
+          Skip to main content
+        </a>
         <Nav />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
       </body>
     </html>
   );

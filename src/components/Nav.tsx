@@ -27,6 +27,23 @@ export function Nav() {
     setMenuOpen(false);
   }, [pathname]);
 
+  // Handle escape key to close menu and lock body scroll when open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setMenuOpen(false);
+      };
+      document.addEventListener('keydown', handleEscape);
+      return () => {
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', handleEscape);
+      };
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [menuOpen]);
+
   return (
     <>
       <motion.header
