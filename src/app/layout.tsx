@@ -56,6 +56,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; connect-src 'self' https://formspree.io;" />
+      </head>
       <body className="bg-brand-black text-brand-white antialiased">
         <a
           href="#main-content"
