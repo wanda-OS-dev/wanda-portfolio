@@ -9,3 +9,7 @@
 **Learning:** Purely decorative SVG icons (like arrows or checkmarks used for visual styling next to text) create noise for screen readers. While Next.js `next/link` provides the semantic context for navigation, the SVG graphics within them do not add semantic value.
 **Action:** Always add `aria-hidden="true"` to `<svg>` elements that are used purely for decorative purposes or visual reinforcement of text that already conveys the meaning.
 \n## 2025-03-24 - Accessible Modal and Navigation Menus\n**Learning:** When creating full-screen navigation menus or modals on mobile, screen reader users can get trapped outside the content, and keyboard users need an intuitive way to exit. Furthermore, locking the body scroll prevents the underlying page from scrolling while the menu is open.\n**Action:** Always add an `Escape` key listener to close full-screen menus and use `document.body.style.overflow = "hidden"` to prevent background scrolling when the menu is active.
+
+## 2026-03-26 - Added Visual Feedback for Async Form Submission
+**Learning:** During form submission, relying exclusively on text changes (e.g., 'Sending...') might lack sufficient contrast or visual weight to instantly assure the user that action is underway. Incorporating motion via a loading spinner enhances perceived performance and confidence.
+**Action:** When implementing async actions that disable the primary button, always include a standard animated loading indicator alongside or replacing the button text to provide immediate visual feedback.
