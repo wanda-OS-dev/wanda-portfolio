@@ -13,3 +13,7 @@
 ## 2026-03-26 - Added Visual Feedback for Async Form Submission
 **Learning:** During form submission, relying exclusively on text changes (e.g., 'Sending...') might lack sufficient contrast or visual weight to instantly assure the user that action is underway. Incorporating motion via a loading spinner enhances perceived performance and confidence.
 **Action:** When implementing async actions that disable the primary button, always include a standard animated loading indicator alongside or replacing the button text to provide immediate visual feedback.
+
+## 2025-03-27 - Accessible Full-Screen Navigation Menus
+**Learning:** When building full-screen navigation menus on mobile, screen reader users can accidentally navigate away from the menu and browse the hidden or dimmed background content if focus is not properly contained. Applying `role="dialog"` and `aria-modal="true"` to the menu container implicitly traps virtual focus for screen reader users and clearly identifies it as a distinct interactive layer.
+**Action:** Always add `role="dialog"`, `aria-modal="true"`, and an appropriate `aria-label` (like "Main Navigation") to full-screen mobile menu containers to ensure assistive technologies properly isolate and announce the menu.
