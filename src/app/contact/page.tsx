@@ -47,7 +47,7 @@ export default function ContactPage() {
               Contact
             </span>
             <h1 className="text-heading font-light text-brand-white tracking-[-0.02em] mb-8">
-              Let's build
+              Let&apos;s build
               <br />
               something.
             </h1>
@@ -99,7 +99,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-light text-brand-white mb-2">Message sent.</h3>
-                <p className="text-brand-gray-500 text-sm">We'll be in touch within 24 hours.</p>
+                <p className="text-brand-gray-500 text-sm">We&apos;ll be in touch within 24 hours.</p>
               </div>
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
