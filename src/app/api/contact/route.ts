@@ -2,7 +2,7 @@ import { escapeHtml } from "../../../lib/validation";
 import { NextRequest, NextResponse } from 'next/server';
 
 // Simple rate limiting (in-memory, resets on cold start — use Upstash Redis for production)
-const requestCounts = new Map<string, { count: number; resetAt: number }>();
+export const requestCounts = new Map<string, { count: number; resetAt: number }>();
 
 // Helper to escape HTML and prevent XSS/HTML Injection in emails
 
