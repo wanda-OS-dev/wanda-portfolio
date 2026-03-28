@@ -6,3 +6,4 @@
 **Vulnerability:** The in-memory rate limiter `requestCounts` in `src/app/api/contact/route.ts` was an unbounded Map, allowing attackers to continuously append entries with spoofed IPs, resulting in infinite memory growth and eventually a Denial of Service (DoS).
 **Learning:** Native `Map` implementations for rate-limiting will crash node.js processes if they lack TTL cleanup or size boundaries.
 **Prevention:** Always bound in-memory Maps with a soft limit (to trigger cleanup of expired entries) and a hard limit (to clear or reset the map immediately to protect server stability).
+2025-03-01 - When mitigating IP spoofing vulnerabilities in Next.js API rate limiting, prioritize \`req.ip\` (which is securely populated by Vercel/Next.js using internal headers) over user-controllable headers like \`x-forwarded-for\` to prevent trivial bypasses.
