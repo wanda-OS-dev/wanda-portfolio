@@ -1,6 +1,5 @@
 import { escapeHtml } from "../../../lib/validation";
 import { NextRequest, NextResponse } from 'next/server';
-import { logger } from "../../../lib/logger";
 
 // Simple rate limiting (in-memory, resets on cold start — use Upstash Redis for production)
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
@@ -93,12 +92,12 @@ export async function POST(req: NextRequest) {
         html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>`,
       });
     } catch (err) {
-      logger.error('[contact] email send failed', err);
+      console.error('[contact] email send failed:', err);
       return NextResponse.json({ error: 'Failed to send. Please email directly.' }, { status: 500 });
     }
   } else {
     // No SMTP configured — log for development
-    logger.info('[contact] New message received (SMTP not configured)');
+    console.log('[contact] New message:', { name, email, message: message.slice(0, 100) });
   }
 
   return NextResponse.json({ ok: true });
