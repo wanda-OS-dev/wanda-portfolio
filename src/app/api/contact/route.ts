@@ -96,6 +96,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Failed to send. Please email directly.' }, { status: 500 });
     }
   } else {
+    if (process.env.NODE_ENV === 'production') {
+      console.error('[contact] Missing SMTP configuration in production.');
+      return NextResponse.json({ error: 'Server configuration error. Please contact directly.' }, { status: 500 });
+    }
     // No SMTP configured — log for development
     console.log('[contact] New message:', { name, email, message: message.slice(0, 100) });
   }
