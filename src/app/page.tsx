@@ -28,6 +28,13 @@ const fadeUp = {
 // Show top 3 featured projects on homepage
 const featuredProjects = projects.slice(0, 3);
 
+const personalStats = [
+  { value: '40%+', label: 'Avg. cost reduction via automation' },
+  { value: '< 8W', label: 'Time-to-production for AI systems' },
+  { value: '24/7', label: 'Autonomous agents — zero downtime' },
+  { value: '100%', label: 'Custom — no off-the-shelf solutions' },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -173,12 +180,7 @@ export default function HomePage() {
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="grid grid-cols-2 gap-4"
             >
-              {[
-                { value: '40%+', label: 'Avg. cost reduction via automation' },
-                { value: '< 8W', label: 'Time-to-production for AI systems' },
-                { value: '24/7', label: 'Autonomous agents — zero downtime' },
-                { value: '100%', label: 'Custom — no off-the-shelf solutions' },
-              ].map((stat, i) => (
+              {personalStats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 16 }}

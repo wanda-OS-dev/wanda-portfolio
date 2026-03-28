@@ -10,6 +10,13 @@ const skills = [
   { category: 'Product & Systems', items: ['Systems Design', 'Revenue Automation', 'API Architecture', 'Edge Computing', 'Performance Optimization'] },
 ];
 
+const approaches = [
+  { label: 'Precision over breadth', desc: 'We go deep on fewer problems.' },
+  { label: 'Production-first', desc: 'Every system ships ready for real traffic.' },
+  { label: 'Compounding design', desc: 'Each component improves the whole.' },
+  { label: 'Human in the loop', desc: 'Automation for routine. Judgment for decisions.' },
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   show: (i: number) => ({
@@ -78,12 +85,7 @@ export default function AboutPage() {
               Approach
             </h2>
             <div className="space-y-4">
-              {[
-                { label: 'Precision over breadth', desc: 'We go deep on fewer problems.' },
-                { label: 'Production-first', desc: 'Every system ships ready for real traffic.' },
-                { label: 'Compounding design', desc: 'Each component improves the whole.' },
-                { label: 'Human in the loop', desc: 'Automation for routine. Judgment for decisions.' },
-              ].map(({ label, desc }) => (
+              {approaches.map(({ label, desc }) => (
                 <div
                   key={label}
                   className="border border-white/[0.06] p-5 rounded-sm hover:border-brand-gold/30 transition-colors duration-300"
