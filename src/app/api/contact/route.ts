@@ -7,11 +7,51 @@ let lastCleanup = Date.now();
 
 // Helper to escape HTML and prevent XSS/HTML Injection in emails
 
-function rateLimit(ip: string): boolean {
+async function rateLimit(ip: string): Promise<boolean> {
   const now = Date.now();
   const windowMs = 60_000; // 1 minute
   const limit = 5;
 
+  // Upstash Redis distributed rate limiting (Production)
+  const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
+  const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN;
+
+  if (redisUrl && redisToken) {
+    try {
+      // Use Upstash REST API to increment a counter
+      const key = `rate-limit:${ip}`;
+      const url = `${redisUrl}/pipeline`;
+
+      const payload = [
+        ["INCR", key],
+        ["EXPIRE", key, 60] // Expire in 60 seconds
+      ];
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${redisToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // data looks like [{"result": 1}, {"result": 1}]
+        if (Array.isArray(data) && data[0] && typeof data[0].result === 'number') {
+          const count = data[0].result;
+          return count <= limit;
+        }
+      } else {
+         console.warn('[contact] Upstash rate limit pipeline returned non-ok status:', response.status);
+      }
+    } catch (err) {
+      console.error('[contact] Upstash rate limiting failed, falling back to in-memory:', err);
+    }
+  }
+
+  // Fallback: Simple rate limiting (in-memory, resets on cold start)
   // Prevent memory leaks / DoS by bounding the Map
   if (requestCounts.size >= 5000) {
     requestCounts.clear(); // Hard limit
@@ -41,7 +81,7 @@ export async function POST(req: NextRequest) {
   // Extract real IP securely by prioritizing x-forwarded-for header
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
 
-  if (!rateLimit(ip)) {
+  if (!(await rateLimit(ip))) {
     return NextResponse.json({ error: 'Too many requests.' }, { status: 429 });
   }
 
