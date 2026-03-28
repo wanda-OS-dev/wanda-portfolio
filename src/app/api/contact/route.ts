@@ -79,8 +79,9 @@ async function rateLimit(ip: string): Promise<boolean> {
 }
 
 export async function POST(req: NextRequest) {
-  // Extract real IP securely by prioritizing x-forwarded-for header
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
+  // Extract real IP securely by prioritizing platform-verified req.ip,
+  // falling back to x-forwarded-for only if necessary
+  const ip = req.ip ?? req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
 
   if (!(await rateLimit(ip))) {
     return NextResponse.json({ error: 'Too many requests.' }, { status: 429 });
