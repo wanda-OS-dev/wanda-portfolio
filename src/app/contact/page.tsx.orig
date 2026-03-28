@@ -98,6 +98,7 @@ export default function ContactPage() {
                   {/* Invisible live region for screen readers */}
                   <span
                     className="sr-only"
+                    style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: '0' }}
                     aria-live="polite"
                   >
                     {copied ? 'Email copied to clipboard' : ''}

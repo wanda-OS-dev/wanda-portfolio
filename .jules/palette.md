@@ -17,3 +17,7 @@
 ## 2024-05-20 - Adding Accessible Dialog Semantics to Full-Screen Menus
 **Learning:** Full-screen mobile menus implemented as fixed position overlays need `role="dialog"` and `aria-modal="true"` to ensure screen readers correctly interpret them as modal dialogues that isolate focus and trap interactions from the underlying page content.
 **Action:** When creating new full-screen navigation modals or overlays, always ensure `role="dialog"` and `aria-modal="true"` are applied directly to the main container wrapper element.
+
+## 2025-03-28 - Enhancing User Agency in Success States and Copy Actions
+**Learning:** In contexts with single-action workflows (like a form submission or copying a contact detail), users benefit significantly from extended agency post-action. When a success state replaces a form, users are often dead-ended without reloading. Additionally, users often struggle with highlighting and copying text elements like emails accurately.
+**Action:** When implementing success states that replace interaction areas, always provide a clear, styled action (e.g., "Send another message") to reset the state. For non-link contact details (like emails), provide an accessible, one-click "Copy to clipboard" button accompanied by temporary visual feedback and an `aria-live` region announcement for screen readers.
