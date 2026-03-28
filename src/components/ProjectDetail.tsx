@@ -7,6 +7,11 @@ import { Project, projects } from '@/lib/projects';
 // O(1) lookup map to avoid O(N) Array.findIndex inside the render loop
 const projectIndexMap = new Map(projects.map((p, i) => [p.id, i]));
 
+// Pre-calculate parsed descriptions to avoid O(N) string splitting and GC allocation on every render
+const parsedDescriptionsMap = new Map(
+  projects.map((p) => [p.id, p.longDescription.split('\n\n')])
+);
+
 export function ProjectDetail({ project }: { project: Project }) {
   // Use O(1) map lookup instead of O(N) array search on every render
   const currentIndex = projectIndexMap.get(project.id) ?? 0;
@@ -156,7 +161,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             <div className="flex-1 h-px" style={{ background: 'rgba(6,182,212,0.1)' }} />
           </div>
           <div className="space-y-5">
-            {project.longDescription.split('\n\n').map((para, i) => (
+            {(parsedDescriptionsMap.get(project.id) || project.longDescription.split('\n\n')).map((para, i) => (
               <p key={i} className="text-brand-gray-300 font-light leading-[1.8] text-base md:text-lg">
                 {para.trim()}
               </p>
