@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // Simple rate limiting (in-memory, resets on cold start — use Upstash Redis for production)
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
+let lastCleanup = Date.now();
 
 // Helper to escape HTML and prevent XSS/HTML Injection in emails
 
@@ -14,8 +15,11 @@ function rateLimit(ip: string): boolean {
   // Prevent memory leaks / DoS by bounding the Map
   if (requestCounts.size >= 5000) {
     requestCounts.clear(); // Hard limit
-  } else if (requestCounts.size >= 1000) {
-    // Soft limit: Cleanup expired entries
+    lastCleanup = now;
+  } else if (requestCounts.size >= 1000 && now - lastCleanup > 10_000) {
+    // Soft limit: Cleanup expired entries at most once every 10 seconds
+    // This prevents an O(N) loop on every request when the map is large
+    lastCleanup = now;
     for (const [key, value] of requestCounts.entries()) {
       if (value.resetAt < now) {
         requestCounts.delete(key);
