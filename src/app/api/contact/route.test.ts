@@ -4,11 +4,13 @@ import { NextRequest } from 'next/server';
 import { POST } from './route.ts';
 
 // Helper to create a mocked NextRequest since the real one doesn't allow overriding json() easily
-function createMockRequest(jsonBodyResolver: () => Promise<any>, ip: string = '127.0.0.1'): NextRequest {
+let ipCounter = 1;
+function createMockRequest(jsonBodyResolver: () => Promise<any>): NextRequest {
+  const uniqueIp = `127.0.0.${ipCounter++}`;
   return {
-    ip,
+    ip: uniqueIp,
     headers: {
-      get: (name: string) => name === 'x-forwarded-for' ? ip : null
+      get: (name: string) => name === 'x-forwarded-for' ? uniqueIp : null
     },
     json: jsonBodyResolver
   } as unknown as NextRequest;
