@@ -1,0 +1,5 @@
+fix(deps): downgrade three to 0.182.0 to resolve THREE.Clock deprecation
+
+Fiber 9.5.0 still internally instantiates THREE.Clock, which triggers a noisy deprecation warning in three r183+. 
+Downgrading to the stable r182 release silences this warning until Fiber officially migrates to THREE.Timer.
+Also reverted the experimental Timer implementation in HeroScene.tsx to keep the codebase clean.
