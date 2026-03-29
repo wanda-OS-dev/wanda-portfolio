@@ -17,7 +17,7 @@ function createMockRequest(jsonBodyResolver: () => Promise<any>): NextRequest {
 }
 
 test('contact API - handles malformed JSON payload', async () => {
-  const req = createMockRequest(async () => { throw new Error('Malformed JSON'); }, '10.0.0.1');
+  const req = createMockRequest(async () => { throw new Error('Malformed JSON'); });
 
   const res = await POST(req);
   assert.strictEqual(res.status, 400);
@@ -27,7 +27,7 @@ test('contact API - handles malformed JSON payload', async () => {
 });
 
 test('contact API - handles missing required fields', async () => {
-  const req = createMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com' }), '10.0.0.2');
+  const req = createMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com' }));
 
   const res = await POST(req);
   assert.strictEqual(res.status, 400);
@@ -37,7 +37,7 @@ test('contact API - handles missing required fields', async () => {
 });
 
 test('contact API - handles inputs exceeding maximum length', async () => {
-  const req = createMockRequest(async () => ({ name: 'A'.repeat(101), email: 'john@example.com', message: 'Hello' }), '10.0.0.3');
+  const req = createMockRequest(async () => ({ name: 'A'.repeat(101), email: 'john@example.com', message: 'Hello' }));
 
   const res = await POST(req);
   assert.strictEqual(res.status, 400);
@@ -47,7 +47,7 @@ test('contact API - handles inputs exceeding maximum length', async () => {
 });
 
 test('contact API - handles invalid email address', async () => {
-  const req = createMockRequest(async () => ({ name: 'John Doe', email: 'not-an-email', message: 'Hello' }), '10.0.0.4');
+  const req = createMockRequest(async () => ({ name: 'John Doe', email: 'not-an-email', message: 'Hello' }));
 
   const res = await POST(req);
   assert.strictEqual(res.status, 400);
@@ -57,7 +57,7 @@ test('contact API - handles invalid email address', async () => {
 });
 
 test('contact API - handles valid payload', async () => {
-  const req = createMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com', message: 'Hello, World!' }), '10.0.0.5');
+  const req = createMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com', message: 'Hello, World!' }));
 
   const res = await POST(req);
   assert.strictEqual(res.status, 200);
@@ -67,17 +67,26 @@ test('contact API - handles valid payload', async () => {
 });
 
 test('contact API - enforces rate limiting', async () => {
+  // To test rate limiting, we need to simulate requests from the same IP.
+  // We'll modify the mock for this specific test.
   const ip = '10.0.0.6';
+  const createRateLimitMockRequest = (jsonBodyResolver: () => Promise<any>): NextRequest => {
+    return {
+      ip,
+      headers: { get: (name: string) => name === 'x-forwarded-for' ? ip : null },
+      json: jsonBodyResolver
+    } as unknown as NextRequest;
+  };
 
   // Send 5 successful requests
   for (let i = 0; i < 5; i++) {
-    const req = createMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com', message: 'Hello, World!' }), ip);
+    const req = createRateLimitMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com', message: 'Hello, World!' }));
     const res = await POST(req);
     assert.strictEqual(res.status, 200, `Request ${i + 1} should succeed`);
   }
 
   // The 6th request should fail due to rate limiting
-  const req6 = createMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com', message: 'Hello, World!' }), ip);
+  const req6 = createRateLimitMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com', message: 'Hello, World!' }));
   const res6 = await POST(req6);
   assert.strictEqual(res6.status, 429, 'Request 6 should be rate limited');
 
