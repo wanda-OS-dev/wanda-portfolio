@@ -1,21 +1,66 @@
 import { escapeHtml } from "../../../lib/validation";
 import { NextRequest, NextResponse } from 'next/server';
+import { logger } from "../../../lib/logger";
 
 // Simple rate limiting (in-memory, resets on cold start — use Upstash Redis for production)
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
+let lastCleanup = Date.now();
 
 // Helper to escape HTML and prevent XSS/HTML Injection in emails
 
-function rateLimit(ip: string): boolean {
+async function rateLimit(ip: string): Promise<boolean> {
   const now = Date.now();
   const windowMs = 60_000; // 1 minute
   const limit = 5;
 
+  // Upstash Redis distributed rate limiting (Production)
+  const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
+  const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN;
+
+  if (redisUrl && redisToken) {
+    try {
+      // Use Upstash REST API to increment a counter
+      const key = `rate-limit:${ip}`;
+      const url = `${redisUrl}/pipeline`;
+
+      const payload = [
+        ["INCR", key],
+        ["EXPIRE", key, 60] // Expire in 60 seconds
+      ];
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${redisToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // data looks like [{"result": 1}, {"result": 1}]
+        if (Array.isArray(data) && data[0] && typeof data[0].result === 'number') {
+          const count = data[0].result;
+          return count <= limit;
+        }
+      } else {
+         logger.warn(`[contact] Upstash rate limit pipeline returned non-ok status: ${response.status}`);
+      }
+    } catch (err) {
+      logger.error('[contact] Upstash rate limiting failed, falling back to in-memory', err);
+    }
+  }
+
+  // Fallback: Simple rate limiting (in-memory, resets on cold start)
   // Prevent memory leaks / DoS by bounding the Map
   if (requestCounts.size >= 5000) {
     requestCounts.clear(); // Hard limit
-  } else if (requestCounts.size >= 1000) {
-    // Soft limit: Cleanup expired entries
+    lastCleanup = now;
+  } else if (requestCounts.size >= 1000 && now - lastCleanup > 10_000) {
+    // Soft limit: Cleanup expired entries at most once every 10 seconds
+    // This prevents an O(N) loop on every request when the map is large
+    lastCleanup = now;
     for (const [key, value] of requestCounts.entries()) {
       if (value.resetAt < now) {
         requestCounts.delete(key);
@@ -34,10 +79,11 @@ function rateLimit(ip: string): boolean {
 }
 
 export async function POST(req: NextRequest) {
-  // Extract real IP securely by prioritizing x-forwarded-for header
+  // Extract real IP securely by prioritizing platform-verified req.ip,
+  // falling back to x-forwarded-for only if necessary
   const ip = req.ip ?? req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
 
-  if (!rateLimit(ip)) {
+  if (!(await rateLimit(ip))) {
     return NextResponse.json({ error: 'Too many requests.' }, { status: 429 });
   }
 
@@ -92,12 +138,16 @@ export async function POST(req: NextRequest) {
         html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>`,
       });
     } catch (err) {
-      console.error('[contact] email send failed:', err);
+      logger.error('[contact] email send failed', err);
       return NextResponse.json({ error: 'Failed to send. Please email directly.' }, { status: 500 });
     }
   } else {
+    if (process.env.NODE_ENV === 'production') {
+      logger.error('[contact] Missing SMTP configuration in production.');
+      return NextResponse.json({ error: 'Server configuration error. Please contact directly.' }, { status: 500 });
+    }
     // No SMTP configured — log for development
-    console.log('[contact] New message:', { name, email, message: message.slice(0, 100) });
+    logger.info('[contact] New message received (SMTP not configured)');
   }
 
   return NextResponse.json({ ok: true });
