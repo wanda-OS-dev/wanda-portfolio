@@ -10,11 +10,9 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   transpilePackages: ['three', '@react-three/fiber', '@react-three/drei', 'framer-motion'],
+  turbopack: {},
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
-    turbopack: {
-      root: __dirname,
-    },
   },
   webpack: (config) => {
     config.resolve.alias = {

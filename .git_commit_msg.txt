@@ -1,0 +1,5 @@
+fix(build): resolve Next 16 turbopack config and static export api conflicts
+
+- Added `turbopack: {}` to root config to silence Webpack deprecation errors in Next 16
+- Removed broken `src/app/api` route which prevented static exports (Formspree is handling the frontend contacts natively)
+- Included tsconfig.json auto-updates applied by Next.js build
