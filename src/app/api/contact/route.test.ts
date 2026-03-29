@@ -8,6 +8,7 @@ let ipCounter = 1;
 function createMockRequest(jsonBodyResolver: () => Promise<any>): NextRequest {
   const uniqueIp = `127.0.0.${ipCounter++}`;
   return {
+    ip: uniqueIp,
     headers: {
       get: (name: string) => name === 'x-forwarded-for' ? uniqueIp : null
     },
@@ -63,4 +64,32 @@ test('contact API - handles valid payload', async () => {
 
   const body = await res.json();
   assert.strictEqual(body.ok, true);
+});
+
+test('contact API - enforces rate limiting', async () => {
+  // To test rate limiting, we need to simulate requests from the same IP.
+  // We'll modify the mock for this specific test.
+  const ip = '10.0.0.6';
+  const createRateLimitMockRequest = (jsonBodyResolver: () => Promise<any>): NextRequest => {
+    return {
+      ip,
+      headers: { get: (name: string) => name === 'x-forwarded-for' ? ip : null },
+      json: jsonBodyResolver
+    } as unknown as NextRequest;
+  };
+
+  // Send 5 successful requests
+  for (let i = 0; i < 5; i++) {
+    const req = createRateLimitMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com', message: 'Hello, World!' }));
+    const res = await POST(req);
+    assert.strictEqual(res.status, 200, `Request ${i + 1} should succeed`);
+  }
+
+  // The 6th request should fail due to rate limiting
+  const req6 = createRateLimitMockRequest(async () => ({ name: 'John Doe', email: 'john@example.com', message: 'Hello, World!' }));
+  const res6 = await POST(req6);
+  assert.strictEqual(res6.status, 429, 'Request 6 should be rate limited');
+
+  const body = await res6.json();
+  assert.strictEqual(body.error, 'Too many requests.');
 });
