@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { projects } from '@/lib/projects';
@@ -12,7 +12,7 @@ const HeroScene = dynamic(
   { ssr: false }
 );
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: (i: number) => ({
     opacity: 1,
@@ -20,7 +20,7 @@ const fadeUp = {
     transition: {
       delay: i * 0.12,
       duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as any,
     },
   }),
 };
