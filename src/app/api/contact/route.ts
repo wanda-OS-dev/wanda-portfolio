@@ -45,10 +45,10 @@ async function rateLimit(ip: string): Promise<boolean> {
           return count <= limit;
         }
       } else {
-         console.warn('[contact] Upstash rate limit pipeline returned non-ok status:', response.status);
+         logger.warn(`[contact] Upstash rate limit pipeline returned non-ok status: ${response.status}`);
       }
     } catch (err) {
-      console.error('[contact] Upstash rate limiting failed, falling back to in-memory:', err);
+      logger.error('[contact] Upstash rate limiting failed, falling back to in-memory', err);
     }
   }
 
@@ -143,7 +143,7 @@ export async function POST(req: NextRequest) {
     }
   } else {
     if (process.env.NODE_ENV === 'production') {
-      console.error('[contact] Missing SMTP configuration in production.');
+      logger.error('[contact] Missing SMTP configuration in production.');
       return NextResponse.json({ error: 'Server configuration error. Please contact directly.' }, { status: 500 });
     }
     // No SMTP configured — log for development
