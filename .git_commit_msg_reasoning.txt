@@ -1,0 +1,9 @@
+feat: Implement R3F AI Reasoning Visualization with Bolt pattern
+
+- Replaced the SVG skeleton with a fully interactive R3F Canvas
+- Implemented O(1) dictionary layout (`nodesDict`) per 'Bolt' performance pattern requirements
+- Added 3D nodes (Spheres with MeshStandardMaterial) and Drei Line components for edges
+- Implemented subtle mathematical animation (`Math.sin` driven over `useFrame`) to keep React re-renders strictly out of the loop
+- Fixed Next.js build issues with `.mjs`/Typescript typings
+
+Resolves #58
