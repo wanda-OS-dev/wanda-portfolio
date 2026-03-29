@@ -6,6 +6,7 @@
 **Vulnerability:** The in-memory rate limiter `requestCounts` in `src/app/api/contact/route.ts` was an unbounded Map, allowing attackers to continuously append entries with spoofed IPs, resulting in infinite memory growth and eventually a Denial of Service (DoS).
 **Learning:** Native `Map` implementations for rate-limiting will crash node.js processes if they lack TTL cleanup or size boundaries.
 **Prevention:** Always bound in-memory Maps with a soft limit (to trigger cleanup of expired entries) and a hard limit (to clear or reset the map immediately to protect server stability).
+
 ## 2025-05-27 - [IP Spoofing via X-Forwarded-For in Rate Limiter]
 **Vulnerability:** The rate limiter in the `src/app/api/contact/route.ts` API route prioritized the `x-forwarded-for` header without falling back or initially checking the platform-verified `req.ip`.
 **Learning:** `x-forwarded-for` can easily be manipulated by an attacker to bypass rate limits by submitting requests with a forged header.
