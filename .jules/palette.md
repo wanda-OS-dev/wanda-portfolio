@@ -21,3 +21,11 @@
 ## 2025-03-28 - Enhancing User Agency in Success States and Copy Actions
 **Learning:** In contexts with single-action workflows (like a form submission or copying a contact detail), users benefit significantly from extended agency post-action. When a success state replaces a form, users are often dead-ended without reloading. Additionally, users often struggle with highlighting and copying text elements like emails accurately.
 **Action:** When implementing success states that replace interaction areas, always provide a clear, styled action (e.g., "Send another message") to reset the state. For non-link contact details (like emails), provide an accessible, one-click "Copy to clipboard" button accompanied by temporary visual feedback and an `aria-live` region announcement for screen readers.
+
+## 2025-03-30 - Form Auto-complete for Frictionless UX
+**Learning:** While native HTML validation (`required`, `type="email"`) ensures data correctness, users still experience friction when manually typing standard information like names and emails.
+**Action:** Always include appropriate `autoComplete` attributes (e.g., `autoComplete="name"`, `autoComplete="email"`) on standard form fields to enable browser autofill, significantly reducing cognitive load and interaction time.
+
+## 2025-03-30 - Ensuring Skip Links Shift Keyboard Focus
+**Learning:** A "Skip to main content" anchor link visually scrolls the page to the target ID, but does not move the actual keyboard focus unless the target element is programmatically focusable. If missing, the next `Tab` press simply resumes from the skip link.
+**Action:** Always apply `tabIndex={-1}` to the target container (e.g., `<main id="main-content" tabIndex={-1}>`) of a skip link. This allows it to receive programmatic focus from the anchor link, properly resetting the tab order for keyboard users.
