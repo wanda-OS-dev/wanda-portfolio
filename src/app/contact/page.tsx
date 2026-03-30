@@ -155,6 +155,7 @@ export default function ContactPage() {
                     name="name"
                     type="text"
                     required
+                    autoComplete="name"
                     maxLength={100}
                     placeholder="Your name"
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
@@ -171,6 +172,7 @@ export default function ContactPage() {
                     name="email"
                     type="email"
                     required
+                    autoComplete="email"
                     maxLength={255}
                     placeholder="your@email.com"
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"

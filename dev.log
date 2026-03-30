@@ -1,0 +1,15 @@
+
+> wanda-portfolio@1.0.0 dev /app
+> next dev
+
+▲ Next.js 16.2.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 566ms
+- Experiments (use with caution):
+  · optimizePackageImports
+
+○ Compiling / ...
+ GET / 200 in 7.8s (next.js: 6.9s, application-code: 921ms)
+ GET /contact/ 200 in 1368ms (next.js: 1122ms, application-code: 246ms)
+ GET /reasoning/ 200 in 2.8s (next.js: 2.4s, application-code: 426ms)
