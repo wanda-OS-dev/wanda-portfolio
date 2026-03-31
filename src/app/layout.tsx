@@ -67,7 +67,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to main content
         </a>
         <Nav />
-        <main id="main-content">{children}</main>
+        <main id="main-content" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
       </body>
     </html>
   );
