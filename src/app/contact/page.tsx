@@ -75,7 +75,7 @@ export default function ContactPage() {
                 <div className="flex items-center gap-3">
                   <a
                     href="mailto:wanda.devops@gmail.com"
-                    className="text-brand-white hover:text-brand-gold transition-colors duration-300"
+                    className="text-brand-white hover:text-brand-gold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black rounded-sm"
                   >
                     wanda.devops@gmail.com
                   </a>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                     onClick={handleCopy}
                     aria-label={copied ? "Email copied to clipboard" : "Copy email address"}
                     title={copied ? "Copied!" : "Copy to clipboard"}
-                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1"
+                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black rounded-sm"
                   >
                     {copied ? (
                       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -138,7 +138,7 @@ export default function ContactPage() {
                 <p className="text-brand-gray-500 text-sm">We&apos;ll be in touch within 24 hours.</p>
                 <button
                   onClick={() => setState('idle')}
-                  className="mt-8 text-sm text-brand-gold hover:text-brand-white transition-colors duration-300 underline underline-offset-4"
+                  className="mt-8 text-sm text-brand-gold hover:text-brand-white transition-colors duration-300 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black rounded-sm"
                 >
                   Send another message
                 </button>
@@ -156,8 +156,9 @@ export default function ContactPage() {
                     type="text"
                     required
                     maxLength={100}
+                    autoComplete="name"
                     placeholder="Your name"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-300"
                   />
                 </div>
 
@@ -172,8 +173,9 @@ export default function ContactPage() {
                     type="email"
                     required
                     maxLength={255}
+                    autoComplete="email"
                     placeholder="your@email.com"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-300"
                   />
                 </div>
 
@@ -189,7 +191,7 @@ export default function ContactPage() {
                     rows={5}
                     maxLength={5000}
                     placeholder="Tell us about your project..."
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none"
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-300 resize-none"
                   />
                 </div>
 
@@ -202,7 +204,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={state === 'sending'}
-                  className="w-full flex items-center justify-center gap-2 bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
                 >
                   {state === 'sending' && (
                     <svg
