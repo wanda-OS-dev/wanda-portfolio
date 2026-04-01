@@ -1,17 +1,8 @@
-## 2024-05-24 - Nodemailer HTML Injection Vulnerability
-**Vulnerability:** Unsanitized user inputs (`name`, `email`, `message`) were interpolated directly into the `html` payload configuration of `transporter.sendMail()` in the `/api/contact` route.
-**Learning:** `nodemailer` does NOT automatically escape or sanitize variables injected into the HTML body. It implicitly trusts the provided HTML string, meaning an attacker could craft malicious input (like `<script>alert(1)</script>`) that would execute in the victim's email client if they view HTML emails.
-**Prevention:** Always manually escape HTML entities (`&`, `<`, `>`, `"`, `'`) for any user-controlled variable before embedding it in an HTML string sent via `nodemailer`.
-## 2024-03-24 - Rate Limiting DoS Vulnerability
-**Vulnerability:** The in-memory rate limiter `requestCounts` in `src/app/api/contact/route.ts` was an unbounded Map, allowing attackers to continuously append entries with spoofed IPs, resulting in infinite memory growth and eventually a Denial of Service (DoS).
-**Learning:** Native `Map` implementations for rate-limiting will crash node.js processes if they lack TTL cleanup or size boundaries.
-**Prevention:** Always bound in-memory Maps with a soft limit (to trigger cleanup of expired entries) and a hard limit (to clear or reset the map immediately to protect server stability).
-
-## 2025-05-27 - [IP Spoofing via X-Forwarded-For in Rate Limiter]
-**Vulnerability:** The rate limiter in the `src/app/api/contact/route.ts` API route prioritized the `x-forwarded-for` header without falling back or initially checking the platform-verified `req.ip`.
-**Learning:** `x-forwarded-for` can easily be manipulated by an attacker to bypass rate limits by submitting requests with a forged header.
-**Prevention:** To prevent rate limit spoofing in Next.js API routes, do not blindly trust the `x-forwarded-for` header. Extract the real IP securely by prioritizing `req.ip` and falling back to the first cleanly trimmed IP in the `x-forwarded-for` list: `req.ip ?? req.headers.get('x-forwarded-for')?.split(',')[0].trim()`.
-## 2025-05-28 - [Sensitive Information Leakage via console.error]
-**Vulnerability:** The API route `src/app/api/contact/route.ts` used raw `console.error` and `console.warn` calls to log errors, such as SMTP configuration failures or rate-limiting issues.
-**Learning:** Raw `console.error` statements in server environments can inadvertently leak sensitive stack traces or internal configuration details to external log monitoring systems, especially if error objects are passed directly.
-**Prevention:** Always use a centralized logging utility (e.g., `logger.error` which sanitizes error objects) instead of native `console` methods for production-facing server routes.
+## 2024-05-24 - Accessibility focus trap vulnerability
+**Vulnerability:** The Skip to main content link correctly pointed to `id="main-content"` but `<main id="main-content">` did not have `tabIndex={-1}`. When an element doesn't have `tabIndex={-1}`, programmatically moving focus to it via an anchor link jump might not actually set focus to that element for screen readers and keyboard navigation, causing the user to start tab indexing from the top of the page again instead of inside the main content.
+**Learning:** React/Next.js root layouts need explicit focus management for skip links to function correctly across all browsers and assistive technologies.
+**Prevention:** Always ensure the target container of a skip link has `tabIndex={-1}` and `className="outline-none"` to accept focus without showing a persistent ring.
+## 2024-05-25 - Content Security Policy missing core directives
+**Vulnerability:** The static HTML meta tag CSP lacked `object-src`, `base-uri`, and `form-action` restrictions. This allows attacks like embedding vulnerable Flash plugins, hijacking relative URLs by injecting a `<base>` tag, and modifying form actions to exfiltrate user data to attacker-controlled domains.
+**Learning:** Even static Next.js applications that deploy a CSP via a `<meta>` tag need exhaustive modern directives (`object-src 'none'`, `base-uri 'self'`, `form-action 'self' https://...`, `upgrade-insecure-requests`), beyond just basic XSS protection directives (`script-src`, `style-src`).
+**Prevention:** Always formulate a comprehensive CSP that explicitly defines tight boundaries for plugins, base URIs, and form actions, especially in statically exported Next.js applications where traditional HTTP security headers are impossible to define directly within the app code.
