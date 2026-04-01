@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Line, Text, OrbitControls, Environment, Float } from '@react-three/drei';
 import * as THREE from 'three';
@@ -26,6 +26,11 @@ const edgesArray: EdgeData[] = [
   { from: 'api', to: 'output' },
   { from: 'output', to: 'end' },
 ];
+
+// Pre-calculate the nodes array outside the render loop
+// This converts a useMemo call inside the component into a one-time module-level computation,
+// removing unnecessary GC allocations on component mount/remount for static data.
+const nodesArray = Object.values(nodesDict);
 
 function Node({ data }: { data: NodeData }) {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -87,8 +92,6 @@ function GraphEdges() {
 }
 
 export function AIReasoningVisualizer() {
-  const nodes = useMemo(() => Object.values(nodesDict), []);
-
   return (
     <div className="w-full h-[600px] border border-white/10 rounded-lg bg-[#0a0a0a] overflow-hidden relative shadow-2xl">
       <div className="absolute top-6 left-6 z-10 pointer-events-none">
@@ -107,7 +110,7 @@ export function AIReasoningVisualizer() {
 
         <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.2}>
           <group position={[0, 0, 0]}>
-            {nodes.map(node => (
+            {nodesArray.map(node => (
               <Node key={node.id} data={node} />
             ))}
             <GraphEdges />
