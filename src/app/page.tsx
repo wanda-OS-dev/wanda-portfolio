@@ -5,11 +5,15 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { projects } from '@/lib/projects';
 import { ArrowRightIcon } from '@/components/icons/ArrowRightIcon';
+import { FallbackPlanets } from '@/components/FallbackPlanets';
 
 // Dynamic import to avoid SSR issues with WebGL
 const HeroScene = dynamic(
   () => import('@/components/HeroScene').then((m) => m.HeroScene),
-  { ssr: false }
+  {
+    ssr: false,
+    loading: () => <FallbackPlanets />
+  }
 );
 
 const fadeUp: Variants = {

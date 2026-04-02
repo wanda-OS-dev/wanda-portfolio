@@ -11,3 +11,7 @@
 ## 2026-03-24 - [Avoid `useMemo` for Static Arrays in Next.js Components]
 **Learning:** When using `useMemo` to memoize purely static data (e.g. `Object.values(nodesDict)` in `AIReasoningVisualizer.tsx`), the calculation and allocation still run during the component's initial render phase, and the resulting object is garbage-collected upon component unmount. In interactive 3D or frequently unmounted components, this causes unnecessary React hook overhead, CPU work, and GC allocations.
 **Action:** Hoist pure static arrays or derived data structures outside the component scope as module-level constants to ensure the calculation runs exactly once at module evaluation time, thus removing the overhead completely.
+
+## 2026-03-24 - [Avoid Blank LCP States with `next/dynamic` and `ssr: false`]
+**Learning:** When using Next.js `next/dynamic` to load heavy client-side components (like Three.js or WebGL canvases) with `{ ssr: false }` to prevent server hydration mismatches, Next.js will render nothing on the server for that component. If this component is above the fold (like a Hero section), it creates a large blank space, severely degrading the First Contentful Paint (FCP) and Largest Contentful Paint (LCP) metrics until the heavy JS chunks load and execute.
+**Action:** Always provide a lightweight, CSS-only fallback component via the `loading` option in `next/dynamic` (e.g. `loading: () => <Fallback />`). This ensures the user immediately sees a visually similar placeholder from the initial HTML, drastically improving perceived performance and Web Vitals.
