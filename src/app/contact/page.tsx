@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useRef, FormEvent } from 'react';
+import { escapeHtml } from '@/lib/validation';
 
 type FormState = 'idle' | 'sending' | 'success' | 'error';
 
@@ -25,11 +26,29 @@ export default function ContactPage() {
     e.preventDefault();
     setState('sending');
     const data = new FormData(e.currentTarget);
+
+    // Security enhancement: Enforce input length limits to prevent DoS/payload issues
+    const name = data.get('name')?.toString() || '';
+    const email = data.get('email')?.toString() || '';
+    const message = data.get('message')?.toString() || '';
+
+    if (name.length > 100 || email.length > 255 || message.length > 5000) {
+      setErrorMsg('Input exceeds maximum allowed length.');
+      setState('error');
+      return;
+    }
+
+    // Security enhancement: Sanitize inputs to prevent XSS payloads from being forwarded
+    const sanitizedData = new FormData();
+    sanitizedData.append('name', escapeHtml(name));
+    sanitizedData.append('email', escapeHtml(email));
+    sanitizedData.append('message', escapeHtml(message));
+
     try {
       const res = await fetch('https://formspree.io/f/xpwzogdb', {
         method: 'POST',
         headers: { Accept: 'application/json' },
-        body: data,
+        body: sanitizedData,
       });
       if (res.ok) {
         setState('success');
