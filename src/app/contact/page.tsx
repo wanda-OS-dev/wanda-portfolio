@@ -157,7 +157,9 @@ export default function ContactPage() {
                     required
                     maxLength={100}
                     placeholder="Your name"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    autoComplete="name"
+                    disabled={state === 'sending'}
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
@@ -173,7 +175,9 @@ export default function ContactPage() {
                     required
                     maxLength={255}
                     placeholder="your@email.com"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    autoComplete="email"
+                    disabled={state === 'sending'}
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
@@ -189,7 +193,8 @@ export default function ContactPage() {
                     rows={5}
                     maxLength={5000}
                     placeholder="Tell us about your project..."
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none"
+                    disabled={state === 'sending'}
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 

@@ -25,3 +25,7 @@
 ## 2025-05-15 - Enhancing Skip-to-Content Focus Management
 **Learning:** When using skip-to-content links that target structural containers like `<main>`, the target container requires `tabIndex={-1}` to successfully receive programmatic keyboard focus. However, adding `tabIndex` alone causes browsers to render a persistent visual outline around the entire content area when focused, which degrades the visual experience.
 **Action:** When adding `tabIndex={-1}` to structural elements strictly for programmatic focus management (like for skip links), always pair it with `className="outline-none"` (or equivalent CSS) to suppress the unwanted default focus ring while preserving accessibility functionality.
+
+## 2025-06-15 - Enhancing Form UX with Disabled States During Async Operations
+**Learning:** During asynchronous form submissions, users might attempt to modify their inputs or accidentally submit the form multiple times if the inputs and buttons remain interactive. Disabling inputs during the active process prevents these issues and reinforces the loading state.
+**Action:** When implementing asynchronous form submissions, apply `disabled` states to all form inputs and textareas alongside the submit button. Ensure visual feedback is provided using classes like `disabled:opacity-50 disabled:cursor-not-allowed` to clearly communicate that the form is processing. Also, remember to add standard `autoComplete` attributes to inputs to reduce user friction.
