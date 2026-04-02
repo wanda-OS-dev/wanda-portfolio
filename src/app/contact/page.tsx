@@ -156,8 +156,10 @@ export default function ContactPage() {
                     type="text"
                     required
                     maxLength={100}
+                    autoComplete="name"
+                    disabled={state === 'sending'}
                     placeholder="Your name"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
@@ -172,8 +174,10 @@ export default function ContactPage() {
                     type="email"
                     required
                     maxLength={255}
+                    autoComplete="email"
+                    disabled={state === 'sending'}
                     placeholder="your@email.com"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
@@ -188,8 +192,9 @@ export default function ContactPage() {
                     required
                     rows={5}
                     maxLength={5000}
+                    disabled={state === 'sending'}
                     placeholder="Tell us about your project..."
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none"
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
