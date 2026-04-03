@@ -29,3 +29,7 @@
 ## 2025-06-15 - Enhancing Form UX with Disabled States During Async Operations
 **Learning:** During asynchronous form submissions, users might attempt to modify their inputs or accidentally submit the form multiple times if the inputs and buttons remain interactive. Disabling inputs during the active process prevents these issues and reinforces the loading state.
 **Action:** When implementing asynchronous form submissions, apply `disabled` states to all form inputs and textareas alongside the submit button. Ensure visual feedback is provided using classes like `disabled:opacity-50 disabled:cursor-not-allowed` to clearly communicate that the form is processing. Also, remember to add standard `autoComplete` attributes to inputs to reduce user friction.
+
+## 2024-05-18 - Accessibility for WebGL Canvases
+**Learning:** Screen readers cannot interpret the visual content of a `<canvas>` element. When an interactive or informative 3D visualization is placed in a canvas (like the AI Reasoning visualization), it needs a `role="img"` and a descriptive `aria-label` on its container so users know what it is. Conversely, for purely decorative backgrounds (like the HeroScene background), the container should be marked with `aria-hidden="true"` so the screen reader ignores it and doesn't read out meaningless context.
+**Action:** When adding or modifying a `<canvas>` component, decide whether it's informative or decorative and apply `role="img"` + `aria-label` or `aria-hidden="true"` to the wrapping element accordingly.
