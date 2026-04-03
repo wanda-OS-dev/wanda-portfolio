@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState, useRef, FormEvent } from 'react';
 import { escapeHtml } from '@/lib/validation';
+import { logger } from '@/lib/logger';
 
 type FormState = 'idle' | 'sending' | 'success' | 'error';
 
@@ -18,7 +19,8 @@ export default function ContactPage() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy text: ', err);
+      // Security enhancement: Use centralized logger to sanitize errors and prevent leaking raw browser state/stack traces (CWE-532)
+      logger.error('Failed to copy text', err);
     }
   };
 
