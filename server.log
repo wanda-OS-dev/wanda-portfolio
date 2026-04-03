@@ -5,10 +5,12 @@
 ▲ Next.js 16.2.1 (Turbopack)
 - Local:         http://localhost:3000
 - Network:       http://192.168.0.2:3000
-✓ Ready in 534ms
+✓ Ready in 545ms
 - Experiments (use with caution):
   · optimizePackageImports
 
-○ Compiling /contact ...
- GET /contact/ 200 in 6.9s (next.js: 6.0s, application-code: 894ms)
- GET /contact/ 200 in 99ms (next.js: 6ms, application-code: 94ms)
+○ Compiling /reasoning ...
+ GET /reasoning/ 200 in 8.8s (next.js: 7.7s, application-code: 1068ms)
+ GET / 200 in 1193ms (next.js: 1034ms, application-code: 160ms)
+ GET /reasoning/ 200 in 83ms (next.js: 6ms, application-code: 77ms)
+ GET / 200 in 156ms (next.js: 4ms, application-code: 152ms)
