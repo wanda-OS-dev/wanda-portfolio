@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -100,16 +100,15 @@ function ParticleField() {
   );
 }
 
+// Evaluate WebGL support once outside the component to avoid a double-render cycle on mount.
+// Since this component is loaded via next/dynamic with ssr: false, window/document are safe here.
+const IS_WEBGL_SUPPORTED = typeof window !== 'undefined' ? supportsWebGL() : false;
+if (typeof window !== 'undefined') {
+  console.info('Hero mode:', IS_WEBGL_SUPPORTED ? 'webgl' : 'fallback');
+}
+
 export function HeroScene() {
-  const [useWebGL, setUseWebGL] = useState(false);
-
-  useEffect(() => {
-    const supported = supportsWebGL();
-    console.info('Hero mode:', supported ? 'webgl' : 'fallback');
-    setUseWebGL(supported);
-  }, []);
-
-  if (!useWebGL) {
+  if (!IS_WEBGL_SUPPORTED) {
     return <FallbackPlanets />;
   }
 
