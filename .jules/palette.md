@@ -29,3 +29,6 @@
 ## 2025-06-15 - Enhancing Form UX with Disabled States During Async Operations
 **Learning:** During asynchronous form submissions, users might attempt to modify their inputs or accidentally submit the form multiple times if the inputs and buttons remain interactive. Disabling inputs during the active process prevents these issues and reinforces the loading state.
 **Action:** When implementing asynchronous form submissions, apply `disabled` states to all form inputs and textareas alongside the submit button. Ensure visual feedback is provided using classes like `disabled:opacity-50 disabled:cursor-not-allowed` to clearly communicate that the form is processing. Also, remember to add standard `autoComplete` attributes to inputs to reduce user friction.
+## 2026-04-04 - Character Count ARIA considerations
+**Learning:** Character counters that update on every keystroke create a frustrating, noisy experience for screen reader users if announced via `aria-live`. Native `maxLength` on inputs is already natively understood and announced by screen readers without added developer effort.
+**Action:** Always add `aria-hidden="true"` to visual character counters (e.g. `20 / 5000`) so sighted users get the visual cue without penalizing assistive tech users with spam.
