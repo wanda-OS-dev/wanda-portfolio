@@ -29,3 +29,7 @@
 ## 2025-06-15 - Enhancing Form UX with Disabled States During Async Operations
 **Learning:** During asynchronous form submissions, users might attempt to modify their inputs or accidentally submit the form multiple times if the inputs and buttons remain interactive. Disabling inputs during the active process prevents these issues and reinforces the loading state.
 **Action:** When implementing asynchronous form submissions, apply `disabled` states to all form inputs and textareas alongside the submit button. Ensure visual feedback is provided using classes like `disabled:opacity-50 disabled:cursor-not-allowed` to clearly communicate that the form is processing. Also, remember to add standard `autoComplete` attributes to inputs to reduce user friction.
+
+## 2026-04-05 - Visual Character Counter with maxLength
+**Learning:** When using the native HTML `maxLength` attribute, screen readers will natively announce the character limit and warn the user as they approach it. If we also add a visual character counter (e.g. `0 / 5000`), it causes redundant and noisy screen reader announcements.
+**Action:** Apply `aria-hidden="true"` to the custom visual character counter element. This ensures sighted users get the helpful visual feedback while screen reader users get the clean, native experience without duplication.
