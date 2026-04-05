@@ -93,7 +93,7 @@ function GraphEdges() {
 
 export function AIReasoningVisualizer() {
   return (
-    <div className="w-full h-[600px] border border-white/10 rounded-lg bg-[#0a0a0a] overflow-hidden relative shadow-2xl">
+    <div className="w-full h-[600px] border border-white/10 rounded-lg bg-[#0a0a0a] overflow-hidden relative shadow-2xl" role="img" aria-label="Interactive 3D graph visualizing Wanda&apos;s AI reasoning process">
       <div className="absolute top-6 left-6 z-10 pointer-events-none">
         <h3 className="text-xl font-bold text-[#c9a84c] tracking-wide">Wanda's Thought Process</h3>
         <p className="text-sm text-gray-400 mt-1">Interactive 3D Graph &middot; O(1) Memory Layout</p>
