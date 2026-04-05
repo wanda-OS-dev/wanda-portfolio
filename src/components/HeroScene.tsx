@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -8,7 +8,7 @@ import { FallbackPlanets } from './FallbackPlanets';
 
 const BACKGROUND_COLOR = new THREE.Color('#0a0a0a');
 
-function supportsWebGL(): boolean {
+function checkWebGLSupport(): boolean {
   try {
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
@@ -17,6 +17,10 @@ function supportsWebGL(): boolean {
     return false;
   }
 }
+
+// Hoist WebGL check outside component to prevent double-render on mount.
+// Safe because HeroScene is only dynamically imported with ssr: false.
+const HAS_WEBGL_SUPPORT = typeof window !== 'undefined' ? checkWebGLSupport() : false;
 
 function FloatingOrb({ position, scale = 1 }: { position: [number, number, number]; scale?: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -101,15 +105,7 @@ function ParticleField() {
 }
 
 export function HeroScene() {
-  const [useWebGL, setUseWebGL] = useState(false);
-
-  useEffect(() => {
-    const supported = supportsWebGL();
-    console.info('Hero mode:', supported ? 'webgl' : 'fallback');
-    setUseWebGL(supported);
-  }, []);
-
-  if (!useWebGL) {
+  if (!HAS_WEBGL_SUPPORT) {
     return <FallbackPlanets />;
   }
 
