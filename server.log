@@ -1,14 +1,149 @@
-
-> wanda-portfolio@1.0.0 dev /app
-> next dev
-
-▲ Next.js 16.2.1 (Turbopack)
-- Local:         http://localhost:3000
-- Network:       http://192.168.0.2:3000
-✓ Ready in 534ms
-- Experiments (use with caution):
-  · optimizePackageImports
-
-○ Compiling /contact ...
- GET /contact/ 200 in 6.9s (next.js: 6.0s, application-code: 894ms)
- GET /contact/ 200 in 99ms (next.js: 6ms, application-code: 94ms)
+ INFO  Accepting connections at http://localhost:3000
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /contact.html
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 301 in 18 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /contact
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 6 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/07c~wm4bjhdzz.css
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 4 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/0j3d3i.plnu4o.js
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/turbopack-0qwnbkpdpqzeq.js
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/0551ns2gs23ze.js
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/0-i_7rhneaw-g.js
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/0p9h6t2r7pryl.js
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 15 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/0vmgpg38gym6t.js
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 13 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 13 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 8 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 12 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 18 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/0s3br_o3msqke.js
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/099a.59-qgqp~.js
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/085hse7~cceen.js
+ HTTP  4/6/2026 12:46:55 AM ::1 GET /_next/static/chunks/0fb~wynohddx~.js
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 10 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 11 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 10 ms
+ HTTP  4/6/2026 12:46:55 AM ::1 Returned 200 in 11 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 HEAD /contact/
+ HTTP  4/6/2026 12:46:56 AM ::1 HEAD /about/
+ HTTP  4/6/2026 12:46:56 AM ::1 HEAD /work/
+ HTTP  4/6/2026 12:46:56 AM ::1 HEAD /
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 7 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 7 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 8 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /contact/__next._tree.txt?_rsc=otxpx
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /about/__next._tree.txt?_rsc=otxpx
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /work/__next._tree.txt?_rsc=otxpx
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 4 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /__next._tree.txt?_rsc=otxpx
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /contact/__next._head.txt?_rsc=i5r6x
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /contact/__next._index.txt?_rsc=1jrzm
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 4 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 4 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /contact/__next.contact.txt?_rsc=193bv
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /contact/__next.contact.__PAGE__.txt?_rsc=a4b31
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /about/__next._head.txt?_rsc=i5r6x
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /about/__next.about.txt?_rsc=7122k
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /about/__next.about.__PAGE__.txt?_rsc=3e2pv
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 6 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 6 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /work/__next._head.txt?_rsc=i5r6x
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /work/__next.work.txt?_rsc=1e102
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /_next/static/chunks/11v2bve1vvt5f.js
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /work/__next.work.__PAGE__.txt?_rsc=1tb4h
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 4 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /__next._head.txt?_rsc=i5r6x
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /__next.__PAGE__.txt?_rsc=sm5cb
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /_next/static/chunks/0-_i09fu416q7.js
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:46:56 AM ::1 GET /_next/static/chunks/05nkevm0yl3xs.js
+ HTTP  4/6/2026 12:46:56 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /contact.html
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 301 in 1 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /contact
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/07c~wm4bjhdzz.css
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/0j3d3i.plnu4o.js
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/turbopack-0qwnbkpdpqzeq.js
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/0551ns2gs23ze.js
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/0-i_7rhneaw-g.js
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/0p9h6t2r7pryl.js
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/0vmgpg38gym6t.js
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 4 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/0s3br_o3msqke.js
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/099a.59-qgqp~.js
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 1 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/085hse7~cceen.js
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 9 ms
+ HTTP  4/6/2026 12:47:24 AM ::1 GET /_next/static/chunks/0fb~wynohddx~.js
+ HTTP  4/6/2026 12:47:24 AM ::1 Returned 200 in 6 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 HEAD /contact/
+ HTTP  4/6/2026 12:47:25 AM ::1 HEAD /about/
+ HTTP  4/6/2026 12:47:25 AM ::1 HEAD /work/
+ HTTP  4/6/2026 12:47:25 AM ::1 HEAD /
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 4 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /about/__next._tree.txt?_rsc=otxpx
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /contact/__next._tree.txt?_rsc=otxpx
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 1 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /work/__next._tree.txt?_rsc=otxpx
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /__next._tree.txt?_rsc=otxpx
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 8 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /about/__next._head.txt?_rsc=i5r6x
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /about/__next._index.txt?_rsc=1jrzm
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 7 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /contact/__next._head.txt?_rsc=i5r6x
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /contact/__next.contact.txt?_rsc=193bv
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 9 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 6 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 19 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /contact/__next.contact.__PAGE__.txt?_rsc=a4b31
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /about/__next.about.txt?_rsc=7122k
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /about/__next.about.__PAGE__.txt?_rsc=3e2pv
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /work/__next._head.txt?_rsc=i5r6x
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 5 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 3 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /work/__next.work.txt?_rsc=1e102
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 1 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /work/__next.work.__PAGE__.txt?_rsc=1tb4h
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /_next/static/chunks/11v2bve1vvt5f.js
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /__next._head.txt?_rsc=i5r6x
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 1 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /__next.__PAGE__.txt?_rsc=sm5cb
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 1 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /_next/static/chunks/0-_i09fu416q7.js
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 2 ms
+ HTTP  4/6/2026 12:47:25 AM ::1 GET /_next/static/chunks/05nkevm0yl3xs.js
+ HTTP  4/6/2026 12:47:25 AM ::1 Returned 200 in 1 ms
