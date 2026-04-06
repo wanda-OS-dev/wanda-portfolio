@@ -29,3 +29,7 @@
 ## 2025-06-15 - Enhancing Form UX with Disabled States During Async Operations
 **Learning:** During asynchronous form submissions, users might attempt to modify their inputs or accidentally submit the form multiple times if the inputs and buttons remain interactive. Disabling inputs during the active process prevents these issues and reinforces the loading state.
 **Action:** When implementing asynchronous form submissions, apply `disabled` states to all form inputs and textareas alongside the submit button. Ensure visual feedback is provided using classes like `disabled:opacity-50 disabled:cursor-not-allowed` to clearly communicate that the form is processing. Also, remember to add standard `autoComplete` attributes to inputs to reduce user friction.
+
+## 2026-04-05 - Enhancing Accessibility for WebGL and Canvas Elements
+**Learning:** Purely decorative `<Canvas>` elements (like Three.js background scenes) create noise for screen readers, while interactive `<Canvas>` data visualizations (like graphs) are completely opaque to screen readers by default. Screen readers cannot interpret the contents drawn on a canvas.
+**Action:** When implementing purely decorative WebGL backgrounds, wrap the `<Canvas>` in a container with `aria-hidden="true"` to remove it from the accessibility tree. When implementing interactive or informative WebGL visualizations, wrap the `<Canvas>` in a container with `role="img"` and a descriptive `aria-label` to ensure screen readers announce its purpose to the user.
