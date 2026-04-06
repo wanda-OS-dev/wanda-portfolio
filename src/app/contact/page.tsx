@@ -10,6 +10,7 @@ export default function ContactPage() {
   const [state, setState] = useState<FormState>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [copied, setCopied] = useState(false);
+  const [messageLength, setMessageLength] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleCopy = async () => {
@@ -213,8 +214,14 @@ export default function ContactPage() {
                     maxLength={5000}
                     placeholder="Tell us about your project..."
                     disabled={state === 'sending'}
+                    onChange={(e) => setMessageLength(e.target.value.length)}
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   />
+                  <div className="text-right mt-1">
+                    <span className="text-xs text-brand-gray-500" aria-hidden="true">
+                      {messageLength} / 5000
+                    </span>
+                  </div>
                 </div>
 
                 {/* Error */}
