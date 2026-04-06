@@ -114,7 +114,7 @@ export function HeroScene() {
   }
 
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <div className="absolute inset-0 w-full h-full" aria-hidden="true">
       <Canvas
         camera={{ position: [0, 0, 7], fov: 45 }}
         gl={{ antialias: false, alpha: true, powerPreference: 'default', failIfMajorPerformanceCaveat: false }}
