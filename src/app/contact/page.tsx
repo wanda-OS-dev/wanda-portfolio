@@ -27,13 +27,28 @@ export default function ContactPage() {
     setState('sending');
     const data = new FormData(e.currentTarget);
 
-    // Security enhancement: Enforce input length limits to prevent DoS/payload issues
-    const name = data.get('name')?.toString() || '';
-    const email = data.get('email')?.toString() || '';
-    const message = data.get('message')?.toString() || '';
+    // Security enhancement: Trim inputs to prevent whitespace-only bypasses
+    const name = data.get('name')?.toString().trim() || '';
+    const email = data.get('email')?.toString().trim() || '';
+    const message = data.get('message')?.toString().trim() || '';
 
+    if (!name || !email || !message) {
+      setErrorMsg('All fields are required.');
+      setState('error');
+      return;
+    }
+
+    // Security enhancement: Enforce input length limits to prevent DoS/payload issues
     if (name.length > 100 || email.length > 255 || message.length > 5000) {
       setErrorMsg('Input exceeds maximum allowed length.');
+      setState('error');
+      return;
+    }
+
+    // Security enhancement: Validate email format to prevent malformed data
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMsg('Please enter a valid email address.');
       setState('error');
       return;
     }
