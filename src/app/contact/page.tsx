@@ -10,6 +10,7 @@ export default function ContactPage() {
   const [state, setState] = useState<FormState>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [copied, setCopied] = useState(false);
+  const [messageLength, setMessageLength] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleCopy = async () => {
@@ -52,6 +53,7 @@ export default function ContactPage() {
       });
       if (res.ok) {
         setState('success');
+        setMessageLength(0);
         formRef.current?.reset();
       } else {
         setErrorMsg('Submission failed. Please email us directly.');
@@ -202,9 +204,14 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Message <span className="text-brand-gold" aria-hidden="true">*</span>
-                  </label>
+                  <div className="flex justify-between items-baseline mb-2">
+                    <label htmlFor="message" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block">
+                      Message <span className="text-brand-gold" aria-hidden="true">*</span>
+                    </label>
+                    <span className="text-xs text-brand-gray-500" aria-hidden="true">
+                      {messageLength} / 5000
+                    </span>
+                  </div>
                   <textarea
                     id="message"
                     name="message"
@@ -213,6 +220,7 @@ export default function ContactPage() {
                     maxLength={5000}
                     placeholder="Tell us about your project..."
                     disabled={state === 'sending'}
+                    onChange={(e) => setMessageLength(e.target.value.length)}
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
