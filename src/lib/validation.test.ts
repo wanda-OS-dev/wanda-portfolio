@@ -1,6 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
-import { escapeHtml } from './validation';
+import { escapeHtml } from './validation.ts';
 
 describe('escapeHtml', () => {
   test('returns normal strings unchanged', () => {
