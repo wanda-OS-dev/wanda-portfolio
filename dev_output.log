@@ -1,0 +1,157 @@
+
+> wanda-portfolio@1.0.0 dev /app
+> next dev
+
+▲ Next.js 16.2.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 544ms
+- Experiments (use with caution):
+  · optimizePackageImports
+
+○ Compiling /contact ...
+ GET /contact/ 200 in 5.9s (next.js: 5.1s, application-code: 755ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/wanda-por..." tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+        <SegmentViewNode type="page" pagePath="src/contac...">
+          <SegmentTrieNode>
+          <ClientPageRoot Component={function ContactPage} serverProvidedParams={{...}}>
+            <ContactPage params={Promise} searchParams={Promise}>
+              <div className="min-h-scre...">
+                <div className="max-w-5xl ...">
+                  <div className="grid grid-...">
+                    <motion.div>
+                    <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.15, ...}}>
+                      <div style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                        <form ref={{current:null}} onSubmit={function handleSubmit} className="space-y-6">
+                          <div>
+                            <label>
+                            <input
+                              id="name"
+                              name="name"
+                              type="text"
+                              required={true}
+                              maxLength={100}
+                              placeholder="Your name"
+                              autoComplete="name"
+                              disabled={false}
+                              className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-..."
+-                             style={{caret-color:"transparent"}}
+                            >
+                          <div>
+                            <label>
+                            <input
+                              id="email"
+                              name="email"
+                              type="email"
+                              required={true}
+                              maxLength={255}
+                              placeholder="your@email.com"
+                              autoComplete="email"
+                              disabled={false}
+                              className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-..."
+-                             style={{caret-color:"transparent"}}
+                            >
+                          <div>
+                            <label>
+                            <textarea
+                              id="message"
+                              name="message"
+                              required={true}
+                              rows={5}
+                              maxLength={5000}
+                              placeholder="Tell us about your project..."
+                              disabled={false}
+                              onKeyDown={function onKeyDown}
+                              className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-..."
+-                             style={{caret-color:"transparent"}}
+                            >
+                          ...
+        ...
+      ...
+
+ GET /contact/ 200 in 112ms (next.js: 6ms, application-code: 106ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/wanda-por..." tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+        <SegmentViewNode type="page" pagePath="src/contac...">
+          <SegmentTrieNode>
+          <ClientPageRoot Component={function ContactPage} serverProvidedParams={{...}}>
+            <ContactPage params={Promise} searchParams={Promise}>
+              <div className="min-h-scre...">
+                <div className="max-w-5xl ...">
+                  <div className="grid grid-...">
+                    <motion.div>
+                    <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:0.15, ...}}>
+                      <div style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                        <form ref={{current:null}} onSubmit={function handleSubmit} className="space-y-6">
+                          <div>
+                            <label>
+                            <input
+                              id="name"
+                              name="name"
+                              type="text"
+                              required={true}
+                              maxLength={100}
+                              placeholder="Your name"
+                              autoComplete="name"
+                              disabled={false}
+                              className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-..."
+-                             style={{caret-color:"transparent"}}
+                            >
+                          <div>
+                            <label>
+                            <input
+                              id="email"
+                              name="email"
+                              type="email"
+                              required={true}
+                              maxLength={255}
+                              placeholder="your@email.com"
+                              autoComplete="email"
+                              disabled={false}
+                              className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-..."
+-                             style={{caret-color:"transparent"}}
+                            >
+                          <div>
+                            <label>
+                            <textarea
+                              id="message"
+                              name="message"
+                              required={true}
+                              rows={5}
+                              maxLength={5000}
+                              placeholder="Tell us about your project..."
+                              disabled={false}
+                              onKeyDown={function onKeyDown}
+                              className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-..."
+-                             style={{caret-color:"transparent"}}
+                            >
+                          ...
+        ...
+      ...

@@ -213,6 +213,14 @@ export default function ContactPage() {
                     maxLength={5000}
                     placeholder="Tell us about your project..."
                     disabled={state === 'sending'}
+                    onKeyDown={(e) => {
+                      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+                        e.preventDefault();
+                        if (state !== 'sending') {
+                          formRef.current?.requestSubmit();
+                        }
+                      }
+                    }}
                     className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
@@ -226,7 +234,8 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={state === 'sending'}
-                  className="w-full flex items-center justify-center gap-2 bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  aria-keyshortcuts="Control+Enter Meta+Enter"
+                  className="relative w-full flex items-center justify-center gap-2 bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {state === 'sending' && (
                     <svg
@@ -252,6 +261,16 @@ export default function ContactPage() {
                     </svg>
                   )}
                   {state === 'sending' ? 'Sending...' : 'Send Message'}
+
+                  {/* Keyboard shortcut hint */}
+                  {state !== 'sending' && (
+                    <div className="absolute right-4 hidden sm:flex items-center gap-1 opacity-60 text-xs font-normal" aria-hidden="true">
+                      <kbd className="font-sans">⌘</kbd>
+                      <span className="text-[10px] uppercase">or</span>
+                      <kbd className="font-sans">Ctrl</kbd>
+                      <kbd className="font-sans leading-none ml-0.5">↵</kbd>
+                    </div>
+                  )}
                 </button>
               </form>
             )}
