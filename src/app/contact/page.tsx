@@ -118,12 +118,15 @@ export default function ContactPage() {
                     onClick={handleCopy}
                     aria-label={copied ? "Email copied to clipboard" : "Copy email address"}
                     title={copied ? "Copied!" : "Copy to clipboard"}
-                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1"
+                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1 flex items-center gap-1.5"
                   >
                     {copied ? (
-                      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                      <>
+                        <span className="text-xs text-brand-gold">Copied!</span>
+                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" className="text-brand-gold">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </>
                     ) : (
                       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
