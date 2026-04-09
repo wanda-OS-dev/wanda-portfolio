@@ -130,6 +130,11 @@ export default function ContactPage() {
                       </svg>
                     )}
                   </button>
+                  {copied && (
+                    <span className="text-sm text-brand-gold animate-pulse" aria-hidden="true">
+                      Copied!
+                    </span>
+                  )}
                   {/* Invisible live region for screen readers */}
                   <span
                     className="sr-only"

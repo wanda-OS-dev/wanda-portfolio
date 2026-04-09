@@ -33,3 +33,7 @@
 ## 2025-06-16 - Accessible Visual Character Counters
 **Learning:** When implementing a visual character counter for an input that relies on the native HTML `maxLength` attribute, screen readers will already announce the native length constraint if they support it. Adding the visual counter directly to the DOM can cause redundant and noisy screen reader announcements.
 **Action:** When adding a visual character counter to complement a native `maxLength` attribute, apply `aria-hidden="true"` to the counter element to prevent redundant and noisy screen reader announcements.
+
+## 2026-04-09 - Explicit Visual Feedback for Utility Actions
+**Learning:** When implementing utility actions like 'Copy to clipboard' that do not trigger native browser alerts, relying solely on subtle icon changes or `title` attributes is insufficient. Users need explicit, unambiguous confirmation that their action succeeded.
+**Action:** Always provide clear, temporary text-based visual feedback (e.g., an animated 'Copied!' span) adjacent to the trigger to ensure users receive immediate and obvious confirmation, while marking it `aria-hidden="true"` if an `aria-live` region already handles the screen reader announcement.
