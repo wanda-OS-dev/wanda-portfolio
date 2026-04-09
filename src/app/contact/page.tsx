@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, FormEvent } from 'react';
 import { escapeHtml } from '@/lib/validation';
 
@@ -118,7 +118,7 @@ export default function ContactPage() {
                     onClick={handleCopy}
                     aria-label={copied ? "Email copied to clipboard" : "Copy email address"}
                     title={copied ? "Copied!" : "Copy to clipboard"}
-                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1"
+                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1 flex items-center gap-1"
                   >
                     {copied ? (
                       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -130,6 +130,19 @@ export default function ContactPage() {
                       </svg>
                     )}
                   </button>
+                  <AnimatePresence>
+                    {copied && (
+                      <motion.span
+                        initial={{ opacity: 0, x: -5 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -5 }}
+                        className="text-brand-gold text-xs font-medium"
+                        aria-hidden="true"
+                      >
+                        Copied!
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                   {/* Invisible live region for screen readers */}
                   <span
                     className="sr-only"
