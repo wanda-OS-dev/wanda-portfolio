@@ -29,9 +29,15 @@ const categoryColors: Record<string, { bg: string; text: string; border: string 
   'Infrastructure':      { bg: 'rgba(45,27,105,0.4)',    text: '#c4b5fd',  border: 'rgba(139,92,246,0.2)' },
 };
 
+// Hoist fallback to avoid unnecessary object allocation on every function call/render
+const DEFAULT_CATEGORY_STYLE = { bg: 'rgba(6,182,212,0.1)', text: '#06b6d4', border: 'rgba(6,182,212,0.2)' };
+
 function getCategoryStyle(category: string) {
-  return categoryColors[category] ?? { bg: 'rgba(6,182,212,0.1)', text: '#06b6d4', border: 'rgba(6,182,212,0.2)' };
+  return categoryColors[category] ?? DEFAULT_CATEGORY_STYLE;
 }
+
+// Hoist empty array fallback to prevent inline array allocation and GC pressure on Map misses
+const EMPTY_TAGS: string[] = [];
 
 export default function WorkPage() {
   return (
@@ -205,7 +211,7 @@ export default function WorkPage() {
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-6">
                       {/* O(1) lookup map instead of inline array.slice */}
-                      {(topTagsByProjectId.get(project.id) || []).map((tag) => (
+                      {(topTagsByProjectId.get(project.id) ?? EMPTY_TAGS).map((tag) => (
                         <span
                           key={tag}
                           className="text-xs text-brand-gray-500 px-2 py-0.5 rounded-sm"
