@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, FormEvent } from 'react';
 import { escapeHtml } from '@/lib/validation';
 
@@ -107,7 +107,7 @@ export default function ContactPage() {
                 <p className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 mb-1">
                   Email
                 </p>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 relative">
                   <a
                     href="mailto:wanda.devops@gmail.com"
                     className="text-brand-white hover:text-brand-gold transition-colors duration-300"
@@ -118,7 +118,7 @@ export default function ContactPage() {
                     onClick={handleCopy}
                     aria-label={copied ? "Email copied to clipboard" : "Copy email address"}
                     title={copied ? "Copied!" : "Copy to clipboard"}
-                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1"
+                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1 relative"
                   >
                     {copied ? (
                       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -130,6 +130,19 @@ export default function ContactPage() {
                       </svg>
                     )}
                   </button>
+                  <AnimatePresence>
+                    {copied && (
+                      <motion.span
+                        initial={{ opacity: 0, x: -5 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="text-xs text-brand-gold absolute left-[100%] ml-2 whitespace-nowrap"
+                        aria-hidden="true"
+                      >
+                        Copied!
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                   {/* Invisible live region for screen readers */}
                   <span
                     className="sr-only"
