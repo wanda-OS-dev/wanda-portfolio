@@ -99,24 +99,26 @@ export function AIReasoningVisualizer() {
         <p className="text-sm text-gray-400 mt-1">Interactive 3D Graph &middot; O(1) Memory Layout</p>
       </div>
       
-      <Canvas camera={{ position: [0, 0, 7], fov: 60 }} dpr={[1, 2]}>
-        <color attach="background" args={['#0a0a0a']} />
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#c9a84c" />
-        
-        <Environment preset="city" />
-        <OrbitControls enableZoom={true} enablePan={false} maxPolarAngle={Math.PI / 1.5} minPolarAngle={Math.PI / 3} />
+      <div role="img" aria-label="Interactive 3D graph showing Wanda's AI reasoning process, with nodes for User Query, Parse Intent, Select Tool, Call API, Format Output, and Display to User connected by edges." className="w-full h-full">
+        <Canvas camera={{ position: [0, 0, 7], fov: 60 }} dpr={[1, 2]}>
+          <color attach="background" args={['#0a0a0a']} />
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[10, 10, 5]} intensity={1} />
+          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#c9a84c" />
 
-        <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.2}>
-          <group position={[0, 0, 0]}>
-            {nodesArray.map(node => (
-              <Node key={node.id} data={node} />
-            ))}
-            <GraphEdges />
-          </group>
-        </Float>
-      </Canvas>
+          <Environment preset="city" />
+          <OrbitControls enableZoom={true} enablePan={false} maxPolarAngle={Math.PI / 1.5} minPolarAngle={Math.PI / 3} />
+
+          <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.2}>
+            <group position={[0, 0, 0]}>
+              {nodesArray.map(node => (
+                <Node key={node.id} data={node} />
+              ))}
+              <GraphEdges />
+            </group>
+          </Float>
+        </Canvas>
+      </div>
     </div>
   );
 }
