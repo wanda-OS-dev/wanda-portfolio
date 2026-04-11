@@ -14,3 +14,7 @@
 **Vulnerability:** The static HTML meta tag CSP lacked the `frame-ancestors` directive, making the application vulnerable to Clickjacking attacks where it could be embedded in an attacker's site using `<iframe>`, `<frame>`, `<object>`, etc.
 **Learning:** Even statically exported Next.js applications require the `frame-ancestors` directive within their CSP meta tag to explicitly declare whether the application can be framed by other domains, an essential protection against clickjacking.
 **Prevention:** Always explicitly define `frame-ancestors 'none'` (or specific allowed domains) alongside other comprehensive CSP directives when configuring security policies for Next.js applications.
+## 2026-04-11 - Prevented Information Exposure via Client-Side Logging
+**Vulnerability:** Direct use of `console.error` inside client-side `catch` blocks (like the clipboard handler in the Contact form) could inadvertently leak raw error objects or sensitive context details to the browser console (CWE-532).
+**Learning:** Even simple utility functions can be vectors for information exposure if they log raw exceptions. Developers often leave `console.error` for convenience, but production apps should funnel all errors through a sanitizing logger.
+**Prevention:** Enforce the use of a centralized `logger` utility (e.g., `src/lib/logger.ts`) that sanitizes error objects before output, instead of relying on direct `console.error` calls.
