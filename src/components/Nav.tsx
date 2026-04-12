@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 const links = [
   { href: '/work', label: 'Work' },
@@ -15,6 +15,15 @@ export function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Pre-calculate active states to prevent redundant string logic in desktop and mobile render loops
+  const activeStates = useMemo(() => {
+    const states: Record<string, boolean> = {};
+    for (const link of links) {
+      states[link.href] = pathname === link.href || pathname.startsWith(link.href + '/');
+    }
+    return states;
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -65,7 +74,7 @@ export function Nav() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           {links.map(({ href, label }) => {
-            const isActive = pathname === href || pathname.startsWith(href + '/');
+            const isActive = activeStates[href];
             return (
               <Link
                 key={href}
@@ -131,7 +140,7 @@ export function Nav() {
             className="fixed inset-0 z-40 bg-brand-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 md:hidden"
           >
             {links.map(({ href, label }, i) => {
-              const isActive = pathname === href || pathname.startsWith(href + '/');
+              const isActive = activeStates[href];
               return (
                 <motion.div
                   key={href}
