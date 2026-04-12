@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useRef, FormEvent } from 'react';
+import { escapeHtml } from '@/lib/validation';
 
 type FormState = 'idle' | 'sending' | 'success' | 'error';
 
@@ -9,6 +10,7 @@ export default function ContactPage() {
   const [state, setState] = useState<FormState>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [copied, setCopied] = useState(false);
+  const [messageLength, setMessageLength] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleCopy = async () => {
@@ -25,14 +27,47 @@ export default function ContactPage() {
     e.preventDefault();
     setState('sending');
     const data = new FormData(e.currentTarget);
+
+    // Security enhancement: Enforce input length limits and trim to prevent DoS/payload issues
+    const name = data.get('name')?.toString().trim() || '';
+    const email = data.get('email')?.toString().trim() || '';
+    const message = data.get('message')?.toString().trim() || '';
+
+    if (name.length === 0 || email.length === 0 || message.length === 0) {
+      setErrorMsg('All fields are required.');
+      setState('error');
+      return;
+    }
+
+    if (name.length > 100 || email.length > 255 || message.length > 5000) {
+      setErrorMsg('Input exceeds maximum allowed length.');
+      setState('error');
+      return;
+    }
+
+    // Security enhancement: Strict email validation to prevent malformed payloads
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMsg('Invalid email format.');
+      setState('error');
+      return;
+    }
+
+    // Security enhancement: Sanitize inputs to prevent XSS payloads from being forwarded
+    const sanitizedData = new FormData();
+    sanitizedData.append('name', escapeHtml(name));
+    sanitizedData.append('email', escapeHtml(email));
+    sanitizedData.append('message', escapeHtml(message));
+
     try {
       const res = await fetch('https://formspree.io/f/xpwzogdb', {
         method: 'POST',
         headers: { Accept: 'application/json' },
-        body: data,
+        body: sanitizedData,
       });
       if (res.ok) {
         setState('success');
+        setMessageLength(0);
         formRef.current?.reset();
       } else {
         setErrorMsg('Submission failed. Please email us directly.');
@@ -98,7 +133,6 @@ export default function ContactPage() {
                   {/* Invisible live region for screen readers */}
                   <span
                     className="sr-only"
-                    style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: '0' }}
                     aria-live="polite"
                   >
                     {copied ? 'Email copied to clipboard' : ''}
@@ -158,7 +192,9 @@ export default function ContactPage() {
                     required
                     maxLength={100}
                     placeholder="Your name"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    autoComplete="name"
+                    disabled={state === 'sending'}
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
@@ -174,15 +210,22 @@ export default function ContactPage() {
                     required
                     maxLength={255}
                     placeholder="your@email.com"
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300"
+                    autoComplete="email"
+                    disabled={state === 'sending'}
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block mb-2">
-                    Message <span className="text-brand-gold" aria-hidden="true">*</span>
-                  </label>
+                  <div className="flex justify-between items-baseline mb-2">
+                    <label htmlFor="message" className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 block">
+                      Message <span className="text-brand-gold" aria-hidden="true">*</span>
+                    </label>
+                    <span className="text-xs text-brand-gray-500" aria-hidden="true">
+                      {messageLength} / 5000
+                    </span>
+                  </div>
                   <textarea
                     id="message"
                     name="message"
@@ -190,7 +233,9 @@ export default function ContactPage() {
                     rows={5}
                     maxLength={5000}
                     placeholder="Tell us about your project..."
-                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none"
+                    disabled={state === 'sending'}
+                    onChange={(e) => setMessageLength(e.target.value.length)}
+                    className="w-full bg-transparent border border-white/[0.1] text-brand-white placeholder-brand-gray-500 px-4 py-3 text-sm rounded-sm focus:outline-none focus:border-brand-gold transition-colors duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, FormEvent } from 'react';
 import { escapeHtml } from '@/lib/validation';
 
@@ -107,7 +107,7 @@ export default function ContactPage() {
                 <p className="text-xs font-medium tracking-widest uppercase text-brand-gray-500 mb-1">
                   Email
                 </p>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 relative">
                   <a
                     href="mailto:wanda.devops@gmail.com"
                     className="text-brand-white hover:text-brand-gold transition-colors duration-300"
@@ -130,6 +130,19 @@ export default function ContactPage() {
                       </svg>
                     )}
                   </button>
+                  <AnimatePresence>
+                    {copied && (
+                      <motion.span
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        aria-hidden="true"
+                        className="absolute left-full ml-2 text-xs text-brand-gold bg-brand-gold/10 px-2 py-1 rounded-sm whitespace-nowrap"
+                      >
+                        Copied!
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                   {/* Invisible live region for screen readers */}
                   <span
                     className="sr-only"
