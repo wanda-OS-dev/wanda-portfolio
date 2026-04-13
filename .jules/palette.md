@@ -33,3 +33,7 @@
 ## 2025-06-16 - Accessible Visual Character Counters
 **Learning:** When implementing a visual character counter for an input that relies on the native HTML `maxLength` attribute, screen readers will already announce the native length constraint if they support it. Adding the visual counter directly to the DOM can cause redundant and noisy screen reader announcements.
 **Action:** When adding a visual character counter to complement a native `maxLength` attribute, apply `aria-hidden="true"` to the counter element to prevent redundant and noisy screen reader announcements.
+
+## 2025-10-25 - Accessible WebGL and Canvas Containers
+**Learning:** Purely decorative WebGL backgrounds (like Three.js scenes) or canvases create noise in the accessibility tree and offer no semantic value to screen readers. Conversely, interactive or informative 3D scenes require proper annotation for screen readers to understand the visual context.
+**Action:** Always add `aria-hidden="true"` to purely decorative canvas containers to remove them from the accessibility tree. For interactive or informative canvases, apply `role="img"` and a descriptive `aria-label` to the container to ensure screen readers announce the content accurately.
