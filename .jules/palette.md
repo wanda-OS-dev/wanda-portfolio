@@ -33,3 +33,6 @@
 ## 2025-06-16 - Accessible Visual Character Counters
 **Learning:** When implementing a visual character counter for an input that relies on the native HTML `maxLength` attribute, screen readers will already announce the native length constraint if they support it. Adding the visual counter directly to the DOM can cause redundant and noisy screen reader announcements.
 **Action:** When adding a visual character counter to complement a native `maxLength` attribute, apply `aria-hidden="true"` to the counter element to prevent redundant and noisy screen reader announcements.
+## 2025-06-17 - Added Keyboard Shortcut to Form Textarea
+**Learning:** When adding keyboard shortcuts like Cmd+Enter to submit a form from a textarea, `e.currentTarget.form?.requestSubmit()` must be used instead of `.submit()` to ensure native HTML validation and React `onSubmit` handlers fire. Also, adding a visual `<kbd>` hint helps discoverability, but it requires `aria-hidden="true"` while the wrapper element gets `aria-keyshortcuts` to avoid duplicate and noisy screen reader announcements.
+**Action:** When implementing keyboard shortcuts on form elements, always use `requestSubmit()` over `submit()`. Always provide visual `<kbd>` hints paired with appropriate `aria-keyshortcuts` and `aria-hidden` attributes.
