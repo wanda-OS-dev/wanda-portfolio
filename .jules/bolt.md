@@ -18,3 +18,7 @@
 ## 2025-04-07 - Next.js dynamic client-side evaluation pattern
 **Learning:** For components that rely on heavy client-side capabilities (like WebGL checking) but are loaded via `next/dynamic` with `ssr: false`, using `useState` and `useEffect` for the capability check causes an unnecessary initial mount with fallback content followed by a subsequent re-render.
 **Action:** Hoist the capability check outside the component as a module-level constant guarded by `typeof window !== 'undefined'`. Since the module is evaluated entirely on the client, `window` will be available, and the check can be performed synchronously once before the component ever mounts, returning the correct render output immediately and skipping garbage collection for unneeded fallback/effect lifecycles.
+
+## 2024-04-13 - [Optimize Redundant String Operations in Map Render Loops]
+**Learning:** Performing inline string operations (e.g., `pathname === href || pathname.startsWith(...)`) inside `Array.prototype.map` render loops for navigation components causes redundant computation on every render cycle, especially when the loops are duplicated for different views (e.g., desktop and mobile menus).
+**Action:** Use `useMemo` to pre-calculate these boolean states into a lookup object (`Record<string, boolean>`) whenever the dependency (`pathname`) changes. This allows the render loops to use fast O(1) object lookups instead of repeatedly executing string comparisons, saving CPU cycles during React's render phase.
