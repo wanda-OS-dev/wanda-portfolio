@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 const links = [
   { href: '/work', label: 'Work' },
@@ -25,6 +25,17 @@ export function Nav() {
   // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
+  }, [pathname]);
+
+  // ⚡ Bolt: Pre-calculate active states once per pathname change using useMemo.
+  // This prevents redundant string operations (`pathname.startsWith`) from running
+  // repeatedly inside both the desktop and mobile map() render loops during state changes
+  // (like `scrolled` or `menuOpen` toggles), reducing CPU cycles and micro-stutters.
+  const activeLinks = useMemo(() => {
+    return links.reduce((acc, { href }) => {
+      acc[href] = pathname === href || pathname.startsWith(href + '/');
+      return acc;
+    }, {} as Record<string, boolean>);
   }, [pathname]);
 
   // Handle escape key to close menu and lock body scroll when open
@@ -65,7 +76,7 @@ export function Nav() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           {links.map(({ href, label }) => {
-            const isActive = pathname === href || pathname.startsWith(href + '/');
+            const isActive = activeLinks[href];
             return (
               <Link
                 key={href}
@@ -131,7 +142,7 @@ export function Nav() {
             className="fixed inset-0 z-40 bg-brand-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 md:hidden"
           >
             {links.map(({ href, label }, i) => {
-              const isActive = pathname === href || pathname.startsWith(href + '/');
+              const isActive = activeLinks[href];
               return (
                 <motion.div
                   key={href}
