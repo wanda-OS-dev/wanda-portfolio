@@ -14,3 +14,7 @@
 **Vulnerability:** The static HTML meta tag CSP lacked the `frame-ancestors` directive, making the application vulnerable to Clickjacking attacks where it could be embedded in an attacker's site using `<iframe>`, `<frame>`, `<object>`, etc.
 **Learning:** Even statically exported Next.js applications require the `frame-ancestors` directive within their CSP meta tag to explicitly declare whether the application can be framed by other domains, an essential protection against clickjacking.
 **Prevention:** Always explicitly define `frame-ancestors 'none'` (or specific allowed domains) alongside other comprehensive CSP directives when configuring security policies for Next.js applications.
+## 2024-05-18 - [Security Headers Enrichment & Meta CSP Correction]
+**Vulnerability:** Missing critical security headers (HSTS, Referrer-Policy, Permissions-Policy) in `vercel.json` and misconfiguration of `frame-ancestors` in `<meta>` CSP.
+**Learning:** `frame-ancestors` in a `<meta>` tag is ignored by browsers (per CSP spec). Clickjacking protection (`X-Frame-Options` or `frame-ancestors`) must be served as an HTTP header. Also, modern secure defaults like HSTS and Permissions-Policy should be explicitly set.
+**Prevention:** Always implement `frame-ancestors` and HSTS via HTTP response headers (e.g., `vercel.json`, Next.js `next.config.js` headers) rather than `<meta>` tags.
