@@ -93,13 +93,13 @@ function GraphEdges() {
 
 export function AIReasoningVisualizer() {
   return (
-    <div className="w-full h-[600px] border border-white/10 rounded-lg bg-[#0a0a0a] overflow-hidden relative shadow-2xl">
+    <div className="w-full h-[600px] border border-white/10 rounded-lg bg-[#0a0a0a] overflow-hidden relative shadow-2xl" role="img" aria-label="Interactive 3D visualization showing Wanda's thought process as a graph with nodes connecting User Query to Displaying to User">
       <div className="absolute top-6 left-6 z-10 pointer-events-none">
         <h3 className="text-xl font-bold text-[#c9a84c] tracking-wide">Wanda's Thought Process</h3>
         <p className="text-sm text-gray-400 mt-1">Interactive 3D Graph &middot; O(1) Memory Layout</p>
       </div>
       
-      <Canvas camera={{ position: [0, 0, 7], fov: 60 }} dpr={[1, 2]}>
+      <Canvas camera={{ position: [0, 0, 7], fov: 60 }} dpr={[1, 2]} aria-hidden="true">
         <color attach="background" args={['#0a0a0a']} />
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
