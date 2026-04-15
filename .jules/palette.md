@@ -33,3 +33,7 @@
 ## 2025-06-16 - Accessible Visual Character Counters
 **Learning:** When implementing a visual character counter for an input that relies on the native HTML `maxLength` attribute, screen readers will already announce the native length constraint if they support it. Adding the visual counter directly to the DOM can cause redundant and noisy screen reader announcements.
 **Action:** When adding a visual character counter to complement a native `maxLength` attribute, apply `aria-hidden="true"` to the counter element to prevent redundant and noisy screen reader announcements.
+
+## 2025-05-18 - Visual Text Feedback alongside ARIA Live Regions
+**Learning:** When implementing visual feedback for utility actions (like "Copy to clipboard"), relying solely on tooltips or icon changes can be ambiguous for sighted users. Adding explicit text (e.g., "Copied!") provides immediate confirmation. However, if this visual text is added to the DOM and there is already a dedicated `aria-live` region handling the screen reader announcement, it can result in duplicate and noisy announcements for screen reader users.
+**Action:** When using components like Framer Motion's `AnimatePresence` to display explicit visual text feedback alongside actions that already utilize `aria-live` screen reader announcements, consistently apply `aria-hidden="true"` to the visual element to prevent duplicate or noisy announcements.
