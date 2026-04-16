@@ -65,7 +65,7 @@ export function Nav() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-brand-white font-medium text-sm tracking-widest uppercase hover:text-brand-gold transition-colors duration-300"
+          className="text-brand-white font-medium text-sm tracking-widest uppercase hover:text-brand-gold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm"
         >
           WandaSystems
         </Link>
@@ -78,7 +78,7 @@ export function Nav() {
                 key={href}
                 href={href}
                 aria-current={isActive ? "page" : undefined}
-                className={`text-sm transition-colors duration-300 relative group ${
+                className={`text-sm transition-colors duration-300 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm ${
                   isActive
                     ? 'text-brand-gold'
                     : 'text-brand-gray-300 hover:text-brand-white'
@@ -99,7 +99,7 @@ export function Nav() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex flex-col gap-1.5 w-6 py-1 group"
+          className="md:hidden flex flex-col gap-1.5 w-6 py-1 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
@@ -148,7 +148,7 @@ export function Nav() {
                   <Link
                     href={href}
                     aria-current={isActive ? "page" : undefined}
-                    className={`text-4xl font-light transition-colors duration-300 ${
+                    className={`text-4xl font-light transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm px-4 py-2 ${
                       isActive ? 'text-brand-gold' : 'text-brand-white hover:text-brand-gold'
                     }`}
                   >

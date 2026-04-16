@@ -1,3 +1,6 @@
 ## 2024-04-15 - ARIA Labels for 3D Visualizations
 **Learning:** Decorative and interactive 3D WebGL scenes rendered with React Three Fiber (`<Canvas>`) lack native DOM semantics. They act as opaque boxes to screen readers, meaning any purely decorative scene must be hidden via `aria-hidden="true"`, and interactive or informative ones need `role="img"` and a descriptive `aria-label` on their wrapping container.
 **Action:** When working with Three.js/R3F components in this app, explicitly set `aria-hidden="true"` on wrapper `div`s for background/hero scenes, and add `role="img"` with detailed `aria-label`s for meaningful visualizations (like the AI Reasoning graph).
+## 2024-04-16 - Focus visible states for navigation elements
+**Learning:** Next.js `<Link>` elements and custom buttons often lack distinct keyboard focus indicators when default browser outlines are overridden or hard to see against custom dark backgrounds (like the brand-black here). Adding `focus-visible` styles with brand colors ensures smooth keyboard accessibility.
+**Action:** Always include `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm` on interactive navigation components.
