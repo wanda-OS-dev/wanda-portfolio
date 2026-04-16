@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 const links = [
   { href: '/work', label: 'Work' },
@@ -15,6 +15,14 @@ export function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Pre-calculate active link states based on pathname to avoid redundant calculations inside render loops
+  const linksWithActiveState = useMemo(() => {
+    return links.map(link => ({
+      ...link,
+      isActive: pathname === link.href || pathname.startsWith(link.href + '/')
+    }));
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -64,8 +72,7 @@ export function Nav() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {links.map(({ href, label }) => {
-            const isActive = pathname === href || pathname.startsWith(href + '/');
+          {linksWithActiveState.map(({ href, label, isActive }) => {
             return (
               <Link
                 key={href}
@@ -130,8 +137,7 @@ export function Nav() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-40 bg-brand-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 md:hidden"
           >
-            {links.map(({ href, label }, i) => {
-              const isActive = pathname === href || pathname.startsWith(href + '/');
+            {linksWithActiveState.map(({ href, label, isActive }, i) => {
               return (
                 <motion.div
                   key={href}
