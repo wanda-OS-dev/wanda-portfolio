@@ -104,7 +104,7 @@ export default function WorkPage() {
               <motion.div key={project.id} variants={item}>
                 <Link
                   href={`/work/${project.id}`}
-                  className="group block relative rounded-sm overflow-hidden transition-all duration-500"
+                  className="group block relative rounded-sm overflow-hidden transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                   style={{
                     background: 'linear-gradient(135deg, #120820 0%, #0d0816 100%)',
                     border: '1px solid rgba(6,182,212,0.08)',
@@ -246,10 +246,10 @@ export default function WorkPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
+            className="group inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
           >
             Let&apos;s talk
-            <ArrowRightIcon />
+            <ArrowRightIcon className="group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </motion.div>
       </div>
