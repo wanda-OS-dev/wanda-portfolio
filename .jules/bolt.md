@@ -21,3 +21,6 @@
 ## 2024-05-18 - [Extract Repeated String Checks to useMemo]
 **Learning:** In Next.js navigation components (like `Nav`), computing active states via string checks (`pathname === href || pathname.startsWith(href + "/")`) inside multiple rendering loops (e.g., Desktop and Mobile map blocks) creates redundant O(N) operations during every component re-render.
 **Action:** Extract the active state logic into a single `useMemo` block depending on `pathname`. This calculates the active state exactly once when the path changes and allows the render loops to simply map over the pre-calculated state, reducing React hook and render-time overhead.
+## 2026-04-17 - [Extract Inline Array Fallbacks to Module-level Constants]
+**Learning:** In React render loops, using inline array fallbacks with the logical OR operator (e.g., `map.get(key) || []`) creates a new array reference on every cache miss. This causes unnecessary heap allocations and garbage collection overhead during frequent re-renders.
+**Action:** Always pre-allocate default fallback arrays as module-level constants (e.g., `const EMPTY_ARRAY: string[] = []`) and use the nullish coalescing operator (`??`) to assign them on cache misses. This ensures zero allocations for default states and prevents unnecessary GC pressure.

@@ -19,6 +19,7 @@ const item: Variants = {
 
 // Pre-compute sliced tags to avoid inline Array.slice in the render loop
 const topTagsByProjectId = new Map(projects.map((p) => [p.id, p.tags.slice(0, 4)]));
+const EMPTY_TAGS: string[] = [];
 
 // Category → status tag color
 const categoryColors: Record<string, { bg: string; text: string; border: string }> = {
@@ -205,7 +206,7 @@ export default function WorkPage() {
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-6">
                       {/* O(1) lookup map instead of inline array.slice */}
-                      {(topTagsByProjectId.get(project.id) || []).map((tag) => (
+                      {(topTagsByProjectId.get(project.id) ?? EMPTY_TAGS).map((tag) => (
                         <span
                           key={tag}
                           className="text-xs text-brand-gray-500 px-2 py-0.5 rounded-sm"
