@@ -66,7 +66,7 @@ export function ProjectDetail({ project }: { project: Project }) {
         >
           <Link
             href="/work"
-            className="flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300 group"
+            className="flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm"
           >
             <svg
               width="14"
@@ -207,7 +207,7 @@ export function ProjectDetail({ project }: { project: Project }) {
         >
           <Link
             href={`/work/${nextProject.id}`}
-            className="group flex items-center justify-between p-8 md:p-10 relative overflow-hidden"
+            className="group flex items-center justify-between p-8 md:p-10 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm"
           >
             {/* Hover glow */}
             <span

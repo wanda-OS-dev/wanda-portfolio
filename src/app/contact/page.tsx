@@ -118,7 +118,7 @@ export default function ContactPage() {
                     onClick={handleCopy}
                     aria-label={copied ? "Email copied to clipboard" : "Copy email address"}
                     title={copied ? "Copied!" : "Copy to clipboard"}
-                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1 relative flex items-center justify-center"
+                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1 relative flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm"
                   >
                     {copied ? (
                       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -186,7 +186,7 @@ export default function ContactPage() {
                 <p className="text-brand-gray-500 text-sm">We&apos;ll be in touch within 24 hours.</p>
                 <button
                   onClick={() => setState('idle')}
-                  className="mt-8 text-sm text-brand-gold hover:text-brand-white transition-colors duration-300 underline underline-offset-4"
+                  className="mt-8 text-sm text-brand-gold hover:text-brand-white transition-colors duration-300 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm"
                 >
                   Send another message
                 </button>
@@ -268,7 +268,7 @@ export default function ContactPage() {
                   type="submit"
                   disabled={state === 'sending'}
                   aria-keyshortcuts="Meta+Enter Control+Enter"
-                  className="w-full flex items-center justify-center gap-2 bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                 >
                   {state === 'sending' && (
                     <svg
