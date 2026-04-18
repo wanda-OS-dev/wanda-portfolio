@@ -101,14 +101,14 @@ export default function HomePage() {
             >
               <Link
                 href="/work"
-                className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
+                className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
               >
                 View Work
                 <ArrowRightIcon />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 border border-white/20 text-brand-white text-sm px-7 py-3.5 rounded-sm hover:border-brand-gold hover:text-brand-gold transition-colors duration-300"
+                className="inline-flex items-center gap-2 border border-white/20 text-brand-white text-sm px-7 py-3.5 rounded-sm hover:border-brand-gold hover:text-brand-gold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
               >
                 Get in touch
               </Link>
@@ -169,7 +169,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-brand-gold text-sm hover:gap-4 transition-all duration-300"
+                className="inline-flex items-center gap-2 text-brand-gold text-sm hover:gap-4 transition-all duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
               >
                 More about me
                 <ArrowRightIcon />
@@ -240,7 +240,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/work"
-              className="hidden md:inline-flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300"
+              className="hidden md:inline-flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
             >
               All projects
               <ArrowRightIcon />
@@ -258,7 +258,7 @@ export default function HomePage() {
               >
                 <Link
                   href={`/work/${project.id}`}
-                  className="group flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 md:p-8 rounded-sm transition-all duration-500 relative overflow-hidden"
+                  className="group flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 md:p-8 rounded-sm transition-all duration-500 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                   style={{
                     background: 'linear-gradient(135deg, rgba(18,8,32,0.9) 0%, rgba(13,8,22,0.95) 100%)',
                     border: '1px solid rgba(6,182,212,0.08)',
@@ -340,7 +340,7 @@ export default function HomePage() {
           >
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-brand-gray-500 hover:text-brand-white text-sm transition-colors duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
             >
               All projects
               <ArrowRightIcon />
@@ -375,7 +375,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-8 py-4 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
+              className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-8 py-4 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
             >
               Start a conversation
               <ArrowRightIcon />
