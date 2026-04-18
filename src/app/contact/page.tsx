@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, FormEvent } from 'react';
 import { escapeHtml } from '@/lib/validation';
+import { logger } from '@/lib/logger';
 
 type FormState = 'idle' | 'sending' | 'success' | 'error';
 
@@ -19,7 +20,7 @@ export default function ContactPage() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy text: ', err);
+      logger.error('Failed to copy text', err);
     }
   };
 

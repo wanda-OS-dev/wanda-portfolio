@@ -22,10 +22,6 @@ const HAS_WEBGL = (() => {
   }
 })();
 
-if (typeof window !== 'undefined') {
-  console.info('Hero mode:', HAS_WEBGL ? 'webgl' : 'fallback');
-}
-
 function FloatingOrb({ position, scale = 1 }: { position: [number, number, number]; scale?: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
 
