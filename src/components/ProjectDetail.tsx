@@ -207,15 +207,15 @@ export function ProjectDetail({ project }: { project: Project }) {
         >
           <Link
             href={`/work/${nextProject.id}`}
-            className="group flex items-center justify-between p-8 md:p-10 relative overflow-hidden"
+            className="group flex items-center justify-between p-8 md:p-10 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
           >
             {/* Hover glow */}
             <span
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.04) 0%, transparent 60%)' }}
             />
             <span
-              className="absolute top-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+              className="absolute top-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100 transition-transform duration-500 origin-left"
               style={{ background: `linear-gradient(90deg, ${nextProject.accentColor}, #06b6d4)` }}
             />
 
@@ -225,7 +225,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               </span>
               <p className="text-xs text-brand-gray-500 mb-1">{nextProject.category}</p>
               <h3
-                className="text-xl md:text-2xl font-light text-brand-white group-hover:text-white transition-colors duration-300"
+                className="text-xl md:text-2xl font-light text-brand-white group-hover:text-white group-focus-visible:text-white transition-colors duration-300"
               >
                 {nextProject.title}
               </h3>
@@ -236,7 +236,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               fill="none"
               viewBox="0 0 28 28"
               aria-hidden="true"
-              className="text-brand-gray-500 group-hover:text-brand-white translate-x-0 group-hover:translate-x-2 transition-all duration-300 relative flex-shrink-0"
+              className="text-brand-gray-500 group-hover:text-brand-white group-focus-visible:text-brand-white translate-x-0 group-hover:translate-x-2 group-focus-visible:translate-x-2 transition-all duration-300 relative flex-shrink-0"
             >
               <path
                 d="M5 14h18M16 7l7 7-7 7"
