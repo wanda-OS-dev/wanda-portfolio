@@ -2,14 +2,15 @@
 > wanda-portfolio@1.0.0 dev /app
 > next dev
 
-⚠ Port 3000 is in use by process 51882, using available port 3001 instead.
+⚠ Port 3000 is in use by process 173665, using available port 3001 instead.
 ▲ Next.js 16.2.1 (Turbopack)
 - Local:         http://localhost:3001
 - Network:       http://192.168.0.2:3001
-✓ Ready in 617ms
+✓ Ready in 609ms
 - Experiments (use with caution):
   · optimizePackageImports
 
 ○ Compiling / ...
- GET / 200 in 8.4s (next.js: 7.6s, application-code: 784ms)
- GET / 200 in 105ms (next.js: 5ms, application-code: 100ms)
+ GET / 200 in 9.1s (next.js: 8.2s, application-code: 951ms)
+ GET /work/ 200 in 1641ms (next.js: 1372ms, application-code: 269ms)
+ GET /work/ 200 in 113ms (next.js: 4ms, application-code: 109ms)
