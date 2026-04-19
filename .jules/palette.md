@@ -5,3 +5,6 @@
 ## 2024-04-16 - Focus Visible Styles for Keyboard Navigation
 **Learning:** For clear keyboard navigation accessibility on dark backgrounds (like `--color-black`), interactive elements need strong focus indicators. Using `focus-visible` with a brand color ring ensures visibility without disrupting the mouse user experience.
 **Action:** Always apply `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm` to interactive navigation elements such as Next.js `<Link>` components and buttons on dark backgrounds.
+## 2026-04-19 - Ensure keyboard accessibility visual parity
+**Learning:** Complex interactive elements like project cards that use Tailwind's `group-hover:*` for rich visual feedback (e.g., hover overlays, sweeping accent lines, glowing orbs) often lack visual parity when navigating via keyboard. This creates an inconsistent and sometimes confusing experience for keyboard users who cannot easily discern the focused element.
+**Action:** Always pair Tailwind `group-hover:*` utility classes with their equivalent `group-focus-visible:*` classes to ensure keyboard navigation triggers the same visual state changes as a mouse hover.
