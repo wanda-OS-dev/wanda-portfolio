@@ -21,3 +21,7 @@
 ## 2024-05-18 - [Extract Repeated String Checks to useMemo]
 **Learning:** In Next.js navigation components (like `Nav`), computing active states via string checks (`pathname === href || pathname.startsWith(href + "/")`) inside multiple rendering loops (e.g., Desktop and Mobile map blocks) creates redundant O(N) operations during every component re-render.
 **Action:** Extract the active state logic into a single `useMemo` block depending on `pathname`. This calculates the active state exactly once when the path changes and allows the render loops to simply map over the pre-calculated state, reducing React hook and render-time overhead.
+
+## 2026-04-20 - [Pre-allocate fallback objects and arrays]
+**Learning:** Using inline fallback objects (e.g., `?? { bg: '...', text: '...' }`) or arrays (`|| []`) inside a component's render loop or during large iterations causes new objects to be allocated on every map iteration or render pass. This significantly increases Garbage Collection (GC) pressure and slows down execution in hot paths.
+**Action:** Always pre-allocate fallback arrays and objects as module-level constants (e.g., `const EMPTY_TAGS: string[] = []` or `const DEFAULT_STYLE = { ... }`) and use the nullish coalescing operator (`??`) to reference them. This ensures the same object reference is reused, minimizing heap allocations and GC overhead.
