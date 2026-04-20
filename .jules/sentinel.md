@@ -18,3 +18,7 @@
 **Vulnerability:** Missing critical security headers (HSTS, Referrer-Policy, Permissions-Policy) in `vercel.json` and misconfiguration of `frame-ancestors` in `<meta>` CSP.
 **Learning:** `frame-ancestors` in a `<meta>` tag is ignored by browsers (per CSP spec). Clickjacking protection (`X-Frame-Options` or `frame-ancestors`) must be served as an HTTP header. Also, modern secure defaults like HSTS and Permissions-Policy should be explicitly set.
 **Prevention:** Always implement `frame-ancestors` and HSTS via HTTP response headers (e.g., `vercel.json`, Next.js `next.config.js` headers) rather than `<meta>` tags.
+## 2026-04-20 - [CWE-532: Information Exposure via direct console error calls]
+**Vulnerability:** Found `console.error` usage in client-side exception handlers that printed raw error objects (e.g. `console.error('Failed to copy text: ', err);`).
+**Learning:** Raw console outputs expose unfiltered information (like stack traces, environment specifics, or payload details) to clients, creating an Information Exposure vector in production.
+**Prevention:** Always use the centralized, sanitized `logger` utility (e.g., `logger.error`) to ensure error properties are safely sanitized and standardized before outputting.
