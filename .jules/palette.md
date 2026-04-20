@@ -5,3 +5,6 @@
 ## 2024-04-16 - Focus Visible Styles for Keyboard Navigation
 **Learning:** For clear keyboard navigation accessibility on dark backgrounds (like `--color-black`), interactive elements need strong focus indicators. Using `focus-visible` with a brand color ring ensures visibility without disrupting the mouse user experience.
 **Action:** Always apply `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm` to interactive navigation elements such as Next.js `<Link>` components and buttons on dark backgrounds.
+## 2024-04-16 - Focus Parity for Hover Interactions
+**Learning:** Complex interactive UI elements (like project cards) often accumulate numerous `group-hover:*` classes to create rich visual effects. Without pairing these with equivalent focus states, keyboard-only and screen reader users experience a disjointed interface where focus is invisible or visually inferior to hover interactions.
+**Action:** Always map every `group-hover:*` utility class to a corresponding `group-focus-visible:*` class to ensure total visual parity between mouse and keyboard navigation, specifically on deeply nested or highly stylized cards.
