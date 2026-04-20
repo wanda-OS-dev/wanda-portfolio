@@ -1,7 +1,3 @@
-## 2024-04-15 - ARIA Labels for 3D Visualizations
-**Learning:** Decorative and interactive 3D WebGL scenes rendered with React Three Fiber (`<Canvas>`) lack native DOM semantics. They act as opaque boxes to screen readers, meaning any purely decorative scene must be hidden via `aria-hidden="true"`, and interactive or informative ones need `role="img"` and a descriptive `aria-label` on their wrapping container.
-**Action:** When working with Three.js/R3F components in this app, explicitly set `aria-hidden="true"` on wrapper `div`s for background/hero scenes, and add `role="img"` with detailed `aria-label`s for meaningful visualizations (like the AI Reasoning graph).
-
-## 2024-04-16 - Focus Visible Styles for Keyboard Navigation
-**Learning:** For clear keyboard navigation accessibility on dark backgrounds (like `--color-black`), interactive elements need strong focus indicators. Using `focus-visible` with a brand color ring ensures visibility without disrupting the mouse user experience.
-**Action:** Always apply `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black rounded-sm` to interactive navigation elements such as Next.js `<Link>` components and buttons on dark backgrounds.
+## 2025-04-20 - Adding group-focus-visible styles
+**Learning:** When using Tailwind CSS `group-hover:*` styles to create interactive complex elements like project cards, it's very easy to forget that these visual affordances aren't triggered by keyboard focus. Adding equivalent `group-focus-visible:*` styles alongside the `group-hover:*` styles ensures that keyboard users get the exact same level of visual feedback (like glows or translating icons) as mouse users do.
+**Action:** Always check if a `group-hover:` class exists when styling interactive elements, and pair it with a `group-focus-visible:` class.
