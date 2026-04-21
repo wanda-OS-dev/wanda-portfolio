@@ -21,3 +21,7 @@
 ## 2024-05-18 - [Extract Repeated String Checks to useMemo]
 **Learning:** In Next.js navigation components (like `Nav`), computing active states via string checks (`pathname === href || pathname.startsWith(href + "/")`) inside multiple rendering loops (e.g., Desktop and Mobile map blocks) creates redundant O(N) operations during every component re-render.
 **Action:** Extract the active state logic into a single `useMemo` block depending on `pathname`. This calculates the active state exactly once when the path changes and allows the render loops to simply map over the pre-calculated state, reducing React hook and render-time overhead.
+
+## 2026-03-24 - [Minimize Object Allocation in Render Map Lookups]
+**Learning:** In Next.js pages that frequently map over arrays using Map lookups (e.g., `topTagsByProjectId.get(project.id) || []`), providing fallback array defaults using `|| []` forces the JavaScript engine to allocate a brand-new empty array on the heap each time the lookup fails, or every single render if not carefully managed. In hot paths like render loops processing dozens of components, this creates unnecessary Garbage Collection (GC) pressure and micro-stutters.
+**Action:** Always pre-allocate fallback arrays as module-level constants (e.g., `const EMPTY_TAGS: string[] = []`) and use the nullish coalescing operator (`??`) to return the exact same object reference upon cache misses. This prevents GC churn and accelerates JS execution during re-renders.
