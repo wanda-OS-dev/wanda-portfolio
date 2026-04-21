@@ -5,6 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 import { FallbackPlanets } from './FallbackPlanets';
+import { logger } from '@/lib/logger';
 
 const BACKGROUND_COLOR = new THREE.Color('#0a0a0a');
 
@@ -23,7 +24,7 @@ const HAS_WEBGL = (() => {
 })();
 
 if (typeof window !== 'undefined') {
-  console.info('Hero mode:', HAS_WEBGL ? 'webgl' : 'fallback');
+  logger.info(`Hero mode: ${HAS_WEBGL ? 'webgl' : 'fallback'}`);
 }
 
 function FloatingOrb({ position, scale = 1 }: { position: [number, number, number]; scale?: number }) {
