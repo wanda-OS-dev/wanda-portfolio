@@ -89,7 +89,7 @@ export function Nav() {
                   className={`absolute -bottom-0.5 left-0 h-px bg-brand-gold transition-all duration-300 ${
                     isActive
                       ? 'w-full'
-                      : 'w-0 group-hover:w-full'
+                      : 'w-0 group-hover:w-full group-focus-visible:w-full'
                   }`}
                 />
               </Link>
