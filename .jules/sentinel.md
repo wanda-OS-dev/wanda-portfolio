@@ -18,3 +18,7 @@
 **Vulnerability:** Missing critical security headers (HSTS, Referrer-Policy, Permissions-Policy) in `vercel.json` and misconfiguration of `frame-ancestors` in `<meta>` CSP.
 **Learning:** `frame-ancestors` in a `<meta>` tag is ignored by browsers (per CSP spec). Clickjacking protection (`X-Frame-Options` or `frame-ancestors`) must be served as an HTTP header. Also, modern secure defaults like HSTS and Permissions-Policy should be explicitly set.
 **Prevention:** Always implement `frame-ancestors` and HSTS via HTTP response headers (e.g., `vercel.json`, Next.js `next.config.js` headers) rather than `<meta>` tags.
+## 2025-05-24 - [Information Leakage]
+**Vulnerability:** Raw console logging calls (console.info and console.error) were used in src/components/HeroScene.tsx and src/app/contact/page.tsx, respectively, posing a risk of CWE-532 (Insertion of Sensitive Information into Log File).
+**Learning:** These calls could potentially leak sensitive information in client-side or server-side logs.
+**Prevention:** Use the centralized `logger` utility from `src/lib/logger.ts` for standardized logging and error sanitization, avoiding direct `console` usage.
