@@ -21,3 +21,6 @@
 ## 2024-05-18 - [Extract Repeated String Checks to useMemo]
 **Learning:** In Next.js navigation components (like `Nav`), computing active states via string checks (`pathname === href || pathname.startsWith(href + "/")`) inside multiple rendering loops (e.g., Desktop and Mobile map blocks) creates redundant O(N) operations during every component re-render.
 **Action:** Extract the active state logic into a single `useMemo` block depending on `pathname`. This calculates the active state exactly once when the path changes and allows the render loops to simply map over the pre-calculated state, reducing React hook and render-time overhead.
+## 2026-04-23 - [Avoid Over-Optimizing Functional Fallbacks]
+**Learning:** While hoisting inline array creations (like `||` to `?? EMPTY_ARRAY`) prevents GC churn and is a valid micro-optimization, blindly applying it to functional fallbacks (e.g., replacing `.split('\n\n')` with an empty constant) will break functionality if the Map lookup actually fails.
+**Action:** Always verify what the right-side of a fallback statement is doing. Only replace static empty allocations (like `[]` or `{}`) with constants. If the right-side is a fallback computation that the application relies on for missing data, leave it intact.
