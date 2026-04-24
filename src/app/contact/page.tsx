@@ -110,7 +110,7 @@ export default function ContactPage() {
                 <div className="flex items-center gap-3">
                   <a
                     href="mailto:wanda.devops@gmail.com"
-                    className="text-brand-white hover:text-brand-gold transition-colors duration-300"
+                    className="text-brand-white hover:text-brand-gold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                   >
                     wanda.devops@gmail.com
                   </a>
@@ -118,7 +118,7 @@ export default function ContactPage() {
                     onClick={handleCopy}
                     aria-label={copied ? "Email copied to clipboard" : "Copy email address"}
                     title={copied ? "Copied!" : "Copy to clipboard"}
-                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1 relative flex items-center justify-center"
+                    className="text-brand-gray-500 hover:text-brand-gold transition-colors duration-300 p-1 relative flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                   >
                     {copied ? (
                       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -268,7 +268,7 @@ export default function ContactPage() {
                   type="submit"
                   disabled={state === 'sending'}
                   aria-keyshortcuts="Meta+Enter Control+Enter"
-                  className="w-full flex items-center justify-center gap-2 bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 bg-brand-gold text-brand-black font-medium text-sm py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                 >
                   {state === 'sending' && (
                     <svg
