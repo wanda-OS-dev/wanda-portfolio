@@ -104,7 +104,7 @@ export default function WorkPage() {
               <motion.div key={project.id} variants={item}>
                 <Link
                   href={`/work/${project.id}`}
-                  className="group block relative rounded-sm overflow-hidden transition-all duration-500"
+                  className="group block relative rounded-sm overflow-hidden transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                   style={{
                     background: 'linear-gradient(135deg, #120820 0%, #0d0816 100%)',
                     border: '1px solid rgba(6,182,212,0.08)',
@@ -112,18 +112,18 @@ export default function WorkPage() {
                 >
                   {/* Hover glow overlay */}
                   <span
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.05) 0%, rgba(0,245,255,0.02) 50%, transparent 100%)' }}
                   />
                   {/* Border glow on hover */}
                   <span
-                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{ boxShadow: '0 0 0 1px rgba(6,182,212,0.2), inset 0 0 40px rgba(6,182,212,0.03)' }}
                   />
 
                   {/* Accent sweep line on hover */}
                   <span
-                    className="absolute top-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"
+                    className="absolute top-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100 transition-transform duration-700 origin-left"
                     style={{ background: `linear-gradient(90deg, ${project.accentColor}, #06b6d4, #00f5ff)` }}
                   />
 
@@ -136,7 +136,7 @@ export default function WorkPage() {
                   >
                     {/* Abstract pattern unique per project */}
                     <div
-                      className="absolute inset-0 opacity-[0.15] group-hover:opacity-[0.25] transition-opacity duration-500"
+                      className="absolute inset-0 opacity-[0.15] group-hover:opacity-[0.25] group-focus-visible:opacity-[0.25] transition-opacity duration-500"
                       style={{
                         backgroundImage: `radial-gradient(ellipse at 30% 50%, ${project.accentColor}40 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, #06b6d430 0%, transparent 50%)`,
                       }}
@@ -168,7 +168,7 @@ export default function WorkPage() {
                     </div>
                     {/* Glowing orb center */}
                     <div
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full blur-xl opacity-20 group-hover:opacity-40 group-focus-visible:opacity-40 transition-opacity duration-500"
                       style={{ background: project.accentColor }}
                     />
                     {/* Fade bottom */}
@@ -178,7 +178,7 @@ export default function WorkPage() {
                   {/* Card body */}
                   <div className="p-6 md:p-7 relative">
                     {/* Title */}
-                    <h2 className="text-xl font-light text-brand-white tracking-[-0.01em] mb-3 group-hover:text-white transition-colors">
+                    <h2 className="text-xl font-light text-brand-white tracking-[-0.01em] mb-3 group-hover:text-white group-focus-visible:text-white transition-colors">
                       {project.title}
                     </h2>
 
@@ -221,10 +221,10 @@ export default function WorkPage() {
                       className="flex items-center gap-2 text-sm transition-colors duration-300"
                       style={{ color: '#06b6d4' }}
                     >
-                      <span className="text-brand-gray-500 group-hover:text-brand-white transition-colors duration-300">
+                      <span className="text-brand-gray-500 group-hover:text-brand-white group-focus-visible:text-brand-white transition-colors duration-300">
                         Case Study
                       </span>
-                      <ArrowRightIcon className="text-brand-gray-500 group-hover:text-white translate-x-0 group-hover:translate-x-1 transition-all duration-300" />
+                      <ArrowRightIcon className="text-brand-gray-500 group-hover:text-white group-focus-visible:text-white translate-x-0 group-hover:translate-x-1 group-focus-visible:translate-x-1 transition-all duration-300" />
                     </div>
                   </div>
                 </Link>
@@ -246,7 +246,7 @@ export default function WorkPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300"
+            className="inline-flex items-center gap-2 bg-brand-gold text-brand-black font-medium text-sm px-7 py-3.5 rounded-sm hover:bg-brand-gold-muted transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black focus-visible:rounded-sm"
           >
             Let&apos;s talk
             <ArrowRightIcon />
