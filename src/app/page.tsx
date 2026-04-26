@@ -258,7 +258,7 @@ export default function HomePage() {
               >
                 <Link
                   href={`/work/${project.id}`}
-                  className="group flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 md:p-8 rounded-sm transition-all duration-500 relative overflow-hidden"
+                  className="group flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 md:p-8 rounded-sm transition-all duration-500 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                   style={{
                     background: 'linear-gradient(135deg, rgba(18,8,32,0.9) 0%, rgba(13,8,22,0.95) 100%)',
                     border: '1px solid rgba(6,182,212,0.08)',
@@ -266,12 +266,12 @@ export default function HomePage() {
                 >
                   {/* Hover glow */}
                   <span
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-sm"
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-500 pointer-events-none rounded-sm"
                     style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.04) 0%, transparent 60%)' }}
                   />
                   {/* Top accent line on hover */}
                   <span
-                    className="absolute top-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                    className="absolute top-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100 transition-transform duration-500 origin-left"
                     style={{ background: `linear-gradient(90deg, ${project.accentColor}, #06b6d4)` }}
                   />
 
@@ -282,7 +282,7 @@ export default function HomePage() {
                     </span>
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-1">
-                        <h3 className="text-lg md:text-xl font-light text-brand-white group-hover:text-white transition-colors">
+                        <h3 className="text-lg md:text-xl font-light text-brand-white group-hover:text-white group-focus-visible:text-white transition-colors">
                           {project.title}
                         </h3>
                         <span
@@ -314,7 +314,7 @@ export default function HomePage() {
                       fill="none"
                       viewBox="0 0 20 20"
                       aria-hidden="true"
-                      className="text-brand-gray-500 group-hover:text-brand-cyan translate-x-0 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0"
+                      className="text-brand-gray-500 group-hover:text-brand-cyan group-focus-visible:text-brand-cyan translate-x-0 group-hover:translate-x-1 group-focus-visible:translate-x-1 transition-all duration-300 flex-shrink-0"
                       style={{ color: 'inherit' }}
                     >
                       <path
