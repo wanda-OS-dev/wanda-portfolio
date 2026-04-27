@@ -21,3 +21,6 @@
 ## 2024-05-18 - [Extract Repeated String Checks to useMemo]
 **Learning:** In Next.js navigation components (like `Nav`), computing active states via string checks (`pathname === href || pathname.startsWith(href + "/")`) inside multiple rendering loops (e.g., Desktop and Mobile map blocks) creates redundant O(N) operations during every component re-render.
 **Action:** Extract the active state logic into a single `useMemo` block depending on `pathname`. This calculates the active state exactly once when the path changes and allows the render loops to simply map over the pre-calculated state, reducing React hook and render-time overhead.
+## 2026-04-27 - [Pre-computing Render-Loop Functions]
+**Learning:** When iterating over static data sets (like lists of projects) in React render loops, executing utility functions (e.g., `getCategoryStyle`) that contain inline object allocations or map fallbacks on every iteration generates unnecessary garbage collection overhead and cpu cycles on every re-render.
+**Action:** Always pre-compute the function results for all static items into a module-level `Map` outside the component. Inside the render loop, map over the data and use an O(1) cache lookup (e.g., `categoryStylesMap.get(id) ?? DEFAULT_STYLE`) to prevent repeated execution and allocation.
